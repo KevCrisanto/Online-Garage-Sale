@@ -3,14 +3,12 @@
 ### By Maverick
 
 ## Contents
-<!--ts-->
-* [Description] (#description)
-* [Roles] (#roles)
-* [Technologies] (#technologies)
-* [Installation] (#installation)
-* [Deployment] (#deployment)
-* [Running Tests] (#testing)
-<!--te-->
+- [Description] (#description)
+- [Roles] (#roles)
+- [Technologies] (#technologies)
+- [Installation] (#installation)
+- [Deployment] (#deployment)
+- [Running Tests] (#testing)
 
 ## Description
 Online Garage Sale (OGS) is an online trading service that allows verified users to buy and sell personal goods. 

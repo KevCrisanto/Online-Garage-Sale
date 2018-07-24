@@ -11,7 +11,13 @@
 - [Running Tests](#testing)
 
 ## Description
-Online Garage Sale (OGS) is an online trading service that allows verified users to buy and sell personal goods.
+Online Garage Sale (OGS) is an online trading service that allows verified users to buy and sell personal goods. OGS is driven by its community. Regular and premium OGS users rate and review other users were the best users are always placed on top.
+
+Items filter into categories. Users supply keywords for fast searches
+
+VISA, Master Card, and American Express accepted.
+
+The OGS front-end is provided with the Angular framework.
 
 ## Roles
 #### Unverified (View only)
@@ -22,7 +28,6 @@ Users may pay a monthly subscription for premium user benefits.
 #### Admin
 ### Technologies
 [**Angular**](https://angular.io/)
-The OGS front-end is provided with the Angular framework.
 [**Hibernate**](http://hibernate.org/) ORM used to simplify Java/SQL interactions
 [**Selenium**](https://www.seleniumhq.org/)
 ## Installation

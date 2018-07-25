@@ -25,7 +25,7 @@ Users accounts require verification before they can use the OGS service. Unverif
 #### Verified
 User verification requires that users have filled out their complete profile and that they have been approved by an OGS Admin.
 #### Premium
-Users may pay a monthly subscription for premium user benefits.
+Users may pay a monthly subscription for premium user benefits. Premium benefits include uploading a file and having their ratings separated from unsubscribed users.
 #### Admin
 OGS Admins moderate the OGS service.
 ### Technologies

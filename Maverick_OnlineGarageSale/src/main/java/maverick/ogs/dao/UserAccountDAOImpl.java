@@ -1,6 +1,5 @@
 package maverick.ogs.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 

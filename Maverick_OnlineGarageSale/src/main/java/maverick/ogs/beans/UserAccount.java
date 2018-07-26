@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Entity
-@Table
+@Entity(name = "UserAccount")
+@Table(name = "user_account")
 public class UserAccount {
 	
 	@Id
@@ -79,6 +79,37 @@ public class UserAccount {
 		this.isPremium = isPremium;
 		this.isAdmin = isAdmin;
 		this.isActive = isActive;
+	}
+	
+	public UserAccount(String username, String password, String firstName, String lastName, String email,
+			Date creationDate) {
+		super();
+		this.accountId = UUID.randomUUID().toString();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.creationDate = creationDate;
+		this.isVerified = false;
+		this.isPremium = false;
+		this.isAdmin = false;
+		this.isActive = false;
+	}
+	
+	public UserAccount(String username, String password, String firstName, String lastName, String email) {
+		super();
+		this.accountId = UUID.randomUUID().toString();
+		this.username = username;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.creationDate = new Date();
+		this.isVerified = false;
+		this.isPremium = false;
+		this.isAdmin = false;
+		this.isActive = false;
 	}
 	
 	public UserAccount() {

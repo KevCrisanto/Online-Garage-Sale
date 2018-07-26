@@ -1,10 +1,17 @@
 package maverick.ogs.beans;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity(name = "Tier")
+@Table(name = "Tier")
 public class Tier {
 
 	@Id
@@ -12,8 +19,12 @@ public class Tier {
 	@Column(name="id", updatable = false, nullable = false)
 	private String id;
 	
-	@Column
+	@Column(name="name")
 	private String name;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_id")
+	private Integer user_id;
 	
 	public Tier (String id, String name) {
 		this.id = id;
@@ -43,6 +54,4 @@ public class Tier {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	
 }

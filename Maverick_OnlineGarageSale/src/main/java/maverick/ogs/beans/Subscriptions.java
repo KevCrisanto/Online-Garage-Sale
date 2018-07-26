@@ -1,12 +1,21 @@
 package maverick.ogs.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity(name = "Subscriptions")
+@Table(name = "subscriptions")
 public class Subscriptions
 {
 	@Id
@@ -18,27 +27,32 @@ public class Subscriptions
 	private String userId;
 	
 	// Considering joining tier row's of paid subscription types and user roles to this table
-	// Added Tier table for subscription tier types and roles. The Subscriptions table would record what subs
-	// criptions and roles a user has from an @ManyToOne relationship
-	//@ManyToOne
-	@Column
-	private String tier;
+	// Added Tier table for subscription tier types and roles. The Subscriptions table would record what
+	// subscriptions and roles a user has from an @ManyToOne relationship
+	// @ManyToOne
+	//@Column
+	@OneToMany (
+			mappedBy = "subscriptions",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+			)
+	private List<Tier> tiers = new ArrayList<Tier>();
 	
-	@Column
+	@Column(name="subscription_end_date")
 	private Date subscriptionEndDate;
 	
-	public Subscriptions(Integer id, String userId, String tier, Date subscriptionEndDate) {
+	public Subscriptions(Integer id, String userId, List<Tier> tiers, Date subscriptionEndDate) {
 		super();
-		id = id;
+		this.id = id;
 		this.userId = userId;
-		this.tier = tier;
+		this.tiers = tiers;
 		this.subscriptionEndDate = subscriptionEndDate;
 	}
 	
-	public Subscriptions(String userId, String tier, Date subscriptionEndDate) {
+	public Subscriptions(String userId, List<Tier> tiers, Date subscriptionEndDate) {
 		super();
 		this.userId = userId;
-		this.tier = tier;
+		this.tiers = tiers;
 		this.subscriptionEndDate = subscriptionEndDate;
 	}
 	
@@ -54,11 +68,11 @@ public class Subscriptions
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getTier() {
-		return tier;
+	public List<Tier> getTiers() {
+		return tiers;
 	}
-	public void setTier(String tier) {
-		this.tier = tier;
+	public void setTiers(List<Tier> tiers) {
+		this.tiers = tiers;
 	}
 	public Date getSubscriptionEndDate() {
 		return subscriptionEndDate;

@@ -39,7 +39,8 @@ public class TierDAOImpl implements TierDAO {
 		Transaction transaction = null;
 		
 		 try {
-			 
+			 transaction = session.beginTransaction();
+			 tiers = session.createQuery("FROM Tier").list();
 		 } catch (HibernateException e) {
 			 if (transaction != null) {
 				 transaction.rollback();

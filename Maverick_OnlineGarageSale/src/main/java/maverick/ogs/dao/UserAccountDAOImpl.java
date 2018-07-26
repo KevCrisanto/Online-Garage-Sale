@@ -67,27 +67,20 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 			if (updatedAccount != null) {
 				if (account.getFirstName() != null) {
 					updatedAccount.setFirstName(account.getFirstName());
-				} else {
-					return null;
 				}
 					
 				if (account.getLastName() != null) {
 					updatedAccount.setLastName(account.getLastName());
-				} else {
-					return null;
 				}
 				
 				if (account.getEmail() != null) {
 					updatedAccount.setEmail(account.getEmail());
-				} else {
-					return null;
 				}
 				
 				if (account.getPassword() != null) {
 					updatedAccount.setPassword(account.getPassword());
-				} else {
-					return null;
 				}
+				
 				session.save(updatedAccount);
 			}
 		} catch (HibernateException e) {

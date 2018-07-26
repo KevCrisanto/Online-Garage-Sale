@@ -18,7 +18,9 @@ public class Subscriptions
 	private String userId;
 	
 	// Considering joining tier row's of paid subscription types and user roles to this table
-	//@ManyToMany
+	// Added Tier table for subscription tier types and roles. The Subscriptions table would record what subs
+	// criptions and roles a user has from an @ManyToOne relationship
+	//@ManyToOne
 	@Column
 	private String tier;
 	

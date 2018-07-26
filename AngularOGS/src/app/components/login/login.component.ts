@@ -11,13 +11,13 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $(document).ready(function() {
-      var panelOne = $('.form-panel.two').height(),
+    $(document).ready(function () {
+      const panelOne = $('.form-panel.two').scrollHeight,
         panelTwo = $('.form-panel.two')[0].scrollHeight;
-    
-      $('.form-panel.two').not('.form-panel.two.active').on('click', function(e) {
+
+      $('.form-panel.two').not('.form-panel.two.active').on('click', function (e) {
         e.preventDefault();
-    
+
         $('.form-toggle').addClass('visible');
         $('.form-panel.one').addClass('hidden');
         $('.form-panel.two').addClass('active');
@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
           'height': panelTwo
         }, 200);
       });
-    
-      $('.form-toggle').on('click', function(e) {
+      $('.form-toggle').on('click', function (e) {
         e.preventDefault();
         $(this).removeClass('visible');
         $('.form-panel.one').removeClass('hidden');

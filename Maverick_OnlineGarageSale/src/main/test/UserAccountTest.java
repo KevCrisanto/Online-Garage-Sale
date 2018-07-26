@@ -1,5 +1,4 @@
-package maverick.test;
-
+import org.junit.runners.JUnit4;
 import static org.junit.Assert.*;
 
 import org.hibernate.Session;

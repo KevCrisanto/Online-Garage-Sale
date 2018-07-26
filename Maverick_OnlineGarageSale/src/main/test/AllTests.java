@@ -1,5 +1,4 @@
-package maverick.test;
-
+import org.junit.runners.JUnit4;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;

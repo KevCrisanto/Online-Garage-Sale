@@ -64,9 +64,8 @@ public class TierDAOImpl implements TierDAO {
 			if (updatedTier != null) {
 				if(tier.getName() != null) {
 					updatedTier.setName(tier.getName());
-				} else {
-					return null;
 				}
+				
 				session.save(updatedTier);
 			}
 		} catch (HibernateException e) {

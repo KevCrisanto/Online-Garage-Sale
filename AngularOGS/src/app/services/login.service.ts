@@ -10,9 +10,9 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  checkLogin(){
+  checkLogin(input: Account){
 
-    this.http.post("endpoint_url", {
+    this.http.post("http://localhost:8085/Maverick_OnlineGarageSale/", {
       key1: "value",
       key2: "value",
       etc: "value"
@@ -21,4 +21,5 @@ export class LoginService {
         FAIL => {})
 
   }
+
 }

@@ -1,11 +1,11 @@
 export class Account {
-    id: number;
+    id: string;
     username: string;
     password: string;
-    fname: string;
-    lname: string;
-    cdate: Date;
+    firstName: string;
+    lastName: string;
     email: string;
+    Date: Date;
     isVerified: boolean;
     isPremium: boolean;
     isAdmin: boolean;

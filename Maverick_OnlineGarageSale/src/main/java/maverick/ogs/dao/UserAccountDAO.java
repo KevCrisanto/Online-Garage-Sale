@@ -9,6 +9,7 @@ public interface UserAccountDAO {
 	public List<UserAccount> getAllAccounts();
 	public UserAccount updateAccountById(String id, UserAccount account);
 	public UserAccount getAccountById(String id);
+	public UserAccount getAccountByUsername(String username);
 	public Boolean deleteAccountById(String id);
 	public Boolean deleteAccountByUsername(String username);
 }

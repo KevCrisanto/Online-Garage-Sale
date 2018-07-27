@@ -150,7 +150,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 			transaction = session.beginTransaction();
 			account = (UserAccount) HibernateUtil.getSession();
 			if (username != null) {
-				account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + username + "\'").list();
+				account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + username + "\'").uniqueResult();
 				return account;
 			}
 		} catch (HibernateException e) {

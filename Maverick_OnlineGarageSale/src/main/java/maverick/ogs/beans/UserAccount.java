@@ -17,7 +17,7 @@ public class UserAccount {
 	
 
 	@Id
-	@Column(name="account_id")
+	@Column(name="account_id", unique=true)
 	private String accountId;
 	
 	@Column(name="username", unique=true)

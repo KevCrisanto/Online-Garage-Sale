@@ -60,7 +60,7 @@ public class Subscriptions
 		return id;
 	}
 	public void setId(Integer id) {
-		id = id;
+		this.id = id;
 	}
 	public String getUserId() {
 		return userId;

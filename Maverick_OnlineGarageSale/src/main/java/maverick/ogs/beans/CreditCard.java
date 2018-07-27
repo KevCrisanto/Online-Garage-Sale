@@ -8,34 +8,31 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "CreditCard")
-@Table(name ="credit_card")
+@Table(name = "credit_card")
 public class CreditCard {
 	
 	@Id
 	@Column(name = "credit_card_id")
 	private String creditCardId;
-	
-	@Id
+
 	@Column(name = "card_number")
 	private Integer cardNumber;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "account_id")
 	private String accountId;
 	
-	@Id
 	@Column(name = "card_name")
 	private String cardName;
 
-	@Id
 	@Column(name = "expiration")
 	private Date expiration;
 	
-	@Id
 	@Column(name = "cvv")
 	private Integer cvv;
 	

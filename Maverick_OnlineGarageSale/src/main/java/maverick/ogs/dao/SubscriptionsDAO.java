@@ -3,10 +3,13 @@ package maverick.ogs.dao;
 import java.util.List;
 
 import maverick.ogs.beans.Subscriptions;
+import maverick.ogs.beans.Tier;
 
 public interface SubscriptionsDAO {
-	public String addSubscriptions(Subscriptions subscriptions);
+	public Integer addSubscriptions(Subscriptions subscriptions);
+	public Subscriptions addTier(Subscriptions subscriptions, Tier tier);
 	public List<Subscriptions> getAllSubscriptions();
-	public Subscriptions updateSubscriptions(String userId, Subscriptions subscriptions);
-	public Boolean deleteSubscriptionById(String userId, String id);
+	public Subscriptions updateSubscriptions(Subscriptions subscriptions);
+	public Boolean deleteSubscriptionsById(String id);
+	public Boolean deleteSubscriptions(Subscriptions subscriptions);
 }

@@ -20,7 +20,7 @@ public class Subscriptions
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name ="id", updatable = false, nullable = false)
+	@Column(name ="subscriptions_id", updatable = false, nullable = false)
 	private Integer id;
 	
 	@Column(name = "user_id")

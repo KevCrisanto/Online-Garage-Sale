@@ -1,4 +1,3 @@
-import org.junit.runners.JUnit4;
 import static org.junit.Assert.*;
 
 import org.hibernate.Session;
@@ -52,6 +51,7 @@ public class UserAccountTest {
 		userAccountDAO.deleteAccountByUsername("rkay");
 		userAccountDAO.deleteAccountByUsername("skay");
 		userAccountDAO.deleteAccountByUsername("tkay");
+		userAccountDAO.deleteAccountByUsername("ukay");
 	}
 
 	@Test
@@ -88,7 +88,8 @@ public class UserAccountTest {
 		Date now = new Date();
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
 		String id11 = (String) userAccountDAO.insertAccount(new UserAccount("ukay", "password", "Umow", "Kay", "ukay@email.com", now, false, false, false, false));
-		UserAccount userAccount11 = userAccountDAO.getAccountById(id11);
+		UserAccount userAccount11 = (UserAccount) userAccountDAO.getAccountById(id11);
 		assertEquals(id11, userAccount11.getAccountId());
+		
 	}
 }

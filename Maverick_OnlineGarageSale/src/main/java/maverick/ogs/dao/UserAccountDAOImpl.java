@@ -61,7 +61,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedAccount = (UserAccount)session.get(account.getClass(), account.getClass());
+			updatedAccount = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
 			
 			if (updatedAccount != null) {
 				if (account.getFirstName() != null) {
@@ -101,7 +101,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			account = (UserAccount) HibernateUtil.getSession();
+			account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
 			if (id != null) {
 				account = (UserAccount) session.get(UserAccount.class, id);
 				return account;
@@ -122,7 +122,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			account = (UserAccount)session.get(UserAccount.class, id);
+			account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
 			if (account != null) {
 				session.delete(account);
 				result = true;

@@ -7,6 +7,7 @@ import maverick.ogs.beans.Subscriptions;
 public interface SubscriptionsDAO {
 	public Integer addSubscriptions(Subscriptions subscriptions);
 	public List<Subscriptions> getAllSubscriptions();
-	public Subscriptions updateSubscriptions(String userId, Subscriptions subscriptions);
-	public Boolean deleteSubscriptionById(String userId, String id);
+	public Subscriptions updateSubscriptions(Subscriptions subscriptions);
+	public Boolean deleteSubscriptionsById(String id);
+	public Boolean deleteSubscriptions(Subscriptions subscriptions);
 }

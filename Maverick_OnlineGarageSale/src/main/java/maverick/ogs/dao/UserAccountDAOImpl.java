@@ -141,6 +141,26 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 	}
 
 	@Override
+	public UserAccount getAccountByUsername(String username) {
+		UserAccount account = null;
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = null;
+		
+		try {
+			transaction = session.beginTransaction();
+			account = (UserAccount) HibernateUtil.getSession();
+			if (username != null) {
+				account = (UserAccount) session.get(UserAccount.class, username);
+				return account;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return account;
+	}
+	
+	@Override
 	public Boolean deleteAccountByUsername(String username) {
 		UserAccount account = null;
 		Session session = HibernateUtil.getSession();

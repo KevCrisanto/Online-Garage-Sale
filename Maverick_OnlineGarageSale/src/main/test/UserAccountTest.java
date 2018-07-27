@@ -82,4 +82,13 @@ public class UserAccountTest {
 		// If 10 user accounts were created assert true, test passes.
 		assertEquals(userAccountsCount, count);
 	}
+	
+	@Test
+	public void getAccountByIdTest() {
+		Date now = new Date();
+		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+		String id11 = (String) userAccountDAO.insertAccount(new UserAccount("ukay", "password", "Umow", "Kay", "ukay@email.com", now, false, false, false, false));
+		UserAccount userAccount11 = userAccountDAO.getAccountById(id11);
+		assertEquals(id11, userAccount11.getAccountId());
+	}
 }

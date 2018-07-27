@@ -1,5 +1,5 @@
 package maverick.ogs.beans;
 
-public class Transactions {
+public class Transaction {
 
 }

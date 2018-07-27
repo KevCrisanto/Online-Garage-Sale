@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @Table(name = "user_account")
 public class UserAccount {
 	
+
 	@Id
 	@Column(name="account_id")
 	private String accountId;
@@ -114,6 +115,7 @@ public class UserAccount {
 	
 	public UserAccount() {
 		super();
+		this.accountId = UUID.randomUUID().toString();
 	}
 
 	public String getAccountId() {
@@ -204,5 +206,12 @@ public class UserAccount {
 		this.isActive = isActive;
 	}
 	
+	@Override
+	public String toString() {
+		return "UserAccount [accountId=" + accountId + ", username=" + username + ", password=" + password
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", creationDate="
+				+ creationDate + ", isVerified=" + isVerified + ", isPremium=" + isPremium + ", isAdmin=" + isAdmin
+				+ ", isActive=" + isActive + "]";
+	}
 	
 }

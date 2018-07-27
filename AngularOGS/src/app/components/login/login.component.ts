@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
   //   isActive: false
   // };
   acc = new Account('','','','','','',null,false,false,false,false);
+  regAcc = new Account('','','','','','',null,false,false,false,false);
 
     get diagnostic() {
       return JSON.stringify(this.acc);
@@ -73,5 +74,8 @@ export class LoginComponent implements OnInit {
         }).subscribe(
           PASS => {},
           FAIL => {})
+    }
+    register(a: Account){
+      this.login.registerService(this.regAcc).subscribe();
     }
 }

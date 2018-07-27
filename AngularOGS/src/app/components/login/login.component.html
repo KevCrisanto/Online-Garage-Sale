@@ -36,19 +36,22 @@
       <form>
         <div class="form-group">
           <label for="username2">Username</label>
-          <input type="text" id="username2" name="username2" required="required" />
+          <input type="text" id="username2" name="username2" required="required" 
+          [(ngModel)]=regAcc.username/>
         </div>
         <div class="form-group">
           <label for="password2">Password</label>
-          <input type="password" id="password2" name="password2" required="required" />
+          <input type="password" id="password2" name="password2" required="required"
+          [(ngModel)]=regAcc.password/>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email2" name="email2" required="required" />
+          <input type="email" id="email2" name="email2" required="required"
+          [(ngModel)]=regAcc.email/>
         </div>
         <div class="form-group">
-          <button type="submit">Register</button>
+          <button type="submit" (click)="register(regAcc)">Register</button>
         </div>
       </form>
     </div>

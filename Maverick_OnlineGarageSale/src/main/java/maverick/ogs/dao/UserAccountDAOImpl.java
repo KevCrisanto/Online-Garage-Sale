@@ -147,12 +147,9 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			if (username != null) {
-<<<<<<< HEAD
-				account = (UserAccount)session.get(UserAccount.class, username);
-=======
+
 				account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + username + "\'").uniqueResult();
 				return account;
->>>>>>> 25e6a209cba0be52677650b4a32c8408901780e2
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -190,7 +187,6 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		return result;
 	}
-<<<<<<< HEAD
 	
 //	public static void main(String[] args) {
 //		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
@@ -201,6 +197,4 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 //		System.out.println(userAccountDAO.getAllAccounts());
 //	}
 
-=======
->>>>>>> 25e6a209cba0be52677650b4a32c8408901780e2
 }

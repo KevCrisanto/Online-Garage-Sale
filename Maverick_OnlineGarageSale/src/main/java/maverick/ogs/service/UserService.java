@@ -5,15 +5,10 @@ import maverick.ogs.dao.UserAccountDAOImpl;
 
 public class UserService {
 	
-	public static boolean userLogin(String username,String password) {
+	public static UserAccount userLogin(String username,String password) {
 		UserAccountDAOImpl userDao = new UserAccountDAOImpl();
-		UserAccount user;
-		if((user = userDao.getAccountByUsername(username)) == null) {
-			return false;
-		}
-		if(!user.getPassword().equals(password)) {
-			return false;
-		}
-		return true;
+		UserAccount user = userDao.getAccountByUsername(username);
+		return user;
 	}
+	
 }

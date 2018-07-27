@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class UserAccountTest {
 
@@ -66,5 +67,19 @@ public class UserAccountTest {
 			assertTrue(true);
 		}
 	}
-
+	
+	@Test
+	public void getAllAccountsTest() {
+		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+		Session session = HibernateUtil.getSession();
+		Long userAccountsCount = (Long) session.createCriteria(UserAccount.class).setProjection(
+				Projections.count("id")
+				).uniqueResult();
+		List<UserAccount> tenAccounts = userAccountDAO.getAllAccounts();
+		Long count = Long.valueOf(tenAccounts.size());
+		session.close();
+		
+		// If 10 user accounts were created assert true, test passes.
+		assertEquals(userAccountsCount, count);
+	}
 }

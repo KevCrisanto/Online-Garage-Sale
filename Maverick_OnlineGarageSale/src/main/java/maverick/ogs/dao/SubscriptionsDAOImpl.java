@@ -128,4 +128,37 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		return result;
 	}
 
+	@Override
+	public Subscriptions addTier(Subscriptions subscriptions, Tier tier) {
+		Tier hibernateTier = null;
+		Subscriptions updatedSubscriptions = null;
+		List<Tier> tiers = null;
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = null;
+		Integer subscriptionId = null;
+		
+		try {
+			transaction = session.getTransaction();
+			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
+			hibernateTier = (Tier) session.get(tier.getClass(), tier.getId());
+			
+			if (hibernateTier != null && updatedSubscriptions != null) {
+				tiers = updatedSubscriptions.getTiers();
+				tiers.add(hibernateTier);
+				updatedSubscriptions.setTiers(tiers);
+				subscriptionId = (Integer) session.save(updatedSubscriptions);
+			}
+			
+			if (subscriptionId == null) {
+				return null;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return updatedSubscriptions;
+	}
+
 }

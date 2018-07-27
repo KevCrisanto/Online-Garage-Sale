@@ -34,7 +34,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   //input: Account
   checkLogin(account: Account): Observable<Account>{
-    return this.http.post<Account>(this.loginurl,JSON.stringify(account), httpOptions)
+    return this.http.post<Account>(this.loginurl,account, httpOptions)
     .pipe(catchError(this.handleError<Account>('checkLogin'))
     );
   

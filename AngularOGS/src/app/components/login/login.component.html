@@ -1,9 +1,8 @@
-{{diagnostic}}
 <div class="form">
   <div class="form-toggle"></div>
   <div class="form-panel one">
     <div class="form-header">
-      <h1>Account Login {{diagnostic}} </h1>
+      <h1>Account Login</h1>
     </div>
     <div class="form-content">
       <form #loginForm="ngForm">
@@ -14,7 +13,8 @@
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required="required"/>
+          <input type="password" id="password" name="password" required="required"
+          [(ngModel)]="acc.password"/>
         </div>
         <div class="form-group">
           <label class="form-remember">
@@ -23,7 +23,7 @@
           <a class="form-recovery" href="#">Forgot Password?</a>
         </div>
         <div class="form-group">
-          <button type="submit" (click)="asdf()">Log In</button>
+          <button type="submit" (click)="cLogin(acc)">Log In</button>
         </div>
       </form>
     </div>

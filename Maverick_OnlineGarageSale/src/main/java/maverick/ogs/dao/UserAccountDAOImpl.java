@@ -1,6 +1,5 @@
 package maverick.ogs.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -145,19 +144,16 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 	public UserAccount getAccountByUsername(String username) {
 		UserAccount account = null;
 		Session session = HibernateUtil.getSession();
-		Transaction transaction = null;
 		
 		try {
-			transaction = session.beginTransaction();
-			account = (UserAccount) HibernateUtil.getSession();
 			if (username != null) {
-				account = (UserAccount) session.get(UserAccount.class, username);
-				return account;
+				account = (UserAccount)session.get(UserAccount.class, username);
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally{
+			session.close(); 
 		}
-		
 		return account;
 	}
 	
@@ -190,13 +186,13 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		return result;
 	}
 	
-	public static void main(String[] args) {
-		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		Date now = new Date();
-
-		String id1 = userAccountDAO.insertAccount(new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", now, false, false, false, false));
-		
-		System.out.println(userAccountDAO.getAllAccounts());
-	}
+//	public static void main(String[] args) {
+//		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+//		Date now = new Date();
+//
+//		String id1 = userAccountDAO.insertAccount(new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", now, false, false, false, false));
+//		
+//		System.out.println(userAccountDAO.getAllAccounts());
+//	}
 
 }

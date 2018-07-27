@@ -8,7 +8,6 @@ public interface CreditCardDAO {
 	public String insertCreditCard(CreditCard creditCard);
 	public List<CreditCard> getAllCards();
 	public List<CreditCard> getCreditCardsUserHas(String accountId);
-	public CreditCard updateCreditCardById(String creditCardId, CreditCard card);
+	public Boolean updateCreditCardById(String creditCardId, CreditCard card);
 	public Boolean deleteCreditCardById(String creditCardId);
-	
 }

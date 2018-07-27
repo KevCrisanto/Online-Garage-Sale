@@ -53,11 +53,12 @@ public class TierDAOImpl implements TierDAO {
 	}
 
 	@Override
-	public Tier updateTier(Tier tier) {
+	public Boolean updateTier(Tier tier) {
 		Tier updatedTier = null;
 		
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
+		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
@@ -68,12 +69,13 @@ public class TierDAOImpl implements TierDAO {
 				}
 				
 				session.save(updatedTier);
+				result = true;
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
 		
-		return tier;
+		return result;
 	}
 
 	@Override

@@ -65,10 +65,11 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 	}
 
 	@Override
-	public CreditCard updateCreditCardById(String creditCardId, CreditCard card) {
+	public Boolean updateCreditCardById(String creditCardId, CreditCard card) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		CreditCard updatedCreditCard = null;
+		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
@@ -96,12 +97,13 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			}
 			
 			session.save(updatedCreditCard);
+			result = true;
 		} catch (HibernateException e) {
 			
 		} finally {
 			session.close();
 		}
-		return updatedCreditCard;
+		return result;
 	}
 
 	@Override

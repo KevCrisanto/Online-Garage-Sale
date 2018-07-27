@@ -53,11 +53,12 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 	}
 
 	@Override
-	public UserAccount updateAccountById(String id, UserAccount account) {
+	public Boolean updateAccountById(String id, UserAccount account) {
 		UserAccount updatedAccount = null;
 		
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
+		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
@@ -81,6 +82,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 				}
 				
 				session.save(updatedAccount);
+				result = true;
 			}
 		} catch (HibernateException e) {
 			if (transaction != null) {
@@ -90,7 +92,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		} finally {
 			session.close();
 		}
-		return updatedAccount;
+		return result;
 	}
 
 	@Override

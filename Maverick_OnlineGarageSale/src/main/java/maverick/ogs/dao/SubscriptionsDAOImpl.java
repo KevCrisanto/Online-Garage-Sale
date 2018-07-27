@@ -55,10 +55,11 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 	}
 
 	@Override
-	public Subscriptions updateSubscriptions(Subscriptions subscriptions) {
+	public Boolean updateSubscriptions(Subscriptions subscriptions) {
 		Subscriptions updatedSubscriptions = null;
 		Transaction transaction = null;
 		Session session = HibernateUtil.getSession();
+		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
@@ -73,11 +74,12 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 					updatedSubscriptions.setSubscriptionEndDate(subscriptions.getSubscriptionEndDate());
 				}
 			}
+			result = true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}
 		
-		return updatedSubscriptions;
+		return result;
 	}
 
 	@Override

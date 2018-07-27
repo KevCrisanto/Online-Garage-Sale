@@ -169,7 +169,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			account = (UserAccount)session.get(UserAccount.class, username);
+			account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + username + "\'").uniqueResult();
 		
 			if (account != null) {
 				session.delete(account);
@@ -188,14 +188,4 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		return result;
 	}
-	
-	public static void main(String[] args) {
-		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		Date now = new Date();
-
-		String id1 = userAccountDAO.insertAccount(new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", now, false, false, false, false));
-		
-		System.out.println(userAccountDAO.getAllAccounts());
-	}
-
 }

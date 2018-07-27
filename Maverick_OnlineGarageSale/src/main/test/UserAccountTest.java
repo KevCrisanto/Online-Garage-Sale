@@ -52,6 +52,7 @@ public class UserAccountTest {
 		userAccountDAO.deleteAccountByUsername("skay");
 		userAccountDAO.deleteAccountByUsername("tkay");
 		userAccountDAO.deleteAccountByUsername("ukay");
+		userAccountDAO.deleteAccountByUsername("vkay");
 	}
 
 	@Test
@@ -90,6 +91,20 @@ public class UserAccountTest {
 		String id11 = (String) userAccountDAO.insertAccount(new UserAccount("ukay", "password", "Umow", "Kay", "ukay@email.com", now, false, false, false, false));
 		UserAccount userAccount11 = (UserAccount) userAccountDAO.getAccountById(id11);
 		assertEquals(id11, userAccount11.getAccountId());
+		
+	}
+	
+	@Test
+	public void getAccountByUsernameTest() {
+		Date now = new Date();
+		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+		String id12 = (String) userAccountDAO.insertAccount(new UserAccount("vkay", "password", "Vanessa", "Kay", "vkay@email.com", now, false, false, false, false));
+		UserAccount userAccount12 = (UserAccount) userAccountDAO.getAccountById(id12);
+		// System.out.println("UserAccount12 is reporting the username: " + userAccount12.getUsername());
+		UserAccount queriedAccount = userAccountDAO.getAccountByUsername("vkay");
+		System.out.println("queriedAccount is reporting the username: " + queriedAccount.getUsername());
+		String idFromUsername = queriedAccount.getAccountId();
+		assertEquals(id12, idFromUsername);
 		
 	}
 }

@@ -61,7 +61,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedAccount = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
+			updatedAccount = (UserAccount) session.createQuery("FROM UserAccount where account_id=\'" + id + "\'").uniqueResult();
 			
 			if (updatedAccount != null) {
 				if (account.getFirstName() != null) {
@@ -101,7 +101,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
+			account = (UserAccount) session.createQuery("FROM UserAccount where account_id=\'" + id + "\'").uniqueResult();
 			if (id != null) {
 				account = (UserAccount) session.get(UserAccount.class, id);
 				return account;
@@ -122,7 +122,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + id + "\'").uniqueResult();
+			account = (UserAccount) session.createQuery("FROM UserAccount where account_id=\'" + id + "\'").uniqueResult();
 			if (account != null) {
 				session.delete(account);
 				result = true;
@@ -151,7 +151,6 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 			account = (UserAccount) HibernateUtil.getSession();
 			if (username != null) {
 				account = (UserAccount) session.createQuery("FROM UserAccount where username=\'" + username + "\'").uniqueResult();
-				return account;
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();

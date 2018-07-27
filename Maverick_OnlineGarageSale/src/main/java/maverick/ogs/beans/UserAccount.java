@@ -114,6 +114,7 @@ public class UserAccount {
 	
 	public UserAccount() {
 		super();
+		this.accountId = UUID.randomUUID().toString();
 	}
 
 	public String getAccountId() {

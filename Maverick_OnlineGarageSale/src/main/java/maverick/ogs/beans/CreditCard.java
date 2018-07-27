@@ -1,6 +1,7 @@
 package maverick.ogs.beans;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,10 @@ import javax.persistence.Table;
 @Entity(name = "CreditCard")
 @Table(name ="credit_card")
 public class CreditCard {
+	
+	@Id
+	@Column(name = "credit_card_id")
+	private String creditCardId;
 	
 	@Id
 	@Column(name = "card_number")
@@ -39,6 +44,7 @@ public class CreditCard {
 	private String addressId;
 	
 	public CreditCard(Integer cardNumber, String accountId, String cardName, Date expiration, Integer cvv, String addressId) {
+		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
 		this.accountId = accountId;
 		this.cardName = cardName;
@@ -48,6 +54,7 @@ public class CreditCard {
 	}
 	
 	public CreditCard(Integer cardNumber, String cardName, Date expiration, Integer cvv) {
+		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
 		this.expiration = expiration;
@@ -57,6 +64,7 @@ public class CreditCard {
 	}
 	
 	public CreditCard() {
+		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = null;
 		this.cardName = null;
 		this.expiration = null;
@@ -111,5 +119,13 @@ public class CreditCard {
 
 	public void setAddressId(String addressId) {
 		this.addressId = addressId;
+	}
+	
+	public String getCreditCardId() {
+		return this.creditCardId.toString();
+	}
+	
+	public void setCreditCardId(String cardId) {
+		this.creditCardId = cardId;
 	}
 }

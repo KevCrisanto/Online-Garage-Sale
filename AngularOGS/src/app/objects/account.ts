@@ -1,13 +1,16 @@
 export class Account {
-    id: string;
-    username: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    Date: Date;
-    isVerified: boolean;
-    isPremium: boolean;
-    isAdmin: boolean;
-    isActive: boolean;
+    constructor(
+        id: string,
+        username: string,
+        password: string,
+        firstName: string,
+        lastName: string,
+        email: string,
+        Date: Date,
+        isVerified: boolean,
+        isPremium: boolean,
+        isAdmin: boolean,
+        isActive: boolean
+    ){}
+
 }

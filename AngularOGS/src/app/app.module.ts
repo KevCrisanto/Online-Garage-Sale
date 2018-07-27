@@ -6,6 +6,7 @@ import { CreditCardComponent } from './components/credit-card/credit-card.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

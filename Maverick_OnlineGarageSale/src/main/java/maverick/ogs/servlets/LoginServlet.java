@@ -38,7 +38,12 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		response.setContentType("text/html");
+		//response.setContentType("text/html");
+		Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+		JsonObject obj = (JsonObject) parser.parse(request.getReader());
+		System.out.println(obj.get("key1"));
+		System.out.println(obj.toString());
 //		PrintWriter out = response.getWriter();
 //		BufferedReader reader = request.getReader();
 //		Gson gson = new GsonBuilder().create();

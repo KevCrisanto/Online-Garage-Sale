@@ -59,7 +59,7 @@ public class ItemDAOImpl implements ItemDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			items = session.createQuery("FROM item").list();
+			items = session.createQuery("FROM Item").list();
 		}
 		catch (HibernateException e){
 			if(transaction != null) {
@@ -80,7 +80,7 @@ public class ItemDAOImpl implements ItemDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			items = session.createQuery("FROM item WHERE account_id = :id").list();
+			items = session.createQuery("FROM Item WHERE accountId =\'" + accountId + "\'").list();
 		}
 		catch(HibernateException e) {
 			if(transaction != null) {
@@ -104,9 +104,6 @@ public class ItemDAOImpl implements ItemDAO {
 			transaction = session.beginTransaction();
 			updateItem = (Item)session.get(Item.class, itemId);
 			if(updateItem != null) {
-				if(i.getAccountId() != null) {
-					updateItem.setAccountId(i.getAccountId());
-				}
 				if(i.getCategory() != null) {
 					updateItem.setCategory(i.getCategory());
 				}
@@ -120,6 +117,7 @@ public class ItemDAOImpl implements ItemDAO {
 					updateItem.setPrice(i.getPrice());
 				}
 				session.save(updateItem);
+				transaction.commit();
 				result = true;
 			}
 		}

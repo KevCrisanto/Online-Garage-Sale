@@ -3,9 +3,11 @@ package maverick.ogs.beans;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+@Entity
 
 public class Item {
 	
@@ -14,8 +16,7 @@ public class Item {
 	private String itemId;
 	
 	@ManyToOne
-	@JoinColumn(name = "account_id")
-	private String accountId;
+	private UserAccount accountId;
 	
 	@Column(name = "description")
 	private String description;
@@ -33,8 +34,10 @@ public class Item {
 		this.itemId = UUID.randomUUID().toString();
 	}
 	
-	public Item(String itemId, String accountId, String description, String itemStatus, Float price, String category) {
-		this.itemId = itemId;
+	public Item(UserAccount accountId, String description, String itemStatus, Float price,
+			String category) {
+		super();
+		this.itemId = UUID.randomUUID().toString();
 		this.accountId = accountId;
 		this.description = description;
 		this.itemStatus = itemStatus;
@@ -42,8 +45,10 @@ public class Item {
 		this.category = category;
 	}
 	
-	public Item(String accountId, String description, String itemStatus, Float price, String category) {
-		this.itemId = UUID.randomUUID().toString();
+	public Item(String itemId, UserAccount accountId, String description, String itemStatus, Float price,
+			String category) {
+		super();
+		this.itemId = itemId;
 		this.accountId = accountId;
 		this.description = description;
 		this.itemStatus = itemStatus;
@@ -58,12 +63,12 @@ public class Item {
 	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
-
-	public String getAccountId() {
+	
+	public UserAccount getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(String accountId) {
+	public void setAccountId(UserAccount accountId) {
 		this.accountId = accountId;
 	}
 

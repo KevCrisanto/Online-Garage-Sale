@@ -1,0 +1,50 @@
+2018-07-28 08:12:25 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 08:12:25 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 08:12:27 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 08:12:28 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 08:12:29 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 08:12:29 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 08:12:29 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 08:12:29 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 08:12:33 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 08:12:39 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5c48c0c0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2018-07-28 08:23:09 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 08:23:09 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 08:23:10 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 08:23:11 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 08:23:11 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 08:23:11 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 08:23:11 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 08:23:11 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 08:23:13 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 08:23:18 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@72ccd81a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2018-07-28 08:25:22 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 08:25:22 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 08:25:24 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 08:25:25 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 08:25:25 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 08:25:25 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 08:25:25 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 08:25:25 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 08:25:27 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 08:25:31 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@72ccd81a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2018-07-28 08:29:03 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 08:29:03 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 08:29:04 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 08:29:05 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 08:29:05 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 08:29:05 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 08:29:05 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 08:29:05 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 08:29:07 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 08:29:10 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@72ccd81a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2018-07-28 08:29:25 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 08:29:25 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 08:29:26 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 08:29:26 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 08:29:27 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 08:29:27 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 08:29:27 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 08:29:27 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 08:29:29 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 08:29:33 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@72ccd81a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.

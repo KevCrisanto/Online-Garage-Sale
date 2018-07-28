@@ -21,7 +21,7 @@ public class CreditCard {
 	private String creditCardId;
 
 	@Column(name = "card_number")
-	private Integer cardNumber;
+	private String cardNumber;
 	
 	@ManyToOne
 	@JoinColumn(name = "account_id")
@@ -34,13 +34,13 @@ public class CreditCard {
 	private Date expiration;
 	
 	@Column(name = "cvv")
-	private Integer cvv;
+	private String cvv;
 	
 	@ManyToOne
 	@JoinColumn(name = "address_id")
 	private String addressId;
 	
-	public CreditCard(Integer cardNumber, String accountId, String cardName, Date expiration, Integer cvv, String addressId) {
+	public CreditCard(String cardNumber, String accountId, String cardName, Date expiration, String cvv, String addressId) {
 		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
 		this.accountId = accountId;
@@ -50,7 +50,7 @@ public class CreditCard {
 		this.addressId = addressId;
 	}
 	
-	public CreditCard(Integer cardNumber, String cardName, Date expiration, Integer cvv) {
+	public CreditCard(String cardNumber, String cardName, Date expiration, String cvv) {
 		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
@@ -70,11 +70,11 @@ public class CreditCard {
 		this.addressId = null;
 	}
 
-	public Integer getCardNumber() {
+	public String getCardNumber() {
 		return cardNumber;
 	}
 
-	public void setCardNumber(Integer cardNumber) {
+	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
@@ -102,11 +102,11 @@ public class CreditCard {
 		this.expiration = expiration;
 	}
 
-	public Integer getCvv() {
+	public String getCvv() {
 		return cvv;
 	}
 
-	public void setCvv(Integer cvv) {
+	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
 

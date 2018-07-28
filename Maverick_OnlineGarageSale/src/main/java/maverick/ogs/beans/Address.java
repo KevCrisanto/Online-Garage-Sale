@@ -38,14 +38,14 @@ public class Address {
 	private String country;
 	
 	@Column(name = "zipcode")
-	private Integer zipcode;
+	private String zipcode;
 	
 	public Address() {
 		this.addressId = UUID.randomUUID().toString();
 	}
 
 	public Address(String addressId, String addressLine1, String addressLine2, String aptNumber, String postOfficeBox,
-			String city, String state, String country, Integer zipcode) {
+			String city, String state, String country, String zipcode) {
 		super();
 		this.addressId = addressId;
 		this.addressLine1 = addressLine1;
@@ -59,7 +59,7 @@ public class Address {
 	}
 	
 	public Address(String addressLine1, String addressLine2, String aptNumber, String postOfficeBox,
-			String city, String state, String country, Integer zipcode) {
+			String city, String state, String country, String zipcode) {
 		super();
 		this.addressId = UUID.randomUUID().toString();
 		this.addressLine1 = addressLine1;
@@ -136,11 +136,11 @@ public class Address {
 		this.country = country;
 	}
 
-	public Integer getZipcode() {
+	public String getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(Integer zipcode) {
+	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
 }

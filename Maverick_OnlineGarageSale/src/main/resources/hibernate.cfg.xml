@@ -35,5 +35,6 @@
 		</property>
 		
 		<mapping class="maverick.ogs.beans.UserAccount" />
+		<mapping class="maverick.ogs.beans.Address"/>
 	</session-factory>
 </hibernate-configuration>

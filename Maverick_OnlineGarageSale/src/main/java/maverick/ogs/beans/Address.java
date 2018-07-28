@@ -23,7 +23,7 @@ public class Address {
 	
 
 	@Column(name = "apt_number")
-	private String AptNumber;
+	private String aptNumber;
 
 	@Column(name = "post_office_box")
 	private String postOfficeBox;
@@ -50,7 +50,7 @@ public class Address {
 		this.addressId = addressId;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
-		AptNumber = aptNumber;
+		this.aptNumber = aptNumber;
 		this.postOfficeBox = postOfficeBox;
 		this.city = city;
 		this.state = state;
@@ -64,7 +64,7 @@ public class Address {
 		this.addressId = UUID.randomUUID().toString();
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
-		AptNumber = aptNumber;
+		this.aptNumber = aptNumber;
 		this.postOfficeBox = postOfficeBox;
 		this.city = city;
 		this.state = state;
@@ -97,11 +97,11 @@ public class Address {
 	}
 
 	public String getAptNumber() {
-		return AptNumber;
+		return this.aptNumber;
 	}
 
 	public void setAptNumber(String aptNumber) {
-		AptNumber = aptNumber;
+		this.aptNumber = aptNumber;
 	}
 
 	public String getPostOfficeBox() {

@@ -1,6 +1,8 @@
 package maverick.ogs.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -23,9 +25,8 @@ public class CreditCard {
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@ManyToOne
-	@JoinColumn(name = "account_id")
-	private String accountId;
+	@Column(name = "user_account")
+	private UserAccount userAccount;
 	
 	@Column(name = "card_name")
 	private String cardName;
@@ -36,18 +37,17 @@ public class CreditCard {
 	@Column(name = "cvv")
 	private String cvv;
 	
-	@ManyToOne
-	@JoinColumn(name = "address_id")
-	private String addressId;
+	@Column(name = "address")
+	private Address address;
 	
-	public CreditCard(String cardNumber, String accountId, String cardName, Date expiration, String cvv, String addressId) {
+	public CreditCard(String cardNumber, UserAccount userAccount, String cardName, Date expiration, String cvv, Address address) {
 		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
-		this.accountId = accountId;
+		this.userAccount = userAccount;
 		this.cardName = cardName;
 		this.expiration = expiration;
 		this.cvv = cvv;
-		this.addressId = addressId;
+		this.address = address;
 	}
 	
 	public CreditCard(String cardNumber, String cardName, Date expiration, String cvv) {
@@ -56,8 +56,8 @@ public class CreditCard {
 		this.cardName = cardName;
 		this.expiration = expiration;
 		this.cvv = cvv;
-		this.accountId = null;
-		this.addressId = null;
+		this.userAccount = null;
+		this.address = null;
 	}
 	
 	public CreditCard() {
@@ -66,8 +66,8 @@ public class CreditCard {
 		this.cardName = null;
 		this.expiration = null;
 		this.cvv = null;
-		this.accountId = null;
-		this.addressId = null;
+		this.userAccount = null;
+		this.address = null;
 	}
 
 	public String getCardNumber() {
@@ -78,12 +78,12 @@ public class CreditCard {
 		this.cardNumber = cardNumber;
 	}
 
-	public String getAccountId() {
-		return accountId;
+	public UserAccount getUserAccounts() {
+		return this.userAccount;
 	}
 
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
+	public void setUserAccounts(List<UserAccount> userAccounts) {
+		this.userAccount = userAccount;
 	}
 
 	public String getCardName() {
@@ -110,12 +110,12 @@ public class CreditCard {
 		this.cvv = cvv;
 	}
 
-	public String getAddressId() {
-		return addressId;
+	public Address getAddress() {
+		return this.address;
 	}
 
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	public String getCreditCardId() {

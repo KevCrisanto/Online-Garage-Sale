@@ -1,6 +1,8 @@
 package maverick.ogs.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -8,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -49,7 +52,7 @@ public class UserAccount {
 	
 	@Column(name="is_active")
 	private boolean isActive;
-
+	
 	public UserAccount(String accountId, String username, String password, String firstName, String lastName, String email,
 			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
 		super();
@@ -213,5 +216,4 @@ public class UserAccount {
 				+ creationDate + ", isVerified=" + isVerified + ", isPremium=" + isPremium + ", isAdmin=" + isAdmin
 				+ ", isActive=" + isActive + "]";
 	}
-	
 }

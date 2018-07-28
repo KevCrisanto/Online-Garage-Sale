@@ -76,8 +76,8 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			updatedCreditCard = (CreditCard) session.createQuery("FROM credit_card where credit_card_id=\'" + creditCardId + "\'");
 			
 			if (updatedCreditCard != null) {
-				if (card.getAccountId() != null) {
-					updatedCreditCard.setAccountId(card.getAccountId());
+				if (card.getCreditCardId() != null) {
+					updatedCreditCard.setCreditCardId(card.getCreditCardId());
 				}
 				if (card.getCardName() != null) {
 					updatedCreditCard.setCardName(card.getCardName());
@@ -91,8 +91,8 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 				if (card.getExpiration() != null) {
 					updatedCreditCard.setCvv(card.getCvv());
 				}
-				if (card.getAddressId() != null) {
-					updatedCreditCard.setAddressId(card.getAddressId());
+				if (card.getAddress() != null) {
+					updatedCreditCard.setAddress(card.getAddress());
 				}
 			}
 			

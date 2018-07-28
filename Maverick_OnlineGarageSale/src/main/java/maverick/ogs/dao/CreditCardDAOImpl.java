@@ -54,7 +54,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		List<CreditCard> creditCards = null;
 		
 		try {
-			creditCards = session.createQuery("FROM credit_card where=account_id\'" + accountId + "\'").list();
+			creditCards = session.createQuery("FROM credit_card where=accountId\'" + accountId + "\'").list();
 		} catch (HibernateException e) {
 			
 		} finally {
@@ -73,12 +73,9 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedCreditCard = (CreditCard) session.createQuery("FROM credit_card where credit_card_id=\'" + creditCardId + "\'");
+			updatedCreditCard = (CreditCard) session.createQuery("FROM credit_card where cardNumber=\'" + creditCardId + "\'");
 			
 			if (updatedCreditCard != null) {
-				if (card.getCreditCardId() != null) {
-					updatedCreditCard.setCreditCardId(card.getCreditCardId());
-				}
 				if (card.getCardName() != null) {
 					updatedCreditCard.setCardName(card.getCardName());
 				}
@@ -115,7 +112,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			creditCard = (CreditCard) session.createQuery("FROM credit_card where credit_card_id=\'" + creditCardId +  "\'");
+			creditCard = (CreditCard) session.createQuery("FROM credit_card where cardNumber=\'" + creditCardId +  "\'");
 			
 			if (creditCard != null) {
 				session.delete(creditCard);

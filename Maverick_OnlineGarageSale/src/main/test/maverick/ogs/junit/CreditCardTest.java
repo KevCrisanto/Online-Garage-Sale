@@ -28,7 +28,7 @@ public class CreditCardTest {
 		expiry.setMonth(Calendar.MARCH);
 		expiry.setYear(2021);
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		String id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", expiry, false, false, false, false));
+		//String id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", expiry, false, false, false, false));
 		AddressDAO addressDAO = new AddressDAOImpl();
 		String address1 = addressDAO.insertAddress(new Address("Turtley Ave.","","14A","","Arlington","TX","United States","76013"));
 		List<Address> addresses = new ArrayList<Address>();
@@ -37,7 +37,7 @@ public class CreditCardTest {
 		Address address = addressDAO.getAddressById(address1);
 		CreditCardDAO creditCardDAO = new CreditCardDAOImpl();
 		users.add(mkay);
-		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("1111000022223333",mkay,"Bub Sagott", expiry, "987", address));
+		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("1111000022223833",users,"Bub Sagott", expiry, "987", address));
 		System.out.println(creditCard1);
 	}
 }

@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -52,6 +53,9 @@ public class UserAccount {
 	
 	@Column(name="is_active")
 	private boolean isActive;
+	
+	@ManyToMany (mappedBy = "userAccounts")
+	private List<CreditCard> creditCards;
 	
 	public UserAccount(String accountId, String username, String password, String firstName, String lastName, String email,
 			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {

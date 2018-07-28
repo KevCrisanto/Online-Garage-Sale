@@ -34,10 +34,12 @@
 			update
 		</property>
 		
-		<mapping class="maverick.ogs.beans.UserAccount"/>
-	 	<mapping class="maverick.ogs.beans.Address"/>
-		<mapping class="maverick.ogs.beans.CreditCard"/>
-		<!--  <mapping class="maverick.ogs.beans.File"/>
-		<mapping class="maverick.ogs.beans.Item"/>-->
+		<mapping class="maverick.ogs.beans.UserAccount" />
+		<mapping class="maverick.ogs.beans.Subscriptions" />
+		<mapping class="maverick.ogs.beans.Tier" />
+ 		<mapping class="maverick.ogs.beans.Address"/>
+<!--	<mapping class="maverick.ogs.beans.CreditCard"/>
+		<mapping class="maverick.ogs.beans.File"/>
+		<mapping class="maverick.ogs.beans.Item"/> -->
 	</session-factory>
 </hibernate-configuration>

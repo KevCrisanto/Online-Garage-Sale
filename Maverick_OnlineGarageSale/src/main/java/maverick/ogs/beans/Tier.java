@@ -21,22 +21,26 @@ public class Tier {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="id", updatable = false, nullable = false)
-	private String id;
+	private Integer id;
 	
 	@Column(name="name")
 	private String name;
+//	
+//	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Subscriptions.class)
+//	@JoinColumn(name = "user_id")
+//	private Integer user_id;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private Integer user_id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sub_tier")
+	private Subscriptions sub_tier;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="subscriptions_and_tier_jc", 
 				joinColumns=@JoinColumn(name="subscriptions_id"),
 				inverseJoinColumns=@JoinColumn(name="tier_id"))
-	private List<Subscriptions> subscriptions;
+	private List<Subscriptions> Subscriptions;
 	
-	public Tier (String id, String name) {
+	public Tier (Integer id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -49,11 +53,11 @@ public class Tier {
 		super();
 	}
 	
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -65,19 +69,19 @@ public class Tier {
 		this.name = name;
 	}
 
-	public Integer getUser_id() {
-		return user_id;
+	public Subscriptions getU_id() {
+		return sub_tier;
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
+	public void setU_id(Subscriptions u_id) {
+		this.sub_tier = u_id;
 	}
 
 	public List<Subscriptions> getSubscriptions() {
-		return subscriptions;
+		return Subscriptions;
 	}
 
-	public void setSubscriptions(List<Subscriptions> subscriptions) {
-		this.subscriptions = subscriptions;
+	public void setSubscriptions(List<Subscriptions> Subscriptions) {
+		this.Subscriptions = Subscriptions;
 	}
 }

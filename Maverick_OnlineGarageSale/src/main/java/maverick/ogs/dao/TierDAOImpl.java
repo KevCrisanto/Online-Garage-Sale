@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import maverick.ogs.beans.Tier;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.util.HibernateUtil;
 
 public class TierDAOImpl implements TierDAO {
@@ -86,7 +87,8 @@ public class TierDAOImpl implements TierDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			tier = (Tier) HibernateUtil.getSession();
+			tier = (Tier) session.createQuery("FROM Tier where id=\'" 
+											+ id + "\'").uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		}

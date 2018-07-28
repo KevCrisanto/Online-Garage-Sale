@@ -25,7 +25,7 @@ public class CreditCard {
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@Column(name = "user_account")
+	@ManyToOne
 	private UserAccount userAccount;
 	
 	@Column(name = "card_name")
@@ -37,7 +37,7 @@ public class CreditCard {
 	@Column(name = "cvv")
 	private String cvv;
 	
-	@Column(name = "address")
+	@ManyToOne
 	private Address address;
 	
 	public CreditCard(String cardNumber, UserAccount userAccount, String cardName, Date expiration, String cvv, Address address) {

@@ -255,3 +255,13 @@ html {
     background: #FFFFFF !important;
     color: #4285F4 !important;
   }
+
+  /* Form validation */
+  input.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  .btn:disabled{
+    background: rgb(135, 138, 136) !important;
+    color: rgb(253, 253, 253) !important;
+  }

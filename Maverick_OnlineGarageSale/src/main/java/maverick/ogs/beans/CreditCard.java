@@ -1,12 +1,16 @@
 package maverick.ogs.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,15 +21,16 @@ import javax.persistence.Table;
 public class CreditCard {
 	
 	@Id
-	@Column(name = "credit_card_id")
-	private String creditCardId;
-
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@ManyToOne
-	@JoinColumn(name = "account_id")
-	private String accountId;
+	@ManyToMany
+	@JoinTable(
+		        name = "credit_card_user_accounts", 
+		        joinColumns = { @JoinColumn(name = "cardNumber") }, 
+		        inverseJoinColumns = { @JoinColumn(name = "accountId") }
+		      )
+	private List<UserAccount> userAccounts;
 	
 	@Column(name = "card_name")
 	private String cardName;
@@ -37,37 +42,33 @@ public class CreditCard {
 	private String cvv;
 	
 	@ManyToOne
-	@JoinColumn(name = "address_id")
-	private String addressId;
+	private Address address;
 	
-	public CreditCard(String cardNumber, String accountId, String cardName, Date expiration, String cvv, String addressId) {
-		this.creditCardId = UUID.randomUUID().toString();
+	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, Date expiration, String cvv, Address address) {
 		this.cardNumber = cardNumber;
-		this.accountId = accountId;
+		this.userAccounts = userAccounts;
 		this.cardName = cardName;
 		this.expiration = expiration;
 		this.cvv = cvv;
-		this.addressId = addressId;
+		this.address = address;
 	}
 	
 	public CreditCard(String cardNumber, String cardName, Date expiration, String cvv) {
-		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
 		this.expiration = expiration;
 		this.cvv = cvv;
-		this.accountId = null;
-		this.addressId = null;
+		this.userAccounts = null;
+		this.address = null;
 	}
 	
 	public CreditCard() {
-		this.creditCardId = UUID.randomUUID().toString();
 		this.cardNumber = null;
 		this.cardName = null;
 		this.expiration = null;
 		this.cvv = null;
-		this.accountId = null;
-		this.addressId = null;
+		this.userAccounts = null;
+		this.address = null;
 	}
 
 	public String getCardNumber() {
@@ -78,12 +79,12 @@ public class CreditCard {
 		this.cardNumber = cardNumber;
 	}
 
-	public String getAccountId() {
-		return accountId;
+	public List<UserAccount> getUserAccounts() {
+		return this.userAccounts;
 	}
 
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
+	public void setUserAccounts(List<UserAccount> userAccounts) {
+		this.userAccounts = userAccounts;
 	}
 
 	public String getCardName() {
@@ -110,19 +111,11 @@ public class CreditCard {
 		this.cvv = cvv;
 	}
 
-	public String getAddressId() {
-		return addressId;
+	public Address getAddress() {
+		return this.address;
 	}
 
-	public void setAddressId(String addressId) {
-		this.addressId = addressId;
-	}
-	
-	public String getCreditCardId() {
-		return this.creditCardId.toString();
-	}
-	
-	public void setCreditCardId(String cardId) {
-		this.creditCardId = cardId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }

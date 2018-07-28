@@ -35,7 +35,7 @@ public class AddressDAOImpl implements AddressDAO {
 		
 		try {
 			if (id != null) {
-				address = (Address) session.createQuery("FROM address where=\'" + id + "\'");
+				address = (Address) session.createQuery("FROM Address where address_id=\'" + id + "\'").uniqueResult();
 			}
 		} catch (HibernateException e) {
 			

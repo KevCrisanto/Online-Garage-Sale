@@ -1,5 +1,6 @@
 package maverick.ogs.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity(name = "Tier")
@@ -20,28 +20,25 @@ public class Tier {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="id", updatable = false, nullable = false)
-	private Integer id;
+	@Column(name="tier_id", updatable = false, nullable = false)
+	private Integer tier_id;
 	
 	@Column(name="name")
 	private String name;
-//	
-//	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Subscriptions.class)
-//	@JoinColumn(name = "user_id")
-//	private Integer user_id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "sub_tier")
-	private Subscriptions sub_tier;
+	@ManyToMany(mappedBy="tiers")
+
+	private List<Subscriptions> subs = new ArrayList<Subscriptions>();
+	//private Subscriptions sub_tier;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="subscriptions_and_tier_jc", 
-				joinColumns=@JoinColumn(name="subscriptions_id"),
-				inverseJoinColumns=@JoinColumn(name="tier_id"))
-	private List<Subscriptions> Subscriptions;
+//	@ManyToMany(fetch=FetchType.EAGER)
+//	@JoinTable(name="subscriptions_and_tier_jc", 
+//				joinColumns=@JoinColumn(name="subscriptions_id"),
+//				inverseJoinColumns=@JoinColumn(name="tier_id"))
+//	private List<Subscriptions> Subscriptions;
 	
-	public Tier (Integer id, String name) {
-		this.id = id;
+	public Tier (Integer tier_id, String name) {
+		this.tier_id = tier_id;
 		this.name = name;
 	}
 	
@@ -53,12 +50,20 @@ public class Tier {
 		super();
 	}
 	
-	public Integer getId() {
-		return id;
+
+
+	/**
+	 * @return the tier_id
+	 */
+	public Integer getTier_id() {
+		return tier_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	/**
+	 * @param tier_id the tier_id to set
+	 */
+	public void setTier_id(Integer tier_id) {
+		this.tier_id = tier_id;
 	}
 
 	public String getName() {
@@ -69,19 +74,33 @@ public class Tier {
 		this.name = name;
 	}
 
-	public Subscriptions getU_id() {
-		return sub_tier;
+	/**
+	 * @return the subs
+	 */
+	public List<Subscriptions> getSubs() {
+		return subs;
 	}
 
-	public void setU_id(Subscriptions u_id) {
-		this.sub_tier = u_id;
+	/**
+	 * @param subs the subs to set
+	 */
+	public void setSubs(List<Subscriptions> subs) {
+		this.subs = subs;
 	}
 
-	public List<Subscriptions> getSubscriptions() {
-		return Subscriptions;
-	}
+//	public Subscriptions getU_id() {
+//		return sub_tier;
+//	}
+//
+//	public void setU_id(Subscriptions u_id) {
+//		this.sub_tier = u_id;
+//	}
 
-	public void setSubscriptions(List<Subscriptions> Subscriptions) {
-		this.Subscriptions = Subscriptions;
-	}
+//	public List<Subscriptions> getSubscriptions() {
+//		return Subscriptions;
+//	}
+//
+//	public void setSubscriptions(List<Subscriptions> Subscriptions) {
+//		this.Subscriptions = Subscriptions;
+//	}
 }

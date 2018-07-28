@@ -61,7 +61,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
+			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getSub_id());
 			
 			if (updatedSubscriptions != null) {
 				if (subscriptions.getUserId() != null) {
@@ -89,7 +89,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		try {
 
 			if (id != null) {
-				sub = (Subscriptions) session.createQuery("FROM Subscriptions where subscriptions_id=\'"
+				sub = (Subscriptions) session.createQuery("FROM Subscriptions where sub_id=\'"
 										+ id + "\'").uniqueResult();
 			}
 		} catch (HibernateException e) {
@@ -132,7 +132,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			deletedSubscriptions = (Subscriptions) session.get(Subscriptions.class, subscriptions.getId());
+			deletedSubscriptions = (Subscriptions) session.get(Subscriptions.class, subscriptions.getSub_id());
 			
 			if (deletedSubscriptions != null) {
 				session.delete(deletedSubscriptions);
@@ -157,15 +157,16 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		Integer subscriptionId = null;
 		
 		try {
-			transaction = session.getTransaction();
-			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
-			hibernateTier = (Tier) session.get(tier.getClass(), tier.getId());
+			transaction = session.beginTransaction();
+			updatedSubscriptions = (Subscriptions) session.get(Subscriptions.class, subscriptions.getSub_id());
+			hibernateTier = (Tier) session.get(Tier.class, tier.getTier_id());
 			
 			if (hibernateTier != null && updatedSubscriptions != null) {
 				tiers = updatedSubscriptions.getTiers();
 				tiers.add(hibernateTier);
 				updatedSubscriptions.setTiers(tiers);
 				subscriptionId = (Integer) session.save(updatedSubscriptions);
+				transaction.commit();
 			}
 			
 			if (subscriptionId == null) {

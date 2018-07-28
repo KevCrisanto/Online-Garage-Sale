@@ -63,7 +63,7 @@ public class TierDAOImpl implements TierDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedTier = (Tier) session.get(tier.getClass(), tier.getId());
+			updatedTier = (Tier) session.get(tier.getClass(), tier.getTier_id());
 			if (updatedTier != null) {
 				if(tier.getName() != null) {
 					updatedTier.setName(tier.getName());
@@ -87,7 +87,7 @@ public class TierDAOImpl implements TierDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			tier = (Tier) session.createQuery("FROM Tier where id=\'" 
+			tier = (Tier) session.createQuery("FROM Tier where tier_id=\'" 
 											+ id + "\'").uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();

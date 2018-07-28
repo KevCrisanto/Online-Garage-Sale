@@ -149,68 +149,76 @@ public class TiersAndSubscriptionsTest {
 		subscriptionsDAO.deleteSubscriptionsById(subscriptions9);
 		subscriptionsDAO.deleteSubscriptionsById(subscriptions10);
 		
+		TierDAO tierDAO = new TierDAOImpl();
+		tierDAO.deleteTierById(tier1);
+		tierDAO.deleteTierById(tier2);
+		tierDAO.deleteTierById(tier3);
+		tierDAO.deleteTierById(tier4);
 	}
 
 	//Subscription Tests
-	@Test
-	public void countSubscriptionsCreated() {
-		Session session = HibernateUtil.getSession();
-		Long SubscriptionsCount = (Long) session.createCriteria(Subscriptions.class).setProjection(
-				Projections.count("id")
-				).uniqueResult();
-		session.close();
-		
-		// If 10 subscriptions were created assert true, test passes.
-		assertTrue(SubscriptionsCount == 10L);
-	}
-	
-	@Test
-	public void getSubscriptionByIdTest() {
-		//Assert true if successfully able to get created subscriptions
-		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions1) != null);
-		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions2) != null);
-		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions5) != null);
-		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions10) != null);
-		
-	}
-	
-	@Test
-	public void getAllSubscriptionsTest() {
-		// If 10 subscriptions were created assert true, test passes.
-		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-		assertTrue(subscriptionsDAO.getAllSubscriptions().size() == 10);
-	}
-
-	@Test
-	public void deleteSubscriptionsTest() {
-		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-		
-		String testid = userAccountDAO.insertAccount(new UserAccount("test", "password",
-				"Tonya", "Kay", "test@email.com", now, false, false, false, false));
-		userAccountDAO.deleteAccountByUsername("test");
-		Integer testsubid = subscriptionsDAO.addSubscriptions(
-				new Subscriptions(testid, unverifiedNotAdmin, now));
-		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(testsubid);
-		
-		//returns true if the newly inserted subscruption is deleted
-		assertTrue(subscriptionsDAO.deleteSubscriptions(testsub));
-	}
-	
 //	@Test
-//	public void addTiersTest() {
-//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-//		TierDAO tierDAO = new TierDAOImpl();
+//	public void countSubscriptionsCreated() {
+//		Session session = HibernateUtil.getSession();
+//		Long SubscriptionsCount = (Long) session.createCriteria(Subscriptions.class).setProjection(
+//				Projections.count("sub_id")
+//				).uniqueResult();
+//		session.close();	
 //		
-//		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
-//		Integer testtier = tierDAO.addTier(new Tier("test"));
-//		Tier testified = tierDAO.getTierById(testtier);
-//		subscriptionsDAO.addTier(testsub, testified);
-//		testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
-//		
-//		assertTrue(testsub.getTiers().contains(testified));
-//		tierDAO.deleteTierById(testtier);
-//		subscriptionsDAO.deleteSubscriptionsById(subscriptions2);
+//		// If 10 subscriptions were created assert true, test passes.
+//		assertTrue(SubscriptionsCount == 10L);
 //	}
+//	
+//	@Test
+//	public void getSubscriptionByIdTest() {
+//		//Assert true if successfully able to get created subscriptions
+//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions1) != null);
+//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions2) != null);
+//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions5) != null);
+//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions10) != null);
+//		
+//	}
+//	
+//	@Test
+//	public void getAllSubscriptionsTest() {
+//		// If 10 subscriptions were created assert true, test passes.
+//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+//		assertTrue(subscriptionsDAO.getAllSubscriptions().size() == 10);
+//	}
+//
+//	@Test
+//	public void deleteSubscriptionsTest() {
+//		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+//		
+//		String testid = userAccountDAO.insertAccount(new UserAccount("test", "password",
+//				"Tonya", "Kay", "test@email.com", now, false, false, false, false));
+//		userAccountDAO.deleteAccountByUsername("test");
+//		Integer testsubid = subscriptionsDAO.addSubscriptions(
+//				new Subscriptions(testid, unverifiedNotAdmin, now));
+//		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(testsubid);
+//		
+//		//returns true if the newly inserted subscruption is deleted
+//		assertTrue(subscriptionsDAO.deleteSubscriptions(testsub));
+//	}
+//	
+	@Test
+	public void addTiersTest() {
+		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+		TierDAO tierDAO = new TierDAOImpl();
+		
+		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
+		Integer testtier = tierDAO.addTier(new Tier("test"));
+		Tier testified = tierDAO.getTierById(testtier);
+		subscriptionsDAO.addTier(testsub, testified);
+		testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
+		List<Tier> testlist = testsub.getTiers();
+		Boolean checktrue = false;
+		for(Tier t: testlist) {
+			System.out.println("========" + t.getName() + "=========");
+			if(t.getName().equals(testified.getName())) checktrue = true;
+		}
+		assertTrue(checktrue);
+	}
 }

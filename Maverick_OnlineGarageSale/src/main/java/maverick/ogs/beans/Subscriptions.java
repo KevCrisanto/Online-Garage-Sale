@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Subscriptions")
@@ -20,8 +20,8 @@ public class Subscriptions
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name ="subscriptions_id", updatable = false, nullable = false)
-	private Integer id;
+	@Column(name ="sub_id", updatable = false, nullable = false)
+	private Integer sub_id;
 	
 	@Column(name = "user_id")
 	private String userId;
@@ -31,21 +31,21 @@ public class Subscriptions
 	// subscriptions and roles a user has from an @ManyToOne relationship
 	// @ManyToOne
 	//@Column
-//	@OneToMany (
-//			mappedBy = "Subscriptions",
-//			cascade = CascadeType.ALL,
-//			orphanRemoval = true
-//			)
-//	private List<Tier> tiers = new ArrayList<Tier>();
-	@OneToMany(mappedBy = "sub_tier")
+
+	@ManyToMany
+	@JoinTable(
+	        name = "Tier_Subscriptions", 
+	        joinColumns = { @JoinColumn(name = "sub_id") }, 
+	        inverseJoinColumns = { @JoinColumn(name = "tier_id") }
+	    )
     private List<Tier> tiers = new ArrayList<Tier>();
 	
 	@Column(name="subscription_end_date")
 	private Date subscriptionEndDate;
 	
-	public Subscriptions(Integer id, String userId, List<Tier> tiers, Date subscriptionEndDate) {
+	public Subscriptions(Integer sub_id, String userId, List<Tier> tiers, Date subscriptionEndDate) {
 		super();
-		this.id = id;
+		this.sub_id = sub_id;
 		this.userId = userId;
 		this.tiers = tiers;
 		this.subscriptionEndDate = subscriptionEndDate;
@@ -61,12 +61,21 @@ public class Subscriptions
 		super();
 	}
 	
-	public Integer getId() {
-		return id;
+	
+	/**
+	 * @return the sub_id
+	 */
+	public Integer getSub_id() {
+		return sub_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	/**
+	 * @param sub_id the sub_id to set
+	 */
+	public void setSub_id(Integer sub_id) {
+		this.sub_id = sub_id;
 	}
+
 	public String getUserId() {
 		return userId;
 	}

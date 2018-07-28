@@ -9,11 +9,12 @@
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required [(ngModel)]="acc.username" #username="ngModel" />
-          <span class="text-danger" *ngIf="!username.valid && username.touched">Please enter a valid username!</span>
+          <span class="text-danger" *ngIf="!username.valid && username.touched">Please enter a username!</span>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required [(ngModel)]="acc.password" />
+          <input type="password" id="password" name="password" required [(ngModel)]="acc.password" #password="ngModel" />
+          <span class="text-danger" *ngIf="!password.valid && password.touched">Please enter a password!</span>
         </div>
         <div class="form-group">
           <label class="form-remember">
@@ -32,22 +33,25 @@
       <h1>Register Account</h1>
     </div>
     <div class="form-content">
-      <form #registerForm="ngForm">
+      <form #registerForm="ngForm" (ngSubmit)="register(regAcc)">
         <div class="form-group">
           <label for="username2">Username</label>
-          <input type="text" id="username2" name="username2" required [(ngModel)]=regAcc.username/>
+          <input type="text" id="username2" name="username2" required [(ngModel)]=regAcc.username #usernameReg="ngModel" />
+          <span class="text-danger" *ngIf="!usernameReg.valid && usernameReg.touched">Please enter a username!</span>
         </div>
         <div class="form-group">
           <label for="password2">Password</label>
-          <input type="password" id="password2" name="password2" required [(ngModel)]=regAcc.password/>
+          <input type="password" id="password2" name="password2" required [(ngModel)]=regAcc.password #passwordReg="ngModel" />
+          <span class="text-danger" *ngIf="!passwordReg.valid && passwordReg.touched">Please enter a password!</span>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email2" name="email2" required [(ngModel)]=regAcc.email/>
+          <input type="email" id="email2" name="email2" required [(ngModel)]=regAcc.email #emailReg/>
+          <span class="text-danger" *ngIf="!passwordReg.valid && passwordReg.touched">Please enter an email!</span>
         </div>
         <div class="form-group">
-          <button type="submit" (click)="register(regAcc)" [disabled]="!registerForm.valid">Register</button>
+          <button type="submit" [disabled]="!registerForm.valid">Register</button>
         </div>
       </form>
     </div>

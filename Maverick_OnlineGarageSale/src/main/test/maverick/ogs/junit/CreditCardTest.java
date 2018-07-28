@@ -1,3 +1,5 @@
+package maverick.ogs.junit;
+
 import static org.junit.Assert.assertNotNull;
 
 import java.time.LocalDate;

@@ -28,4 +28,22 @@ public class AddressDAOImpl implements AddressDAO {
 		return addressId;
 	}
 
+	@Override
+	public Address getAddressById(String id) {
+		Session session = HibernateUtil.getSession();
+		Address address = null;
+		
+		try {
+			if (id != null) {
+				address = (Address) session.createQuery("FROM address where=\'" + id + "\'");
+			}
+		} catch (HibernateException e) {
+			
+		} finally {
+			session.close();
+		}
+		
+		return address;
+	}
+
 }

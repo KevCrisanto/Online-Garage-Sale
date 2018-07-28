@@ -48,3 +48,66 @@
 2018-07-28 08:29:27 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
 2018-07-28 08:29:29 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
 2018-07-28 08:29:33 INFO  org.hibernate.orm.connections.access     - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@72ccd81a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2018-07-28 11:44:12 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 11:44:12 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 11:44:15 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 11:44:15 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 11:44:15 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 11:44:15 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 11:44:15 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 11:44:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 11:44:17 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 11:45:48 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 11:45:48 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 11:45:50 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 11:45:50 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 11:45:51 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 11:45:51 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 11:45:51 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 11:45:51 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 11:45:52 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 11:47:47 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 11:47:47 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 11:47:48 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 11:47:49 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 11:47:49 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 11:47:49 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 11:47:49 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 11:47:49 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 11:47:50 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 11:59:46 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 11:59:46 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 11:59:47 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 11:59:48 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 11:59:48 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 11:59:48 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 11:59:48 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 11:59:48 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 11:59:50 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 12:05:06 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 12:05:06 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 12:05:07 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 12:05:08 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 12:05:08 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 12:05:08 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 12:05:08 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 12:05:08 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 12:05:10 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 12:14:20 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 12:14:20 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 12:14:23 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 12:14:23 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 12:14:23 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 12:14:23 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 12:14:23 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 12:14:23 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 12:14:25 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+2018-07-28 12:15:04 INFO  org.hibernate.Version     - HHH000412: Hibernate Core {5.2.17.Final}
+2018-07-28 12:15:04 INFO  org.hibernate.cfg.Environment     - HHH000206: hibernate.properties not found
+2018-07-28 12:15:06 INFO  org.hibernate.annotations.common.Version     - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-07-28 12:15:06 WARN  org.hibernate.orm.connections.pooling     - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-07-28 12:15:06 INFO  org.hibernate.orm.connections.pooling     - HHH10001005: using driver [oracle.jdbc.OracleDriver] at URL [jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl]
+2018-07-28 12:15:06 INFO  org.hibernate.orm.connections.pooling     - HHH10001001: Connection properties: {user=auhwang, password=****}
+2018-07-28 12:15:06 INFO  org.hibernate.orm.connections.pooling     - HHH10001003: Autocommit mode: false
+2018-07-28 12:15:06 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl     - HHH000115: Hibernate connection pool size: 25 (min=1)
+2018-07-28 12:15:08 INFO  org.hibernate.dialect.Dialect     - HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect

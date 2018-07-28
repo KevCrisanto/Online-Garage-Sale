@@ -1,3 +1,7 @@
+package maverick.ogs.junit;
+
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 
 import maverick.ogs.beans.Address;
@@ -16,6 +20,21 @@ public class AddressTest {
 															   "TX", // state
 															   "United States", //country
 															   "76013")); //zipcode
-		System.out.println(address1);
+		assertNotNull(address1);
+	}
+	
+	@Test
+	public void getAddressByIdTest() {
+		AddressDAO addressDAO = new AddressDAOImpl();
+		String address1 = (String) addressDAO.insertAddress(new Address("Turtley Ave.", // address line 1
+				   "", // address line 2
+				   "14A", // apt number
+				   "", // post office box
+				   "Arlington", // city
+				   "TX", // state
+				   "United States", //country
+				   "76013")); //zipcode
+		Address address = (Address) addressDAO.getAddressById(address1);
+		assertNotNull(address);
 	}
 }

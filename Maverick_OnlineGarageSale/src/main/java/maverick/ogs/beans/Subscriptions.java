@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Subscriptions")
-@Table(name = "subscriptions")
+@Table(name = "Subscriptions")
 public class Subscriptions
 {
 	@Id
@@ -31,12 +31,14 @@ public class Subscriptions
 	// subscriptions and roles a user has from an @ManyToOne relationship
 	// @ManyToOne
 	//@Column
-	@OneToMany (
-			mappedBy = "subscriptions",
-			cascade = CascadeType.ALL,
-			orphanRemoval = true
-			)
-	private List<Tier> tiers = new ArrayList<Tier>();
+//	@OneToMany (
+//			mappedBy = "Subscriptions",
+//			cascade = CascadeType.ALL,
+//			orphanRemoval = true
+//			)
+//	private List<Tier> tiers = new ArrayList<Tier>();
+	@OneToMany(mappedBy = "sub_tier")
+    private List<Tier> tiers = new ArrayList<Tier>();
 	
 	@Column(name="subscription_end_date")
 	private Date subscriptionEndDate;
@@ -54,6 +56,9 @@ public class Subscriptions
 		this.userId = userId;
 		this.tiers = tiers;
 		this.subscriptionEndDate = subscriptionEndDate;
+	}
+	public Subscriptions() {
+		super();
 	}
 	
 	public Integer getId() {

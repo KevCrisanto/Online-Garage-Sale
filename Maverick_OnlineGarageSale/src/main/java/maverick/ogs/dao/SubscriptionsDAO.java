@@ -9,7 +9,8 @@ public interface SubscriptionsDAO {
 	public Integer addSubscriptions(Subscriptions subscriptions);
 	public Subscriptions addTier(Subscriptions subscriptions, Tier tier);
 	public List<Subscriptions> getAllSubscriptions();
-	public Boolean updateSubscriptions(Subscriptions subscriptions);
-	public Boolean deleteSubscriptionsById(String id);
+	public Subscriptions updateSubscriptions(Subscriptions subscriptions);
+	public Subscriptions getSubscriptionById(Integer id);
+	public Boolean deleteSubscriptionsById(Integer id);
 	public Boolean deleteSubscriptions(Subscriptions subscriptions);
 }

@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import maverick.ogs.beans.Subscriptions;
 import maverick.ogs.beans.Tier;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.util.HibernateUtil;
 
 public class SubscriptionsDAOImpl implements SubscriptionsDAO {
@@ -34,19 +35,16 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		return id;
 	}
 
+
 	@Override
 	public List<Subscriptions> getAllSubscriptions() {
 		List<Subscriptions> subscriptions = null;
 		Session session= HibernateUtil.getSession();
-		Transaction transaction = null;
 		
 		try {
-			transaction = session.beginTransaction();
-			subscriptions = session.createQuery("FROM subscriptions").list();
+			subscriptions = session.createQuery("FROM Subscriptions").list();
 		} catch (HibernateException e) {
-			if (transaction != null) {
-				transaction.rollback();
-			}
+			e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -63,7 +61,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
+			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getSub_id());
 			
 			if (updatedSubscriptions != null) {
 				if (subscriptions.getUserId() != null) {
@@ -83,7 +81,26 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 	}
 
 	@Override
-	public Boolean deleteSubscriptionsById(String id) {
+	public Subscriptions getSubscriptionById(Integer id) {
+		Subscriptions sub = null;
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = null;
+		
+		try {
+
+			if (id != null) {
+				sub = (Subscriptions) session.createQuery("FROM Subscriptions where sub_id=\'"
+										+ id + "\'").uniqueResult();
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return sub;
+	}
+	
+	@Override
+	public Boolean deleteSubscriptionsById(Integer id) {
 		Subscriptions deletedSubscriptions = null;
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
@@ -91,7 +108,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			deletedSubscriptions = (Subscriptions) session.get(Subscriptions.class, id);
+			deletedSubscriptions = session.get(Subscriptions.class, id);
 			
 			if (deletedSubscriptions != null) {
 				session.delete(deletedSubscriptions);
@@ -115,7 +132,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			deletedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
+			deletedSubscriptions = (Subscriptions) session.get(Subscriptions.class, subscriptions.getSub_id());
 			
 			if (deletedSubscriptions != null) {
 				session.delete(deletedSubscriptions);
@@ -140,15 +157,16 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 		Integer subscriptionId = null;
 		
 		try {
-			transaction = session.getTransaction();
-			updatedSubscriptions = (Subscriptions) session.get(subscriptions.getClass(), subscriptions.getId());
-			hibernateTier = (Tier) session.get(tier.getClass(), tier.getId());
+			transaction = session.beginTransaction();
+			updatedSubscriptions = (Subscriptions) session.get(Subscriptions.class, subscriptions.getSub_id());
+			hibernateTier = (Tier) session.get(Tier.class, tier.getTier_id());
 			
 			if (hibernateTier != null && updatedSubscriptions != null) {
 				tiers = updatedSubscriptions.getTiers();
 				tiers.add(hibernateTier);
 				updatedSubscriptions.setTiers(tiers);
 				subscriptionId = (Integer) session.save(updatedSubscriptions);
+				transaction.commit();
 			}
 			
 			if (subscriptionId == null) {

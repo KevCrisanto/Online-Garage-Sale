@@ -35,8 +35,8 @@
 		</property>
 		
 		<mapping class="maverick.ogs.beans.UserAccount"/>
-<!-- 	<mapping class="maverick.ogs.beans.Address"/>
-		<mapping class="maverick.ogs.beans.CreditCard"/>
+ 		<mapping class="maverick.ogs.beans.Address"/>
+<!--	<mapping class="maverick.ogs.beans.CreditCard"/>
 		<mapping class="maverick.ogs.beans.File"/>
 		<mapping class="maverick.ogs.beans.Item"/> -->
 	</session-factory>

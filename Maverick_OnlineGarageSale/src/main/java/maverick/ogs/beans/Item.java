@@ -24,7 +24,7 @@ public class Item {
 	private String itemStatus;
 	
 	@Column(name = "price")
-	private float price;
+	private Float price;
 	
 	@Column(name = "category")
 	private String category;
@@ -33,7 +33,7 @@ public class Item {
 		this.itemId = UUID.randomUUID().toString();
 	}
 	
-	public Item(String itemId, String accountId, String description, String itemStatus, float price, String category) {
+	public Item(String itemId, String accountId, String description, String itemStatus, Float price, String category) {
 		this.itemId = itemId;
 		this.accountId = accountId;
 		this.description = description;
@@ -42,7 +42,7 @@ public class Item {
 		this.category = category;
 	}
 	
-	public Item(String accountId, String description, String itemStatus, float price, String category) {
+	public Item(String accountId, String description, String itemStatus, Float price, String category) {
 		this.itemId = UUID.randomUUID().toString();
 		this.accountId = accountId;
 		this.description = description;
@@ -83,11 +83,11 @@ public class Item {
 		this.itemStatus = itemStatus;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 

@@ -5,16 +5,15 @@
       <h1>Account Login</h1>
     </div>
     <div class="form-content">
-      <form #loginForm="ngForm">
+      <form #loginForm="ngForm" (ngSubmit)="cLogin(acc)">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required="required" 
-          [(ngModel)]="acc.username"/>
+          <input type="text" id="username" name="username" required [(ngModel)]="acc.username" #username="ngModel" />
+          <span class="text-danger" *ngIf="!username.valid && username.touched">Please enter a valid username!</span>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required="required"
-          [(ngModel)]="acc.password"/>
+          <input type="password" id="password" name="password" required [(ngModel)]="acc.password" />
         </div>
         <div class="form-group">
           <label class="form-remember">
@@ -23,7 +22,7 @@
           <a class="form-recovery" href="#">Forgot Password?</a>
         </div>
         <div class="form-group">
-          <button type="submit" (click)="cLogin(acc)">Log In</button>
+          <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Log In</button>
         </div>
       </form>
     </div>
@@ -33,25 +32,22 @@
       <h1>Register Account</h1>
     </div>
     <div class="form-content">
-      <form>
+      <form #registerForm="ngForm">
         <div class="form-group">
           <label for="username2">Username</label>
-          <input type="text" id="username2" name="username2" required="required" 
-          [(ngModel)]=regAcc.username/>
+          <input type="text" id="username2" name="username2" required [(ngModel)]=regAcc.username/>
         </div>
         <div class="form-group">
           <label for="password2">Password</label>
-          <input type="password" id="password2" name="password2" required="required"
-          [(ngModel)]=regAcc.password/>
+          <input type="password" id="password2" name="password2" required [(ngModel)]=regAcc.password/>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email2" name="email2" required="required"
-          [(ngModel)]=regAcc.email/>
+          <input type="email" id="email2" name="email2" required [(ngModel)]=regAcc.email/>
         </div>
         <div class="form-group">
-          <button type="submit" (click)="register(regAcc)">Register</button>
+          <button type="submit" (click)="register(regAcc)" [disabled]="!registerForm.valid">Register</button>
         </div>
       </form>
     </div>

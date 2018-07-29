@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.OracleDriver
+		</property>
+		
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+		
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl
+		</property>
+		
+		<property name="hibernate.connection.username">
+			auhwang
+		</property>
+		
+		<property name="hibernate.connection.password">
+			sqlpassword
+		</property>
+		
+		<property name="hibernate.connection.pool_size">
+			25
+		</property>
+		
+		<property name="show_sql" >
+			true
+		</property>
+		
+		<property name="hibernate.hbm2ddl.auto">
+			update
+		</property>
+		
+		<mapping class="maverick.ogs.beans.UserAccount"/>
+ 		<mapping class="maverick.ogs.beans.Address"/>
+<!--	<mapping class="maverick.ogs.beans.CreditCard"/>
+		<mapping class="maverick.ogs.beans.File"/>
+		<mapping class="maverick.ogs.beans.Item"/> -->
+	</session-factory>
+</hibernate-configuration>

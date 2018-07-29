@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
+import { FilesComponent } from './components/files/files.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreditCardComponent,
-    LoginComponent
+    LoginComponent,
+    FilesComponent
   ],
   imports: [
     BrowserModule,

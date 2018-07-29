@@ -57,7 +57,7 @@ public class FileDAOImpl implements FileDAO {
 			transaction = session.beginTransaction();
 			fileToUpdate = (File)session.get(File.class, fileId);
 			if(fileToUpdate != null) {
-				fileToUpdate.setFile(newFile.getFile());
+				fileToUpdate.setFilekey(newFile.getFilekey());
 			}
 			session.save(fileToUpdate);
 			transaction.commit();

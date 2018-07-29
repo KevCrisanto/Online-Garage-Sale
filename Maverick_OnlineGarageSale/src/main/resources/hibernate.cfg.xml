@@ -23,7 +23,7 @@
 		</property>
 		
 		<property name="hibernate.connection.pool_size">
-			25
+			35
 		</property>
 		
 		<property name="show_sql" >

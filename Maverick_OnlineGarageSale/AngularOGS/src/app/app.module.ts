@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {CardModule} from 'ngx-card/ngx-card';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { CardModule } from 'ngx-card/ngx-card';
 import { AppComponent } from './app.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +21,9 @@ import { LoginService } from './services/login.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [LoginService],
+  providers: [
+    LoginService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,8 +10,8 @@
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<angular.project.location>AngularOGS</angular.project.location> 
-    <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation> 
+		<angular.project.location>AngularOGS</angular.project.location>
+    <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
 	</properties>
 
 	<dependencies>

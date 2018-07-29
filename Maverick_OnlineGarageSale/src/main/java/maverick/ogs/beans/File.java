@@ -20,30 +20,30 @@ public class File {
 	private String itemId;
 	
 	@Column(name = "file")
-	private Blob file;
+	private String file;
 	
 	public File() {
 		super();
 		this.fileId = UUID.randomUUID().toString();
 	}
 	
-	public File(String itemId, Blob file) {
+	public File(String itemId, String file) {
 		this.fileId = UUID.randomUUID().toString();
 		this.itemId = itemId;
 		this.file = file;
 	}
 	
-	public File(String itemId, byte[] file) {
-		try {
-			this.fileId = UUID.randomUUID().toString();
-			this.itemId = itemId;
-			this.file = new javax.sql.rowset.serial.SerialBlob(file);
-		} catch (SerialException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//	public File(String itemId, byte[] file) {
+//		try {
+//			this.fileId = UUID.randomUUID().toString();
+//			this.itemId = itemId;
+//			this.file = new javax.sql.rowset.serial.SerialBlob(file);
+//		} catch (SerialException e) {
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public String getFileId() {
 		return fileId;
@@ -61,11 +61,11 @@ public class File {
 		this.itemId = itemId;
 	}
 
-	public Blob getFile() {
+	public String getFile() {
 		return file;
 	}
 
-	public void setFile(Blob file) {
+	public void setFile(String file) {
 		this.file = file;
 	}
 	

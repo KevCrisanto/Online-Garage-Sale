@@ -33,25 +33,25 @@
       <h1>Register Account</h1>
     </div>
     <div class="form-content">
-      <form #registerForm="ngForm" (ngSubmit)="register(regAcc)">
+      <form #registerForm="ngForm">
         <div class="form-group">
-          <label for="username2">Username</label>
-          <input type="text" id="username2" name="username2" required [(ngModel)]=regAcc.username #usernameReg="ngModel" />
+          <label for="usernameReg">Username</label>
+          <input type="text" id="usernameReg" name="usernameReg" required [(ngModel)]=regAcc.username #usernameReg="ngModel" />
           <span class="text-danger" *ngIf="!usernameReg.valid && usernameReg.touched">Please enter a username!</span>
         </div>
         <div class="form-group">
-          <label for="password2">Password</label>
-          <input type="password" id="password2" name="password2" required [(ngModel)]=regAcc.password #passwordReg="ngModel" />
+          <label for="passwordReg">Password</label>
+          <input type="password" id="passwordReg" name="passwordReg" required [(ngModel)]=regAcc.password #passwordReg="ngModel" />
           <span class="text-danger" *ngIf="!passwordReg.valid && passwordReg.touched">Please enter a password!</span>
         </div>
 
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email2" name="email2" required [(ngModel)]=regAcc.email #emailReg/>
-          <span class="text-danger" *ngIf="!passwordReg.valid && passwordReg.touched">Please enter an email!</span>
+          <label for="emailReg">Email Address</label>
+          <input type="email" id="emailReg" name="emailReg" required [(ngModel)]=regAcc.email #emailReg="ngModel" />
+          <span class="text-danger" *ngIf="!emailReg.valid && emailReg.touched">Please enter an email!</span>
         </div>
         <div class="form-group">
-          <button type="submit" [disabled]="!registerForm.valid">Register</button>
+          <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid" (click)="register(regAcc)">Register</button>
         </div>
       </form>
     </div>

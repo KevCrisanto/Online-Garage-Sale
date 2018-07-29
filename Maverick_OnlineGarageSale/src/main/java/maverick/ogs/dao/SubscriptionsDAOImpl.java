@@ -72,6 +72,7 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 					updatedSubscriptions.setSubscriptionEndDate(subscriptions.getSubscriptionEndDate());
 				}
 			}
+			transaction.commit();
 			result = true;
 		} catch (HibernateException e) {
 			e.printStackTrace();

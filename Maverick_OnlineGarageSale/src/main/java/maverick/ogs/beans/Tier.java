@@ -27,15 +27,8 @@ public class Tier {
 	private String name;
 	
 	@ManyToMany(mappedBy="tiers")
-
 	private List<Subscriptions> subs = new ArrayList<Subscriptions>();
-	//private Subscriptions sub_tier;
-	
-//	@ManyToMany(fetch=FetchType.EAGER)
-//	@JoinTable(name="subscriptions_and_tier_jc", 
-//				joinColumns=@JoinColumn(name="subscriptions_id"),
-//				inverseJoinColumns=@JoinColumn(name="tier_id"))
-//	private List<Subscriptions> Subscriptions;
+
 	
 	public Tier (Integer tier_id, String name) {
 		this.tier_id = tier_id;

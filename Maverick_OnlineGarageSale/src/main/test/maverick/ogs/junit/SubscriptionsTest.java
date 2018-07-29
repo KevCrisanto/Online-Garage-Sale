@@ -1,6 +1,7 @@
 package maverick.ogs.junit;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +24,7 @@ import maverick.ogs.dao.UserAccountDAO;
 import maverick.ogs.dao.UserAccountDAOImpl;
 import maverick.ogs.util.HibernateUtil;
 
-public class TiersAndSubscriptionsTest {
+public class SubscriptionsTest {
 	Integer tier1;
 	Integer tier2;
 	Integer tier3;
@@ -157,52 +158,52 @@ public class TiersAndSubscriptionsTest {
 	}
 
 	//Subscription Tests
-//	@Test
-//	public void countSubscriptionsCreated() {
-//		Session session = HibernateUtil.getSession();
-//		Long SubscriptionsCount = (Long) session.createCriteria(Subscriptions.class).setProjection(
-//				Projections.count("sub_id")
-//				).uniqueResult();
-//		session.close();	
-//		
-//		// If 10 subscriptions were created assert true, test passes.
-//		assertTrue(SubscriptionsCount == 10L);
-//	}
-//	
-//	@Test
-//	public void getSubscriptionByIdTest() {
-//		//Assert true if successfully able to get created subscriptions
-//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions1) != null);
-//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions2) != null);
-//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions5) != null);
-//		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions10) != null);
-//		
-//	}
-//	
-//	@Test
-//	public void getAllSubscriptionsTest() {
-//		// If 10 subscriptions were created assert true, test passes.
-//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-//		assertTrue(subscriptionsDAO.getAllSubscriptions().size() == 10);
-//	}
-//
-//	@Test
-//	public void deleteSubscriptionsTest() {
-//		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-//		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
-//		
-//		String testid = userAccountDAO.insertAccount(new UserAccount("test", "password",
-//				"Tonya", "Kay", "test@email.com", now, false, false, false, false));
-//		userAccountDAO.deleteAccountByUsername("test");
-//		Integer testsubid = subscriptionsDAO.addSubscriptions(
-//				new Subscriptions(testid, unverifiedNotAdmin, now));
-//		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(testsubid);
-//		
-//		//returns true if the newly inserted subscruption is deleted
-//		assertTrue(subscriptionsDAO.deleteSubscriptions(testsub));
-//	}
-//	
+	@Test
+	public void countSubscriptionsCreated() {
+		Session session = HibernateUtil.getSession();
+		Long SubscriptionsCount = (Long) session.createCriteria(Subscriptions.class).setProjection(
+				Projections.count("sub_id")
+				).uniqueResult();
+		session.close();	
+		
+		// If 10 subscriptions were created assert true, test passes.
+		assertTrue(SubscriptionsCount == 10L);
+	}
+	
+	@Test
+	public void getSubscriptionByIdTest() {
+		//Assert true if successfully able to get created subscriptions
+		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions1) != null);
+		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions2) != null);
+		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions5) != null);
+		assertTrue(subscriptionsDAO.getSubscriptionById(subscriptions10) != null);
+		
+	}
+	
+	@Test
+	public void getAllSubscriptionsTest() {
+		// If 10 subscriptions were created assert true, test passes.
+		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+		assertTrue(subscriptionsDAO.getAllSubscriptions().size() == 10);
+	}
+
+	@Test
+	public void deleteSubscriptionsTest() {
+		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
+		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+		
+		String testid = userAccountDAO.insertAccount(new UserAccount("test", "password",
+				"Tonya", "Kay", "test@email.com", now, false, false, false, false));
+		userAccountDAO.deleteAccountByUsername("test");
+		Integer testsubid = subscriptionsDAO.addSubscriptions(
+				new Subscriptions(testid, unverifiedNotAdmin, now));
+		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(testsubid);
+		
+		//returns true if the newly inserted subscruption is deleted
+		assertTrue(subscriptionsDAO.deleteSubscriptions(testsub));
+	}
+	
 	@Test
 	public void addTiersTest() {
 		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
@@ -219,6 +220,26 @@ public class TiersAndSubscriptionsTest {
 			System.out.println("========" + t.getName() + "=========");
 			if(t.getName().equals(testified.getName())) checktrue = true;
 		}
+		//check if tier is successfully added
 		assertTrue(checktrue);
 	}
+	
+	@Test
+	public void updateSubscriptionsTest() {
+		SubscriptionsDAO subscriptionsDAO = new SubscriptionsDAOImpl();
+		Subscriptions testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
+		
+		Date testd = new Date();
+		testsub.setSubscriptionEndDate(testd);
+		testsub.setUserId("asdf");
+		assertTrue(subscriptionsDAO.updateSubscriptions(testsub));
+		testsub = subscriptionsDAO.getSubscriptionById(subscriptions2);
+
+		//check if date and userid are successfuly changed
+		assertEquals(testsub.getSubscriptionEndDate().getTime(),testd.getTime());
+		assertEquals(testsub.getUserId(),"asdf");
+		
+		
+	}
+	
 }

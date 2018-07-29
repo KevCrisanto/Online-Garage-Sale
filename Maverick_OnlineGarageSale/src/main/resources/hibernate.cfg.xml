@@ -11,15 +11,18 @@
 		</property>
 		
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl
+			<!-- jdbc:oracle:thin:@auhwang-revature.covl5kim8otr.us-east-2.rds.amazonaws.com:1521:orcl -->
+			jdbc:oracle:thin:@localhost:1521:xe
 		</property>
 		
 		<property name="hibernate.connection.username">
-			auhwang
+			<!-- auhwang -->
+			local_db
 		</property>
 		
 		<property name="hibernate.connection.password">
-			sqlpassword
+			<!-- sqlpassword -->
+			localdb
 		</property>
 		
 		<property name="hibernate.connection.pool_size">
@@ -41,5 +44,6 @@
 		<mapping class="maverick.ogs.beans.Item"/>
 		<mapping class="maverick.ogs.beans.Subscriptions"/>
 		<mapping class="maverick.ogs.beans.Tier" />
+
 	</session-factory>
 </hibernate-configuration>

@@ -70,6 +70,7 @@ public class TierDAOImpl implements TierDAO {
 				}
 				
 				session.save(updatedTier);
+				transaction.commit();
 				result = true;
 			}
 		} catch (HibernateException e) {

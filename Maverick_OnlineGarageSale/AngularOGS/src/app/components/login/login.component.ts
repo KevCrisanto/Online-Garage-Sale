@@ -44,19 +44,6 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // acc: Account = {
-  //   id: '',
-  //   username: 'kkay',
-  //   password: 'password',
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   Date: null,
-  //   isVerified: false,
-  //   isPremium: false,
-  //   isAdmin: false,
-  //   isActive: false
-  // };
   acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('', '', '', '', '', '', null, false, false, false, false);
 

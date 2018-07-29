@@ -39,7 +39,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		List<CreditCard> creditCards = null;
 		
 		try {
-			creditCards = session.createQuery("FROM credit_card").list();
+			creditCards = session.createQuery("FROM CreditCard").list();
 		} catch (HibernateException e) {
 		} finally {
 			session.close();
@@ -54,7 +54,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		List<CreditCard> creditCards = null;
 		
 		try {
-			creditCards = session.createQuery("FROM credit_card where=accountId\'" + accountId + "\'").list();
+			creditCards = session.createQuery("FROM CreditCard where=accountId\'" + accountId + "\'").list();
 		} catch (HibernateException e) {
 			
 		} finally {
@@ -73,7 +73,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			updatedCreditCard = (CreditCard) session.createQuery("FROM credit_card where cardNumber=\'" + creditCardId + "\'");
+			updatedCreditCard = (CreditCard) session.createQuery("FROM CreditCard where cardNumber=\'" + creditCardId + "\'");
 			
 			if (updatedCreditCard != null) {
 				if (card.getCardName() != null) {
@@ -112,11 +112,13 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			creditCard = (CreditCard) session.createQuery("FROM credit_card where cardNumber=\'" + creditCardId +  "\'");
+			creditCard = (CreditCard) session.createQuery("FROM CreditCard where cardNumber=\'" + creditCardId +  "\'")
+					.uniqueResult();
 			
 			if (creditCard != null) {
 				session.delete(creditCard);
 				result = true;
+				transaction.commit();
 			}
 		} catch (HibernateException e) {
 			

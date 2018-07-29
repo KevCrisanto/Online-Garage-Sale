@@ -45,11 +45,6 @@ public class RegisterServlet extends HttpServlet {
 		UserAccount userAccount = (UserAccount)gson.fromJson(reader, UserAccount.class);
 		System.out.println(userAccount.toString());
 		
-		UserAccount testAcc = new UserAccount("bob3", "bob3", null, null, "bob3@email.com", null, false, false, false, false);
-//
-		System.out.println(testAcc.toString());
-		
-		
 		
 		if(UserService.insertNewUserAccount(userAccount) != null) {
 			System.out.println("New user with username: " + userAccount.getUsername() + " created");

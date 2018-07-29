@@ -3,6 +3,7 @@ package maverick.ogs.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,7 +27,7 @@ public class Tier {
 	@Column(name="name")
 	private String name;
 	
-	@ManyToMany(mappedBy="tiers")
+	@ManyToMany(mappedBy="tiers",cascade=CascadeType.REMOVE)
 	private List<Subscriptions> subs = new ArrayList<Subscriptions>();
 
 	

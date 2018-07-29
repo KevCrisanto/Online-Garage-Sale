@@ -49,7 +49,7 @@ public class UserAccount {
 	
 	@Column(name="is_active")
 	private boolean isActive;
-	
+
 	@ManyToMany (mappedBy = "userAccounts",cascade=CascadeType.REMOVE)
 	private List<CreditCard> creditCards;
 	

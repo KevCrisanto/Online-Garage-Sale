@@ -37,6 +37,7 @@
 /tmp
 /out-tsc
 **/*.log
+**/*.log.*
 
 # dependencies
 /node_modules

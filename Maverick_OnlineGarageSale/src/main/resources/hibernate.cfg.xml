@@ -2,7 +2,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<property name="hibernate.connection.driver_class">
+		<!-- <property name="hibernate.connection.driver_class">
 			oracle.jdbc.OracleDriver
 		</property>
 		
@@ -20,7 +20,7 @@
 		
 		<property name="hibernate.connection.password">
 			sqlpassword
-		</property>
+		</property> -->
 		
 		<property name="hibernate.connection.pool_size">
 			25

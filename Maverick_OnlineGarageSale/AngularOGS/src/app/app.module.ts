@@ -9,6 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FilesComponent } from './components/files/files.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faShoppingCart, faSearch);
 
 @NgModule({
   declarations: [
@@ -16,12 +23,14 @@ import { FilesComponent } from './components/files/files.component';
     CreditCardComponent,
     LoginComponent,
     FilesComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     CardModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
   ],
   providers: [
     LoginService,

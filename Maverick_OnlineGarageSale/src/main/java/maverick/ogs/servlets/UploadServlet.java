@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,27 +54,29 @@ public class UploadServlet extends HttpServlet {
 				.withRegion("us-east-2")
                 .withCredentials(new EnvironmentVariableCredentialsProvider())
                 .build();
-		String bucketname = "OGS-Bucket";
-		s3client.createBucket(bucketname);
+		String bucketname = "ogs-bucket";
+		//s3client.createBucket(bucketname);
 		response.setContentType("text");
 		String itemid = "";
+
+
 		try {
 			List<FileItem> files = sf.parseRequest(request);
 			for(FileItem item: files) {
-				if (item.isFormField()) {
-					String fieldname = item.getFieldName();
-			        String fieldvalue = item.getString();
-			        if(fieldname.equals("item_id")) {
-			        	itemid = fieldvalue;
-			        }
-
-				}
+//				if (item.isFormField()) {
+//					String fieldname = item.getFieldName();
+//			        String fieldvalue = item.getString();
+//			        if(fieldname.equals("item_id")) {
+//			        	itemid = fieldvalue;
+//			        }
+//
+//				}
 				if(itemid != null && item.getName() != "null" && item.getName() != null) {
 					
 //					RFormService.setFileKeyRForm(iid, itemid+item.getName());
-					FileService.createFile(itemid, itemid+item.getName());
+					FileService.createFile(itemid, "asdfg"+item.getName());
 					InputStream is = item.getInputStream();
-					s3client.putObject(new PutObjectRequest(bucketname, itemid+item.getName(),is,new ObjectMetadata())
+					s3client.putObject(new PutObjectRequest(bucketname, "asdfg"+item.getName(),is,new ObjectMetadata())
 											.withCannedAcl(CannedAccessControlList.PublicRead));
 					is.close();
 				}
@@ -89,8 +90,8 @@ public class UploadServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("user/emphome.html");
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("user/emphome.html");
+//		rd.forward(request, response);
 	}
 
 }

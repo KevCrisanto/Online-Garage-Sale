@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,12 +42,24 @@ public class LoginServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		HttpSession session = null;
-
+		//maybe do cookies this way
+//		Cookie[] cookies = request.getCookies();
+//		boolean exists = false;
+//		if (cookies != null) {
+//			for(Cookie c: cookies) {
+//				if(c.getName().equals("userjson")) exists = true;
+//			}
+//		}
+//		if(!exists) {
+//			Cookie cookie = new Cookie("userjson", gson.toJson(user));
+//		}else {
+//			for(Cookie c: cookies) {
+//				if(c.getName().equals("userjson")) c.setValue(gson.toJson(user));
+//			}
+//		}
+		
 		if((user = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
-			session = request.getSession();
 
-			session.setAttribute("user", user);
 			//RequestDispatcher rd = request.getRequestDispatcher("user/emphome.html");
 			//rd.forward(request, response);
 			System.out.println("logged in");

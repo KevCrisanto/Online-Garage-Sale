@@ -19,31 +19,31 @@ public class File {
 	@JoinColumn(name = "item_id")
 	private String itemId;
 	
-	@Column(name = "file")
-	private Blob file;
+	@Column(name = "filekey")
+	private String filekey;
 	
 	public File() {
 		super();
 		this.fileId = UUID.randomUUID().toString();
 	}
 	
-	public File(String itemId, Blob file) {
+	public File(String itemId, String filekey) {
 		this.fileId = UUID.randomUUID().toString();
 		this.itemId = itemId;
-		this.file = file;
+		this.filekey = filekey;
 	}
 	
-	public File(String itemId, byte[] file) {
-		try {
-			this.fileId = UUID.randomUUID().toString();
-			this.itemId = itemId;
-			this.file = new javax.sql.rowset.serial.SerialBlob(file);
-		} catch (SerialException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//	public File(String itemId, byte[] file) {
+//		try {
+//			this.fileId = UUID.randomUUID().toString();
+//			this.itemId = itemId;
+//			this.file = new javax.sql.rowset.serial.SerialBlob(file);
+//		} catch (SerialException e) {
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	public String getFileId() {
 		return fileId;
@@ -61,13 +61,21 @@ public class File {
 		this.itemId = itemId;
 	}
 
-	public Blob getFile() {
-		return file;
+	/**
+	 * @return the filekey
+	 */
+	public String getFilekey() {
+		return filekey;
 	}
 
-	public void setFile(Blob file) {
-		this.file = file;
+	/**
+	 * @param filekey the filekey to set
+	 */
+	public void setFilekey(String filekey) {
+		this.filekey = filekey;
 	}
+
+
 	
 	
 }

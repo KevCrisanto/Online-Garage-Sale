@@ -38,6 +38,7 @@ public class CreditCardTest {
 		CreditCardDAO creditCardDAO = new CreditCardDAOImpl();
 		users.add(mkay);
 		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("1111000022223833",users,"Bub Sagott", expiry, "987", address));
+		creditCardDAO.deleteCreditCardById("1111000022223833");
 		System.out.println(creditCard1);
 	}
 }

@@ -44,27 +44,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // acc: Account = {
-  //   id: '',
-  //   username: 'kkay',
-  //   password: 'password',
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   Date: null,
-  //   isVerified: false,
-  //   isPremium: false,
-  //   isAdmin: false,
-  //   isActive: false
-  // };
   acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('', '', '', '', '', '', null, false, false, false, false);
 
   get diagnostic() {
     return JSON.stringify(this.acc);
   }
-  cLogin(a: Account) {
-    this.login.checkLogin(this.acc).subscribe();
+  cLogin() {
+    this.login.checkLogin(this.acc).subscribe(
+      asdf => this.login.getAccount().subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+    ));
     //const newAcc: Account = 
   }
   asdf() {

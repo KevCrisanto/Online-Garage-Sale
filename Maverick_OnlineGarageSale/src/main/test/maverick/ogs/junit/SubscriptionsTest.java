@@ -217,9 +217,11 @@ public class SubscriptionsTest {
 		List<Tier> testlist = testsub.getTiers();
 		Boolean checktrue = false;
 		for(Tier t: testlist) {
-			System.out.println("========" + t.getName() + "=========");
-			if(t.getName().equals(testified.getName())) checktrue = true;
+			if(t.getName().equals(testified.getName())) {
+				checktrue = true;
+			}
 		}
+		tierDAO.deleteTierById(testtier);
 		//check if tier is successfully added
 		assertTrue(checktrue);
 	}

@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -54,7 +55,7 @@ public class UserAccount {
 
 
 	
-	@ManyToMany (mappedBy = "userAccounts",cascade=CascadeType.REMOVE)
+	@ManyToMany (mappedBy = "userAccounts",cascade=CascadeType.REMOVE,fetch=FetchType.EAGER)
 	private List<CreditCard> creditCards;
 	
 

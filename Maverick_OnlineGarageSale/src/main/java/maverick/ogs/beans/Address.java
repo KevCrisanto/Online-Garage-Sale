@@ -42,6 +42,9 @@ public class Address {
 	@Column(name = "zipcode")
 	private String zipcode;
 	
+	@OneToMany(cascade=CascadeType.REMOVE)
+	private List<CreditCard> creditCards;
+	
 	public Address() {
 		this.addressId = UUID.randomUUID().toString();
 	}

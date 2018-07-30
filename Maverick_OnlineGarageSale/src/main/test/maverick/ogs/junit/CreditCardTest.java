@@ -26,7 +26,7 @@ import maverick.ogs.dao.UserAccountDAOImpl;
 import maverick.ogs.util.HibernateUtil;
 
 public class CreditCardTest {
-	@After
+/*	@After
 	public void tearDown() throws Exception{
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -45,7 +45,7 @@ public class CreditCardTest {
 		finally {
 			session.close();
 		}
-	}
+	}*/
 	
 	@Test
 	public void InsertCreditCardTest() {
@@ -62,12 +62,11 @@ public class CreditCardTest {
 		UserAccount mkay = userAccountDAO.getAccountByUsername("mkay");
 		String id3 = null;
 		
-		if (mkay != null) {
+		if (mkay == null) {
 			id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", expiry, false, false, false, false));
 			mkay = userAccountDAO.getAccountByUsername("mkay");
 			users.add(mkay);
 		} else {
-			mkay = userAccountDAO.getAccountByUsername("mkay");
 			id3 = mkay.getAccountId();
 			users.add(mkay);
 		}

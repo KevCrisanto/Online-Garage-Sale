@@ -25,7 +25,7 @@ public class CreditCard {
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.REMOVE)
 	@JoinTable(
 		        name = "credit_card_user_accounts", 
 		        joinColumns = { @JoinColumn(name = "cardNumber") }, 

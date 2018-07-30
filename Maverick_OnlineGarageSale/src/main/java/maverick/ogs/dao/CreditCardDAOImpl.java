@@ -112,11 +112,13 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			creditCard = (CreditCard) session.createQuery("FROM CreditCard where cardNumber=\'" + creditCardId +  "\'");
+			creditCard = (CreditCard) session.createQuery("FROM CreditCard where cardNumber=\'" + creditCardId +  "\'")
+					.uniqueResult();
 			
 			if (creditCard != null) {
 				session.delete(creditCard);
 				result = true;
+				transaction.commit();
 			}
 		} catch (HibernateException e) {
 			

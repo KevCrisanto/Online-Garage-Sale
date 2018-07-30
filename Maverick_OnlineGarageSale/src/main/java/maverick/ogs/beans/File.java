@@ -19,18 +19,18 @@ public class File {
 	@JoinColumn(name = "item_id")
 	private String itemId;
 	
-	@Column(name = "file")
-	private String file;
+	@Column(name = "filekey")
+	private String filekey;
 	
 	public File() {
 		super();
 		this.fileId = UUID.randomUUID().toString();
 	}
 	
-	public File(String itemId, String file) {
+	public File(String itemId, String filekey) {
 		this.fileId = UUID.randomUUID().toString();
 		this.itemId = itemId;
-		this.file = file;
+		this.filekey = filekey;
 	}
 	
 //	public File(String itemId, byte[] file) {
@@ -61,13 +61,21 @@ public class File {
 		this.itemId = itemId;
 	}
 
-	public String getFile() {
-		return file;
+	/**
+	 * @return the filekey
+	 */
+	public String getFilekey() {
+		return filekey;
 	}
 
-	public void setFile(String file) {
-		this.file = file;
+	/**
+	 * @param filekey the filekey to set
+	 */
+	public void setFilekey(String filekey) {
+		this.filekey = filekey;
 	}
+
+
 	
 	
 }

@@ -15,8 +15,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  private loginurl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
+  private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
   private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -35,13 +36,14 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   // input: Account
   checkLogin(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.loginurl, account, httpOptions)
-      .pipe(catchError(this.handleError<Account>('checkLogin'))
-      );
+    return this.http.post<Account>(this.loginUrl, account, httpOptions);
   }
+
   registerService(account: Account): Observable<Account> {
     return this.http.post<Account>(this.registerUrl, account, httpOptions);
   }
 
-
+  getAccount(){
+    return this.http.get<Account>(this.getUserUrl);
+  }
 }

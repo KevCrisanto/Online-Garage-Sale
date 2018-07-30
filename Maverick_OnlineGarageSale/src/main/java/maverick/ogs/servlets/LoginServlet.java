@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,16 +41,33 @@ public class LoginServlet extends HttpServlet {
 		UserAccount user = gson.fromJson(reader,UserAccount.class);
 
 		PrintWriter out = response.getWriter();
-
-		HttpSession session = null;
-
+		response.setContentType("text/html");
+		
+		Cookie[] cookies = request.getCookies();
+		boolean exists = false;
+		if (cookies != null) {
+			for(Cookie c: cookies) {
+				if(c.getName().equals("userjson")) exists = true;
+				System.out.println("1");
+			}
+		}
+		
 		if((user = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
-			session = request.getSession();
 
-			session.setAttribute("user", user);
-			//RequestDispatcher rd = request.getRequestDispatcher("user/emphome.html");
-			//rd.forward(request, response);
-			System.out.println("logged in");
+			if(!exists) {
+				Cookie cookie = new Cookie("userjson", user.getAccountId());
+				System.out.println("2");
+				response.addCookie(cookie);
+			}else {
+				for(Cookie c: cookies) {
+					if(c.getName().equals("userjson")) {
+						c.setValue(user.getAccountId());
+						System.out.println("3");
+					}
+
+				}
+			}
+			
 		}
 //		else {
 //			request.getRequestDispatcher("index.html").include(request, response);

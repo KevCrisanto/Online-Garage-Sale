@@ -50,8 +50,16 @@ export class LoginComponent implements OnInit {
   get diagnostic() {
     return JSON.stringify(this.acc);
   }
-  cLogin(a: Account) {
-    this.login.checkLogin(this.acc).subscribe();
+  cLogin() {
+    this.login.checkLogin(this.acc).subscribe(
+      asdf => this.login.getAccount().subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+    ));
     //const newAcc: Account = 
   }
   asdf() {

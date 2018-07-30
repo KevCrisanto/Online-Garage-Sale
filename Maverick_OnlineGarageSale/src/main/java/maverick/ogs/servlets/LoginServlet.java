@@ -41,28 +41,33 @@ public class LoginServlet extends HttpServlet {
 		UserAccount user = gson.fromJson(reader,UserAccount.class);
 
 		PrintWriter out = response.getWriter();
-
-		//maybe do cookies this way
-//		Cookie[] cookies = request.getCookies();
-//		boolean exists = false;
-//		if (cookies != null) {
-//			for(Cookie c: cookies) {
-//				if(c.getName().equals("userjson")) exists = true;
-//			}
-//		}
-//		if(!exists) {
-//			Cookie cookie = new Cookie("userjson", gson.toJson(user));
-//		}else {
-//			for(Cookie c: cookies) {
-//				if(c.getName().equals("userjson")) c.setValue(gson.toJson(user));
-//			}
-//		}
+		response.setContentType("text/html");
+		
+		Cookie[] cookies = request.getCookies();
+		boolean exists = false;
+		if (cookies != null) {
+			for(Cookie c: cookies) {
+				if(c.getName().equals("userjson")) exists = true;
+				System.out.println("1");
+			}
+		}
 		
 		if((user = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
 
-			//RequestDispatcher rd = request.getRequestDispatcher("user/emphome.html");
-			//rd.forward(request, response);
-			System.out.println("logged in");
+			if(!exists) {
+				Cookie cookie = new Cookie("userjson", user.getAccountId());
+				System.out.println("2");
+				response.addCookie(cookie);
+			}else {
+				for(Cookie c: cookies) {
+					if(c.getName().equals("userjson")) {
+						c.setValue(user.getAccountId());
+						System.out.println("3");
+					}
+
+				}
+			}
+			
 		}
 //		else {
 //			request.getRequestDispatcher("index.html").include(request, response);

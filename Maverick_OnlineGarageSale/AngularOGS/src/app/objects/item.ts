@@ -6,6 +6,7 @@ export class Item {
     public category: string,
     public itemStatus: string,
     public price: number,
-    public accountId: number
+    public accountId: number,
+    public images: string[]
   ) {}
 }

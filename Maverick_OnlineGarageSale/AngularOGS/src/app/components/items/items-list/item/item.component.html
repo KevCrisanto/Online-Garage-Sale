@@ -1,24 +1,21 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-      <img class="rounded img-fluid" src="http://2.bp.blogspot.com/-7gFjnPs_j1w/TjlsJA3zjaI/AAAAAAAADEk/qhTVh8XrZuM/s1600/Saleen+S7+2002+02.jpg"
-        alt="yellow car">
+      <img class="rounded img-fluid" src="{{item.images[0]}}" alt="yellow car">
     </div>
     <div class="col-9">
       <div>
         <h2>
-          <a href="#">Lamborghini Huracan LP610-4</a>
+          <a href="#">{{item.name}}</a>
         </h2>
       </div>
       <div>
-        <p>The Huracán maintains the 5.2 L naturally aspirated Audi/Lamborghini V10 engine from the Gallardo, tuned for 610
-          PS (449 kW; 602 hp). To ensure its balance and performance, the car is mid-engined. The V10 has both direct fuel
-          injection and multi-point fuel injection.</p>
+        <p>{{item.description}}</p>
       </div>
       <div class="float-left justify-content-center align-items-center">
         <div class="row justify-content-center align-items-center h-100">
           <fa-icon icon="money-bill-alt" class="text-warning fa-2x col-3"></fa-icon>
-          <span class="col-9 price"> $180,000</span>
+          <span class="col-9 price"> ${{item.price}}</span>
         </div>
       </div>
     </div>

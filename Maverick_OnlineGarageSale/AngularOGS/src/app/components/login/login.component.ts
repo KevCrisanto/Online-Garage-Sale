@@ -51,15 +51,15 @@ export class LoginComponent implements OnInit {
     return JSON.stringify(this.acc);
   }
   cLogin() {
-    this.login.checkLogin(this.acc).subscribe(
-      asdf => this.login.getAccount().subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-    ));
+    this.login.checkLogin(this.acc).subscribe();
+    this.login.getAccount().subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log;
+      }
+    );
     //const newAcc: Account = 
   }
   asdf() {

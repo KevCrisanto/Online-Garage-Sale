@@ -14,6 +14,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { ItemsComponent } from './components/items/items.component';
+import { ItemsListComponent } from './components/items/items-list/items-list.component';
+import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 
 library.add(faShoppingCart, faSearch);
 
@@ -22,19 +25,23 @@ library.add(faShoppingCart, faSearch);
     AppComponent,
     CreditCardComponent,
     LoginComponent,
-    FilesComponent
-    NavbarComponent
+    FilesComponent,
+    NavbarComponent,
+    ItemsComponent,
+    ItemsListComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
     CardModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [
     LoginService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy },],
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

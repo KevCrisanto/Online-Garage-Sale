@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 
 import maverick.ogs.beans.CreditCard;
 import maverick.ogs.beans.Tier;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.util.HibernateUtil;
 
 public class CreditCardDAOImpl implements CreditCardDAO {
@@ -116,6 +117,10 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 					.uniqueResult();
 			
 			if (creditCard != null) {
+				for (UserAccount userAccount : creditCard.getUserAccounts() ) {
+					String accountId = userAccount.getAccountId();
+					session.createSQLQuery("delete from credit_card_user_accounts where cardnumber=\'" + creditCardId + "\' and accountId=\'" + accountId + "\'" ).executeUpdate();
+				}
 				session.delete(creditCard);
 				result = true;
 				transaction.commit();

@@ -74,7 +74,7 @@ public class CreditCardTest {
 		Address address = addressDAO.getAddressById(address1);
 		CreditCardDAO creditCardDAO = new CreditCardDAOImpl();
 		
-		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("1111000022223833",users,"Bub Sagott", expiry, "987", address));
+		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("2111000022223833",users,"Bub Sagott", expiry, "987", address));
 		
 
 		creditCardDAO.deleteCreditCardById(creditCard1);

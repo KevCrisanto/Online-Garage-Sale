@@ -14,42 +14,68 @@ export class LoginComponent implements OnInit {
   // account = Account;
   // account2 = Account;
 
-  constructor(private http: HttpClient, private login: LoginService) { }
+  constructor(private http: HttpClient, private login: LoginService) {}
 
-  account:Account;
+  account: Account;
 
   ngOnInit() {
-    this.login.currentAccount.subscribe(account => this.account = account);
+    this.login.currentAccount.subscribe(account => (this.account = account));
 
-    $(document).ready(function () {
-      var panelOne = $('.form-panel.two').scrollHeight,
+    $(document).ready(function() {
+      const panelOne = $('.form-panel.two').scrollHeight,
         panelTwo = $('.form-panel.two')[0].scrollHeight;
 
-      $('.form-panel.two').not('.form-panel.two.active').on('click', function (e) {
-        e.preventDefault();
+      $('.form-panel.two')
+        .not('.form-panel.two.active')
+        .on('click', function(e) {
+          e.preventDefault();
 
-        $('.form-toggle').addClass('visible');
-        $('.form-panel.one').addClass('hidden');
-        $('.form-panel.two').addClass('active');
-        $('.form').animate({
-          'height': panelTwo
-        }, 200);
-      });
+          $('.form-toggle').addClass('visible');
+          $('.form-panel.one').addClass('hidden');
+          $('.form-panel.two').addClass('active');
+          $('.form').animate(
+            {
+              height: panelTwo
+            },
+            200
+          );
+        });
 
-      $('.form-toggle').on('click', function (e) {
+      $('.form-toggle').on('click', function(e) {
         e.preventDefault();
         $(this).removeClass('visible');
         $('.form-panel.one').removeClass('hidden');
         $('.form-panel.two').removeClass('active');
-        $('.form').animate({
-          'height': panelOne
-        }, 200);
+        $('.form').animate(
+          {
+            height: panelOne
+          },
+          200
+        );
       });
     });
   }
 
+<<<<<<< HEAD
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('', '', '', '', '', '', null, false, false, false, false,null);
+=======
+  // acc = new Account('', '', '', '', '', '', null, false, false, false, false);
+  regAcc = new Account(
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    null,
+    false,
+    false,
+    false,
+    false,
+    null
+  );
+>>>>>>> ogs_dev
 
   cLogin() {
     console.log(this.account)

@@ -11,6 +11,7 @@ export class ItemDetailComponent implements OnInit {
     'http://www.robotshop.com/blog/en/files/alpha2_humanoid_robot.jpg',
     'https://usedcomputersforsale.files.wordpress.com/2014/02/used-desktop-computers.jpg'
   ];
+
   constructor() {}
 
   ngOnInit() {}

@@ -13,13 +13,17 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSearch,
+  faShoppingCart,
+  faMoneyBillAlt
+} from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { CardService } from './services/card.service';
 
-library.add(faShoppingCart, faSearch);
+library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
 @NgModule({
   declarations: [

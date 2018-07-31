@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, DoCheck } from '@angular/core';
 import { CardModule } from 'ngx-card/ngx-card';
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { Account } from '../../objects/account';
+import { Card } from '../../objects/card';
+import { Address } from '../../objects/address';
+import { CardService } from '../../services/card.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -15,10 +19,14 @@ export class CreditCardComponent implements OnInit, DoCheck {
 
   @ViewChild('cardNumber') cardNumber: ElementRef;
 
-  constructor() { }
+  constructor(private cardS: CardService) { }
   invalid;
   ngOnInit() {
   }
+
+  account = new Account('', '', '', '', '', '', null, false, false, false, false);
+  // address = new Address('','','','','','','','','');
+  creditCard = new Card('',this.account, '', '','',null)
 
   ngDoCheck() {
     if (this.cardNumber.nativeElement.classList.contains('jp-card-invalid') || this.cardNumber.nativeElement.value === '') {
@@ -29,8 +37,8 @@ export class CreditCardComponent implements OnInit, DoCheck {
     }
   }
 
-  test(form: NgForm) {
-    console.log(form);
+  insert(c: Card){
+    this.cardS.cardService(this.creditCard).subscribe();
   }
 
 }

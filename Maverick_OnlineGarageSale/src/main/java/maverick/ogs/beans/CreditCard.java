@@ -118,4 +118,11 @@ public class CreditCard {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+	@Override
+	public String toString() {
+		return "CreditCard [cardNumber=" + cardNumber + ", userAccounts=" + userAccounts + ", cardName=" + cardName
+				+ ", expiration=" + expiration + ", cvv=" + cvv + ", address=" + address + "]";
+	}
+	
 }

@@ -17,6 +17,7 @@ import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
+import { CardService } from './services/card.service';
 
 library.add(faShoppingCart, faSearch);
 
@@ -40,6 +41,7 @@ library.add(faShoppingCart, faSearch);
   ],
   providers: [
     LoginService,
+    CardService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

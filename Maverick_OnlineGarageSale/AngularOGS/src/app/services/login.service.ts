@@ -15,10 +15,12 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
-  private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
-  private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
-
+  // private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
+  // private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  // private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
+  private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
+  private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  private getUserUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetUserServlet';
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

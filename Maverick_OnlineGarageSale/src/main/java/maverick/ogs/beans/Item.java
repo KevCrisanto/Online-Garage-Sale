@@ -2,10 +2,12 @@ package maverick.ogs.beans;
 
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 
@@ -14,6 +16,9 @@ public class Item {
 	@Id
 	@Column(name = "item_id")
 	private String itemId;
+	
+	@Column(name="item_name")
+	private String itemName;
 	
 	@ManyToOne
 	private UserAccount accountId;
@@ -29,6 +34,9 @@ public class Item {
 	
 	@Column(name = "category")
 	private String category;
+	
+	@OneToOne(mappedBy="item_file", cascade=CascadeType.ALL)
+	private File itemFile;
 	
 	public Item() {
 		this.itemId = UUID.randomUUID().toString();

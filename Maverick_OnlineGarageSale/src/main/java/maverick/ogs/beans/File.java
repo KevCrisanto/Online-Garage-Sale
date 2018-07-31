@@ -1,6 +1,5 @@
 package maverick.ogs.beans;
 
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.UUID;
 
@@ -16,8 +15,8 @@ public class File {
 	private String fileId;
 	
 	@OneToOne
-	@JoinColumn(name = "item_id")
-	private String itemId;
+	@JoinColumn(name="item_file")
+	private Item fileItem;
 	
 	@Column(name = "filekey")
 	private String filekey;
@@ -27,9 +26,9 @@ public class File {
 		this.fileId = UUID.randomUUID().toString();
 	}
 	
-	public File(String itemId, String filekey) {
+	public File(Item fileItem, String filekey) {
 		this.fileId = UUID.randomUUID().toString();
-		this.itemId = itemId;
+		this.fileItem = fileItem;
 		this.filekey = filekey;
 	}
 	
@@ -53,12 +52,20 @@ public class File {
 		this.fileId = fileId;
 	}
 
-	public String getItemId() {
-		return itemId;
+
+
+	/**
+	 * @return the fileItem
+	 */
+	public Item getFileItem() {
+		return fileItem;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	/**
+	 * @param fileItem the fileItem to set
+	 */
+	public void setFileItem(Item fileItem) {
+		this.fileItem = fileItem;
 	}
 
 	/**

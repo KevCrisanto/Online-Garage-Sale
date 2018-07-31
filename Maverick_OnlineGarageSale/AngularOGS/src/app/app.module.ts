@@ -13,18 +13,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faSearch,
-  faShoppingCart,
-  faMoneyBillAlt
-} from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
-import { ItemComponent } from './components/items/items-list/item/item.component';
-import { SlideshowModule } from 'ng-simple-slideshow';
+import { CardService } from './services/card.service';
 
-library.add(faShoppingCart, faSearch, faMoneyBillAlt);
+library.add(faShoppingCart, faSearch);
 
 @NgModule({
   declarations: [
@@ -35,19 +30,18 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     NavbarComponent,
     ItemsComponent,
     ItemsListComponent,
-    ItemDetailComponent,
-    ItemComponent
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
     CardModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
-    SlideshowModule
+    FontAwesomeModule
   ],
   providers: [
     LoginService,
+    CardService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

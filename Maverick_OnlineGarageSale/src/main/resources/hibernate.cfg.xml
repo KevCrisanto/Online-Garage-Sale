@@ -2,7 +2,7 @@
 
 <hibernate-configuration>
 	<session-factory>
-		<!-- <property name="hibernate.connection.driver_class">
+		<property name="hibernate.connection.driver_class">
 			oracle.jdbc.OracleDriver
 		</property>
 		

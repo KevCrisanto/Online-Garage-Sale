@@ -57,12 +57,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>GetUserServlet</display-name>
-    <servlet-name>GetUserServlet</servlet-name>
-    <servlet-class>maverick.ogs.servlets.GetUserServlet</servlet-class>
+    <display-name>CreditCardServlet</display-name>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.CreditCardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetUserServlet</servlet-name>
-    <url-pattern>/GetUserServlet</url-pattern>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <url-pattern>/CreditCardServlet</url-pattern>
   </servlet-mapping>
+
 </web-app>

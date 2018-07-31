@@ -16,7 +16,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: HttpClient, private login: LoginService) { }
 
+  account:Account;
+
   ngOnInit() {
+    this.login.currentAccount.subscribe(account => this.account = account);
+
     $(document).ready(function () {
       var panelOne = $('.form-panel.two').scrollHeight,
         panelTwo = $('.form-panel.two')[0].scrollHeight;
@@ -44,34 +48,29 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  acc = new Account('', '', '', '', '', '', null, false, false, false, false);
+  //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('', '', '', '', '', '', null, false, false, false, false);
 
-  get diagnostic() {
-    return JSON.stringify(this.acc);
-  }
   cLogin() {
-    this.login.checkLogin(this.acc).subscribe();
-    this.login.getAccount().subscribe(
+    this.login.checkLogin(this.account).subscribe(
       data => {
+        //this.login.changeAccount(data);
         console.log(data);
       },
       error => {
-        console.log;
+        console.log('error');
       }
     );
-    //const newAcc: Account = 
   }
-  asdf() {
-    this.http.post("http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet", {
-      key1: "value",
-      key2: "value",
-      etc: "value"
-    }).subscribe(
-      PASS => { },
-      FAIL => { })
-  }
+
   register(a: Account) {
-    this.login.registerService(this.regAcc).subscribe();
+    this.login.registerService(this.regAcc).subscribe(
+      data => {
+        this.login.changeAccount(data);
+      },
+      error => {
+        console.log('error');
+      }
+    );
   }
 }

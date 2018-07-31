@@ -60,14 +60,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 				if (transaction.getTransactionId() != null) {
 					transactionToUpdate.setTransactionId(transaction.getTransactionId());
 				}
-				if (transaction.getSellerId() != null) {
-					transactionToUpdate.setSellerId(transaction.getSellerId());
+				if (transaction.getSeller() != null) {
+					transactionToUpdate.setSeller(transaction.getSeller());
 				}
-				if (transaction.getBuyerId() != null) {
-					transactionToUpdate.setBuyerId(transaction.getBuyerId());
+				if (transaction.getBuyer() != null) {
+					transactionToUpdate.setBuyer(transaction.getBuyer());
 				}
-				if (transaction.getItemId() != null) {
-					transactionToUpdate.setItemId(transaction.getItemId());
+				if (transaction.getItem() != null) {
+					transactionToUpdate.setItem(transaction.getItem());
 				}
 				if (transaction.getTransactionAmount() != null) {
 					transactionToUpdate.setTransactionAmount(transaction.getTransactionAmount());

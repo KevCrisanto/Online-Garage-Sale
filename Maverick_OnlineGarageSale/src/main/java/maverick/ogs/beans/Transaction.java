@@ -17,17 +17,14 @@ public class Transaction {
 	@Column
 	private String transactionId;
 	
-	@Column
 	@OneToOne(cascade=CascadeType.REMOVE)
-	private String buyerId;
+	private UserAccount buyer;
 	
-	@Column
 	@OneToOne(cascade=CascadeType.REMOVE)
-	private String sellerId;
+	private UserAccount seller;
 	
-	@Column
 	@OneToOne(cascade=CascadeType.REMOVE)
-	private String itemId;
+	private Item item;
 	
 	@Column
 	private Float transactionAmount;
@@ -39,32 +36,32 @@ public class Transaction {
 		this.transactionId = UUID.randomUUID().toString();
 	}
 	
-	public Transaction(String transactionId, String buyerId, String sellerId, String itemId, Float transactionAmount,
+	public Transaction(String transactionId, UserAccount buyer, UserAccount seller, Item item, Float transactionAmount,
 			String memo) {
 		super();
 		this.transactionId = transactionId;
-		this.buyerId = buyerId;
-		this.sellerId = sellerId;
-		this.itemId = itemId;
+		this.buyer = buyer;
+		this.seller = seller;
+		this.item = item;
 		this.transactionAmount = transactionAmount;
 		this.memo = memo;
 	}
 
-	public Transaction(String buyerId, String sellerId, String itemId, Float transactionAmount, String memo) {
+	public Transaction(UserAccount buyer, UserAccount seller, Item item, Float transactionAmount, String memo) {
 		super();
 		this.transactionId = UUID.randomUUID().toString();
-		this.buyerId = buyerId;
-		this.sellerId = sellerId;
-		this.itemId = itemId;
+		this.buyer = buyer;
+		this.seller = seller;
+		this.item = item;
 		this.transactionAmount = transactionAmount;
 		this.memo = memo;
 	}
 
-	public Transaction(String buyerId, String itemId, Float transactionAmount, String memo) {
+	public Transaction(UserAccount buyer, Item item, Float transactionAmount, String memo) {
 		super();
 		this.transactionId = UUID.randomUUID().toString();
-		this.buyerId = buyerId;
-		this.itemId = itemId;
+		this.buyer = buyer;
+		this.item = item;
 		this.transactionAmount = transactionAmount;
 		this.memo = memo;
 	}
@@ -77,28 +74,28 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public String getBuyerId() {
-		return buyerId;
+	public UserAccount getBuyer() {
+		return buyer;
 	}
 
-	public void setBuyerId(String buyerId) {
-		this.buyerId = buyerId;
+	public void setBuyer(UserAccount buyer) {
+		this.buyer = buyer;
 	}
 
-	public String getSellerId() {
-		return sellerId;
+	public UserAccount getSeller() {
+		return seller;
 	}
 
-	public void setSellerId(String sellerId) {
-		this.sellerId = sellerId;
+	public void setSeller(UserAccount seller) {
+		this.seller = seller;
 	}
 
-	public String getItemId() {
-		return itemId;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public Float getTransactionAmount() {

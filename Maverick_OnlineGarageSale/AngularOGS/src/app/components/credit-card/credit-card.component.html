@@ -1,0 +1,29 @@
+<article class="slds-card">
+  <div class="slds-card__body slds-card__body_inner">
+    <div class="demo-container slds-border_top slds-border_bottom">
+      <div class="card-wrapper"></div>
+      <div class="form-container">
+        <form #f="ngForm" class="text-muted" card container=".card-wrapper" (ngSubmit)="test(f)">
+          <fieldset>
+            <div>
+              <div class="mb-2 form-group">
+                <input #cardNumber type="text" name="number" placeholder="Card number" class="form-control" card-number id="cardNumber" />
+              </div>
+              <div class="input-group mb-2">
+                <input type="text" name="first-name" placeholder="First name" class=" form-control" card-name/>
+                <input type="text" name="last-name" placeholder="Last name" class=" form-control" card-name/>
+              </div>
+              <div class="input-group mb-2">
+                <input type="text" name="expiry" placeholder="MM/YY" class="form-control" card-expiry/>
+                <input type="text" name="cvc" placeholder="CVC" class="form-control" card-cvc/>
+              </div>
+              <div>
+                <button type="submit" value="Submit" class="btn btn-primary btn-block" [disabled]="invalid"> Submit </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</article>

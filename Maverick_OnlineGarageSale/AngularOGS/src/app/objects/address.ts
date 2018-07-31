@@ -9,7 +9,7 @@ export class Address {
         city: string,
         country: string,
         zipcode: string,
-        creditCards: CreditCard
+        creditCards: CreditCard[]
 
       ) {}
 }

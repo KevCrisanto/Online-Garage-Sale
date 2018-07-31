@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -35,8 +36,8 @@ public class Item {
 	@Column(name = "category")
 	private String category;
 	
-	@OneToOne(mappedBy="item_file", cascade=CascadeType.ALL)
-	private File itemFile;
+	@OneToOne(cascade=CascadeType.REMOVE)
+	private Files itemFile;
 	
 	public Item() {
 		this.itemId = UUID.randomUUID().toString();
@@ -111,4 +112,33 @@ public class Item {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	/**
+	 * @return the itemName
+	 */
+	public String getItemName() {
+		return itemName;
+	}
+
+	/**
+	 * @param itemName the itemName to set
+	 */
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
+
+	/**
+	 * @return the itemFile
+	 */
+	public Files getItemFile() {
+		return itemFile;
+	}
+
+	/**
+	 * @param itemFile the itemFile to set
+	 */
+	public void setItemFile(Files itemFile) {
+		this.itemFile = itemFile;
+	}
+	
 }

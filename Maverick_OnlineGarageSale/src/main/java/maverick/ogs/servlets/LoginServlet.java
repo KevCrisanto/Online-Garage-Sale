@@ -42,34 +42,16 @@ public class LoginServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
+		System.out.println(user.toString());
+		UserAccount validuser;
 		
-//		Cookie[] cookies = request.getCookies();
-//		boolean exists = false;
-//		if (cookies != null) {
-//			for(Cookie c: cookies) {
-//				if(c.getName().equals("userjson")) exists = true;
-//				System.out.println("1");
-//			}
-//		}
-		
-		if((user = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
-
-//			if(!exists) {
-//				Cookie cookie = new Cookie("userjson", user.getAccountId());
-//				System.out.println("2");
-//				response.addCookie(cookie);
-//			}else {
-//				for(Cookie c: cookies) {
-//					if(c.getName().equals("userjson")) {
-//						c.setValue(user.getAccountId());
-//						System.out.println("3");
-//					}
-//
-//				}
-//			}
+		if((validuser = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
+			out.println(gson.toJson(validuser));
+		}else {
 			out.println(gson.toJson(user));
-			
 		}
+
+
 		//testing git webhook again
 //		else {
 //			request.getRequestDispatcher("index.html").include(request, response);

@@ -18,10 +18,8 @@ const httpOptions = {
 export class LoginService {
   private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
   private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
-  private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
   // private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
   // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
-  // private getUserUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetUserServlet';
 
 private accountSource = new BehaviorSubject<Account>(
                             new Account('', '', '', '', '', '',

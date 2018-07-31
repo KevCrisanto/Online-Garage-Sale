@@ -11,7 +11,11 @@ import maverick.ogs.util.HibernateUtil;
 public class TransactionsDAOImpl implements TransactionsDAO {
 
 	@Override
+<<<<<<< Updated upstream:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionsDAOImpl.java
 	public String insertTransaction(maverick.ogs.beans.Transactions transactions) {
+=======
+	public String insertTransaction(maverick.ogs.beans.Transactions transaction) {
+>>>>>>> Stashed changes:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionDAOImpl.java
 		Session session = HibernateUtil.getSession();
 		Transaction hqlTransaction = null;
 		String transactionId = null;
@@ -64,10 +68,17 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 	}
 
 	@Override
+<<<<<<< Updated upstream:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionsDAOImpl.java
 	public Boolean updateTransactionById(String transactionId, maverick.ogs.beans.Transactions transactions) {
 		Session session = HibernateUtil.getSession();
 		Transaction hqlTransaction = null;
 		maverick.ogs.beans.Transactions transactionToUpdate = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where transactionId=\'" + transactionId + "\'");
+=======
+	public Boolean updateTransactionById(String transactionId, maverick.ogs.beans.Transactions transaction) {
+		Session session = HibernateUtil.getSession();
+		Transaction hqlTransaction = null;
+		maverick.ogs.beans.Transactions transactionToUpdate = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'");
+>>>>>>> Stashed changes:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionDAOImpl.java
 		Boolean result = null;
 		try {
 			hqlTransaction = session.beginTransaction();
@@ -112,7 +123,11 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
+<<<<<<< Updated upstream:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionsDAOImpl.java
 			result = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where=\'" + transactionId + "\'").uniqueResult();
+=======
+			result = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where=\'" + transactionId + "\'").uniqueResult();
+>>>>>>> Stashed changes:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionDAOImpl.java
 			
 		} catch (HibernateException e) {
 		} finally {
@@ -131,6 +146,7 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
+<<<<<<< Updated upstream:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionsDAOImpl.java
 			hqlQueryResult = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where transactionId=\'" + transactionId + "\'").uniqueResult();
 			
 			if (hqlQueryResult != null) {
@@ -139,6 +155,12 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 				transaction.commit();
 				success = true;
 			}
+=======
+			hqlQueryResult = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'").uniqueResult();
+			session.remove(hqlQueryResult);
+			transaction.commit();
+			success = true;
+>>>>>>> Stashed changes:Maverick_OnlineGarageSale/src/main/java/maverick/ogs/dao/TransactionDAOImpl.java
 		} catch (HibernateException e) {
 			
 		} finally {

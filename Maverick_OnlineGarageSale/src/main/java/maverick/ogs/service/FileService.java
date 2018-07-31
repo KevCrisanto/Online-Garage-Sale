@@ -1,6 +1,6 @@
 package maverick.ogs.service;
 
-import maverick.ogs.beans.File;
+import maverick.ogs.beans.Files;
 import maverick.ogs.dao.FileDAO;
 import maverick.ogs.dao.FileDAOImpl;
 

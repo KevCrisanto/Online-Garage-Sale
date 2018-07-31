@@ -5,13 +5,13 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import maverick.ogs.beans.File;
+import maverick.ogs.beans.Files;
 import maverick.ogs.util.HibernateUtil;
 
 public class FileDAOImpl implements FileDAO {
 
 	@Override
-	public String insertFile(File file) {
+	public String insertFile(Files file) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		String id = null;
@@ -33,12 +33,12 @@ public class FileDAOImpl implements FileDAO {
 	}
 
 	@Override
-	public File getFileById(String Id) {
-		File file = null;
+	public Files getFileById(String Id) {
+		Files file = null;
 		Session session = HibernateUtil.getSession();
 		
 		try {
-			file = (File)session.get(File.class, Id);
+			file = (Files)session.get(Files.class, Id);
 		}
 		catch(HibernateException e) {
 			e.printStackTrace();
@@ -47,15 +47,15 @@ public class FileDAOImpl implements FileDAO {
 	}
 
 	@Override
-	public Boolean updateFileById(String fileId, File newFile) {
-		File fileToUpdate = null;
+	public Boolean updateFileById(String fileId, Files newFile) {
+		Files fileToUpdate = null;
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
-			fileToUpdate = (File)session.get(File.class, fileId);
+			fileToUpdate = (Files)session.get(Files.class, fileId);
 			if(fileToUpdate != null) {
 				fileToUpdate.setFilekey(newFile.getFilekey());
 			}
@@ -77,14 +77,14 @@ public class FileDAOImpl implements FileDAO {
 
 	@Override
 	public Boolean deleteFileById(String fileId) {
-		File file = null;
+		Files file = null;
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
 		Boolean result = false;
 		
 		try {
 			transaction = session.beginTransaction();
-			file = (File)session.get(File.class, fileId);
+			file = (Files)session.get(Files.class, fileId);
 			if(file != null) {
 				session.delete(file);
 				transaction.commit();

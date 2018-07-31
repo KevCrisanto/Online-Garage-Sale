@@ -41,6 +41,6 @@
 		<mapping class="maverick.ogs.beans.Item"/>
 		<mapping class="maverick.ogs.beans.Subscriptions"/>
 		<mapping class="maverick.ogs.beans.Tier" />
-		<mapping class="maverick.ogs.beans.Transaction" />
+		<mapping class="maverick.ogs.beans.Transactions" />
 	</session-factory>
 </hibernate-configuration>

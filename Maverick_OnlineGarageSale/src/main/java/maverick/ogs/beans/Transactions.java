@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class Transaction {
+public class Transactions {
 	
 	@Id
 	@Column
@@ -32,11 +32,11 @@ public class Transaction {
 	@Column
 	private String memo;
 	
-	public Transaction() {
+	public Transactions() {
 		this.transactionId = UUID.randomUUID().toString();
 	}
 	
-	public Transaction(String transactionId, UserAccount buyer, UserAccount seller, Item item, Float transactionAmount,
+	public Transactions(String transactionId, UserAccount buyer, UserAccount seller, Item item, Float transactionAmount,
 			String memo) {
 		super();
 		this.transactionId = transactionId;
@@ -47,7 +47,7 @@ public class Transaction {
 		this.memo = memo;
 	}
 
-	public Transaction(UserAccount buyer, UserAccount seller, Item item, Float transactionAmount, String memo) {
+	public Transactions(UserAccount buyer, UserAccount seller, Item item, Float transactionAmount, String memo) {
 		super();
 		this.transactionId = UUID.randomUUID().toString();
 		this.buyer = buyer;
@@ -57,7 +57,7 @@ public class Transaction {
 		this.memo = memo;
 	}
 
-	public Transaction(UserAccount buyer, Item item, Float transactionAmount, String memo) {
+	public Transactions(UserAccount buyer, Item item, Float transactionAmount, String memo) {
 		super();
 		this.transactionId = UUID.randomUUID().toString();
 		this.buyer = buyer;

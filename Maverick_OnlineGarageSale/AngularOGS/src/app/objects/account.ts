@@ -10,6 +10,6 @@ export class Account {
     isVerified: boolean,
     isPremium: boolean,
     isAdmin: boolean,
-    isActive: boolean
+    isActive: boolean//,creditCards: CreditCard
   ) {}
 }

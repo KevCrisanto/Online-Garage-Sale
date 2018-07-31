@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class CreditCard {
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.REMOVE)
 	@JoinTable(
 		        name = "credit_card_user_accounts", 
 		        joinColumns = { @JoinColumn(name = "cardNumber") }, 
@@ -40,8 +41,8 @@ public class CreditCard {
 	
 	@Column(name = "cvv")
 	private String cvv;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	private Address address;
 	
 	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, Date expiration, String cvv, Address address) {

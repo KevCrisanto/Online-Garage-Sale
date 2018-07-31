@@ -1,4 +1,5 @@
-export class Address{
+import { CreditCard } from './credit-card';
+export class Address {
     constructor(
         addressId: string,
         addressLine1: string,
@@ -6,9 +7,9 @@ export class Address{
         aptNumber: string,
         postOfficeBox: string,
         city: string,
-        state: string,
         country: string,
-        zipcode: string
-    ){}
-    
+        zipcode: string,
+        creditCards: CreditCard
+
+      ) {}
 }

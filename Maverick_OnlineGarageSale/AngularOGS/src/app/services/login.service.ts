@@ -4,6 +4,7 @@ import { Account } from './../objects/account';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,8 +16,18 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  private loginurl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
+  private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
   private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
+  // private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
+  // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  // private getUserUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetUserServlet';
+
+private accountSource = new BehaviorSubject<Account>(
+                            new Account('', '', '', '', '', '',
+                             null, false, false, false, false));
+
+currentAccount = this.accountSource.asObservable();
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -32,16 +43,20 @@ export class LoginService {
     };
   }
 
+
   constructor(private http: HttpClient) { }
   // input: Account
   checkLogin(account: Account): Observable<Account> {
-    return this.http.post<Account>(this.loginurl, account, httpOptions)
-      .pipe(catchError(this.handleError<Account>('checkLogin'))
-      );
+    return this.http.post<Account>(this.loginUrl, account, httpOptions);
   }
+
   registerService(account: Account): Observable<Account> {
     return this.http.post<Account>(this.registerUrl, account, httpOptions);
   }
 
+  //update account (shared across components)
+  changeAccount(account: Account){
+    this.accountSource.next(account);
+  }
 
 }

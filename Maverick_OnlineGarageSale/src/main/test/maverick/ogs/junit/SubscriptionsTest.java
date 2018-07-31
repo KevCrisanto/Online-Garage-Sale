@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Projections;
 import org.junit.After;
 import org.junit.Before;
@@ -155,6 +157,26 @@ public class SubscriptionsTest {
 		tierDAO.deleteTierById(tier2);
 		tierDAO.deleteTierById(tier3);
 		tierDAO.deleteTierById(tier4);
+
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			session.createSQLQuery("TRUNCATE TABLE tier").executeUpdate();
+			session.createSQLQuery("TRUNCATE TABLE subscriptions").executeUpdate();
+
+			tx.commit();
+		}
+		catch(HibernateException e) {
+			if(tx != null) {
+				tx.rollback();
+			}
+		}
+		finally {
+			session.close();
+		}
+		
 	}
 
 	//Subscription Tests

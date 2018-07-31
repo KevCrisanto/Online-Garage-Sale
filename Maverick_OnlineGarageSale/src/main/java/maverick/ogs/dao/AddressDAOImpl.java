@@ -35,7 +35,7 @@ public class AddressDAOImpl implements AddressDAO {
 		
 		try {
 			if (id != null) {
-				address = (Address) session.createQuery("FROM Address where address_id=\'" + id + "\'").uniqueResult();
+				address = (Address) session.createQuery("FROM Address where addressId=\'" + id + "\'").uniqueResult();
 			}
 		} catch (HibernateException e) {
 			
@@ -46,4 +46,26 @@ public class AddressDAOImpl implements AddressDAO {
 		return address;
 	}
 
+	@Override
+	public Boolean deleteAddressById(String id) {
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = null;
+		Address address = null;
+		Boolean result = false;
+		
+		try {
+			transaction = session.beginTransaction();
+			address = (Address) session.createQuery("FROM Address where addressId=\'" + id + "\'" ).uniqueResult();
+			if (address != null) {
+				session.delete(address);
+				result = true;
+			}
+		} catch (HibernateException e) {
+			
+		} finally {
+			session.close();
+		}
+		
+		return result;
+	}
 }

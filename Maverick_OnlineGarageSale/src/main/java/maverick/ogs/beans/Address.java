@@ -1,10 +1,13 @@
 package maverick.ogs.beans;
 
+import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name = "Address")
@@ -20,7 +23,6 @@ public class Address {
 
 	@Column(name = "address_line_2")
 	private String addressLine2;
-	
 
 	@Column(name = "apt_number")
 	private String aptNumber;
@@ -40,10 +42,13 @@ public class Address {
 	@Column(name = "zipcode")
 	private String zipcode;
 	
+	@OneToMany(cascade=CascadeType.REMOVE)
+	private List<CreditCard> creditCards;
+	
 	public Address() {
 		this.addressId = UUID.randomUUID().toString();
 	}
-
+		
 	public Address(String addressId, String addressLine1, String addressLine2, String aptNumber, String postOfficeBox,
 			String city, String state, String country, String zipcode) {
 		super();

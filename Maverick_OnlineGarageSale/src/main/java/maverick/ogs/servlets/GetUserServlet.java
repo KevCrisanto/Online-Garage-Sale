@@ -32,12 +32,11 @@ public class GetUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BufferedReader reader = request.getReader();
-		String userid = reader.toString();
-		UserAccount user = UserService.getUserById(userid);
-		
-		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
+		BufferedReader reader = request.getReader();
+		UserAccount user = UserService.getUserById(reader.readLine());
+		System.out.println(user.toString());
+		PrintWriter out = response.getWriter();
 		out.println(gson.toJson(user));
 	}
 

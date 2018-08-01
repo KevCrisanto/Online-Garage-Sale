@@ -53,6 +53,17 @@ public class Item {
 		this.price = price;
 		this.category = category;
 	}
+	public Item(UserAccount accountId, String itemName, String description, String itemStatus, Float price,
+			String category) {
+		super();
+		this.itemId = UUID.randomUUID().toString();
+		this.accountId = accountId;
+		this.description = description;
+		this.itemStatus = itemStatus;
+		this.price = price;
+		this.category = category;
+		this.itemName = itemName;
+	}
 	
 	public Item(String itemId, UserAccount accountId, String description, String itemStatus, Float price,
 			String category) {

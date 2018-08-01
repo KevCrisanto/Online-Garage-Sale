@@ -47,7 +47,7 @@ public class RegisterServlet extends HttpServlet {
 		UserAccount userAccount = (UserAccount)gson.fromJson(reader, UserAccount.class);
 		userAccount.setUserId(UUID.randomUUID().toString());
 		System.out.println(userAccount.toString());
-		
+
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		UserAccount validUser = null;	

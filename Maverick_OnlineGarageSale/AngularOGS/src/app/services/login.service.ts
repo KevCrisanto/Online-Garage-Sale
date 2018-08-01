@@ -43,18 +43,8 @@ currentAccount = this.accountSource.asObservable();
     };
   }
 
-
   constructor(private http: HttpClient, private cookieService: CookieService) {
-    if(this.cookieService.check('userid')){
-      this.getUserById(this.cookieService.get('userid')).subscribe(
-        data => {
-          this.changeAccount(data);
-        },
-        error => {
-          console.log('error');
-        }
-      );
-    }
+    this.getUserFromCookie();
    }
   // input: Account
   
@@ -73,5 +63,18 @@ currentAccount = this.accountSource.asObservable();
 
   getUserById(userId: string):Observable<Account>{
     return this.http.post<Account>(this.getAccountUrl,userId,httpOptions);
+  }
+
+  getUserFromCookie(){
+    if(this.cookieService.check('userid')){
+      this.getUserById(this.cookieService.get('userid')).subscribe(
+        data => {
+          this.changeAccount(data);
+        },
+        error => {
+          console.log('error');
+        }
+      );
+    }
   }
 }

@@ -1,7 +1,7 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Account } from '../../objects/account';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -9,9 +9,10 @@ import { Account } from '../../objects/account';
 })
 export class ProfileComponent implements OnInit {
 
-  account: Account
+  account: Account;
 
-  constructor(private login: LoginService) { }
+  constructor(private login: LoginService, private cookieService: CookieService) {
+   }
 
   ngOnInit() {
     this.login.currentAccount.subscribe(account => this.account = account);

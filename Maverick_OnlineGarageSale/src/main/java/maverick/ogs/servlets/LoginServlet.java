@@ -39,10 +39,9 @@ public class LoginServlet extends HttpServlet {
 		Gson gson = new Gson();
 		BufferedReader reader = request.getReader();
 		UserAccount user = gson.fromJson(reader,UserAccount.class);
-
+		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
-		System.out.println(user.toString());
 		UserAccount validuser;
 		
 		if((validuser = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {

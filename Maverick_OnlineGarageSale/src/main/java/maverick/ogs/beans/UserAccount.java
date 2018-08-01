@@ -58,7 +58,7 @@ public class UserAccount {
 	public UserAccount(String accountId, String username, String password, String firstName, String lastName, String email,
 			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
 		super();
-		this.accountId = accountId;
+		this.accountId = UUID.randomUUID().toString();
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -71,6 +71,7 @@ public class UserAccount {
 		this.isActive = isActive;
 	}
 
+	
 	public UserAccount(String username, String password, String firstName, String lastName, String email,
 			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
 		super();
@@ -120,7 +121,9 @@ public class UserAccount {
 	
 	public UserAccount() {
 		super();
-		this.accountId = UUID.randomUUID().toString();
+		String a = UUID.randomUUID().toString();
+		this.accountId = a;
+		//this.accountId = UUID.randomUUID().toString();
 	}
 
 	public String getAccountId() {

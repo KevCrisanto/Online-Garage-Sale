@@ -30,7 +30,7 @@ export class TransactionsComponent implements OnInit {
   //  '', '', '', '', null, false, false, false, false,null);
 
   getTrans(){
-    this.trans.getTransactions(this.tempBuyer).subscribe(
+    this.trans.getTransactions(this.account).subscribe(
       data => {
         this.transactions = data;
         console.log(data);

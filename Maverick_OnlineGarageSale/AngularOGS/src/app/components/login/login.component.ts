@@ -58,14 +58,13 @@ export class LoginComponent implements OnInit {
   }
 
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('','', '', '', '', '', null, false, false, false, false);
+  regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
 
   cLogin() {
     this.login.checkLogin(this.account).subscribe(
       data => {
-        console.log(this.address);
         this.login.changeAccount(data);
-        console.log(data);
+        //if(this.account.email != null)
       },
       error => {
         console.log('error');

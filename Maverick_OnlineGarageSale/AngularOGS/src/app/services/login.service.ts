@@ -23,7 +23,7 @@ export class LoginService {
 
 private accountSource = new BehaviorSubject<Account>(
                             new Account('', '', '', '', '', '',
-                             null, false, false, false, false,null));
+                             null, false, false, false, false));
 
 currentAccount = this.accountSource.asObservable();
 

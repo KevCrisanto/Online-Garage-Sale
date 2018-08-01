@@ -17,7 +17,7 @@ public class Login {
 	private By username = By.xpath("//input[@name='username']");
 	private By password = By.xpath("//input[@name='password']");
 	private By rememberMe = By.cssSelector("input[type='checkbox']");
-	private By submit = By.cssSelector("input[type='submit']");
+	private By submit = By.cssSelector("button[type='submit']");
 	
 	public Login(WebDriver driver) {
 		this.driver = driver;

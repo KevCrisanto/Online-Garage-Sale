@@ -85,8 +85,13 @@
 		    <artifactId>aws-java-sdk-s3</artifactId>
 		    <version>1.11.364</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.13.0</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -133,7 +138,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- Plugin to copy the content of /angular/dist/ directory to output 
 				directory (ie/ /target/transactionManager-1.0/) -->
 			<plugin>

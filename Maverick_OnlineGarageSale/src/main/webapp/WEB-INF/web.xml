@@ -65,5 +65,13 @@
     <servlet-name>CreditCardServlet</servlet-name>
     <url-pattern>/CreditCardServlet</url-pattern>
   </servlet-mapping>
-
+	<servlet>
+		<display-name>Transactions</display-name>
+		<servlet-name>TransactionsServlet</servlet-name>
+		<servlet-class>maverick.ogs.servlets.TransactionsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TransactionsServlet</servlet-name>
+		<url-pattern>/Transactions</url-pattern>
+	</servlet-mapping>
 </web-app>

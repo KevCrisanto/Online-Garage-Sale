@@ -56,26 +56,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('', '', '', '', '', '', null, false, false, false, false,null);
-=======
-  // acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account(
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    null,
-    false,
-    false,
-    false,
-    false,
-    null
-  );
->>>>>>> ogs_dev
+  regAcc = new Account('','', '', '', '', '', null, false, false, false, false);
 
   cLogin() {
     console.log(this.account)

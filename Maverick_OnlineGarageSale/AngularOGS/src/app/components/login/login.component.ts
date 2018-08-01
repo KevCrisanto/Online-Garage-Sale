@@ -83,7 +83,11 @@ export class LoginComponent implements OnInit {
   register(a: Account) {
     this.login.registerService(this.regAcc).subscribe(
       data => {
-        this.login.changeAccount(data);
+        if(data != null){
+          this.login.changeAccount(data);
+          this.cookieService.set('userid',data.accountId);
+          this.router.navigate(['item-list']);
+        }
         console.log(data);
       },
       error => {

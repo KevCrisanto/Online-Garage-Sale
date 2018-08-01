@@ -24,9 +24,4 @@ public class UserService {
 		return userDao.getAccountById(id);
 	}
 	
-	public static UserAccount getUserById(String Id) {
-		UserAccountDAOImpl uad = new UserAccountDAOImpl();
-		return uad.getAccountById(Id);
-	}
-	
 }

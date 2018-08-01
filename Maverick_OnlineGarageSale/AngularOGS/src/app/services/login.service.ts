@@ -24,7 +24,7 @@ export class LoginService {
   // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
 
 private accountSource = new BehaviorSubject<Account>(
-                            new Account('', 'ggg', '', '', '', '',
+                            new Account('', '', '', '', '', '',
                              null, false, false, false, false, null));
 
 currentAccount = this.accountSource.asObservable();

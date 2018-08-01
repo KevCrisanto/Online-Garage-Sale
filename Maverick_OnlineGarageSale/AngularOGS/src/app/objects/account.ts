@@ -1,4 +1,4 @@
-import { CreditCard } from './credit-card';
+import { Card } from './card';
 export class Account {
   constructor(
     public id: string,
@@ -12,6 +12,6 @@ export class Account {
     public isPremium: boolean,
     public isAdmin: boolean,
     public isActive: boolean,
-    public creditCards: CreditCard[]
+    public creditCards: Card[]
   ) {}
 }

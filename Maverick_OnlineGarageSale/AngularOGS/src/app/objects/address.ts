@@ -1,4 +1,4 @@
-import { CreditCard } from './credit-card';
+import { Card } from './card';
 export class Address {
     constructor(
         public addressId: string,
@@ -9,7 +9,7 @@ export class Address {
         public city: string,
         public country: string,
         public zipcode: string,
-        public creditCards: CreditCard[]
+        public creditCards: Card[]
 
       ) {}
 }

@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//response.setContentType("text/html");
-		Gson gson = new GsonBuilder().create();
+		Gson gson = new Gson();
 		BufferedReader reader = request.getReader();
 		UserAccount user = gson.fromJson(reader,UserAccount.class);
 
@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 		if((validuser = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
 			out.println(gson.toJson(validuser));
 		}else {
+			user.setPassword("");
 			out.println(gson.toJson(user));
 		}
 

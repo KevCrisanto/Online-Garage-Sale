@@ -1,3 +1,4 @@
+import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { LoginComponent } from './components/login/login.component';
@@ -23,6 +24,11 @@ export const approutes: Routes = [
     {
         path: 'profile',
         component: ProfileComponent
+    },
+    {
+        path: 'transactions',
+        component: TransactionsComponent
+
     },
     {
         //The URL mapping

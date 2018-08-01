@@ -27,6 +27,7 @@ import { ItemDetailComponent } from './components/items/item-detail/item-detail.
 import { CardService } from './services/card.service';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
+import { CookieService } from 'ngx-cookie-service';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
@@ -41,7 +42,6 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     ItemsListComponent,
     ItemDetailComponent,
     TransactionsComponent,
-    TransactionComponent,
     ItemCheckoutComponent
   ],
   imports: [
@@ -56,6 +56,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     LoginService,
     CardService,
     TransactionsService,
+    CookieService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

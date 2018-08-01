@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from './../objects/account';
@@ -43,8 +44,20 @@ currentAccount = this.accountSource.asObservable();
   }
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    if(this.cookieService.check('userid')){
+      this.getUserById(this.cookieService.get('userid')).subscribe(
+        data => {
+          this.changeAccount(data);
+        },
+        error => {
+          console.log('error');
+        }
+      );
+    }
+   }
   // input: Account
+  
   checkLogin(account: Account): Observable<Account> {
     return this.http.post<Account>(this.loginUrl, account, httpOptions);
   }

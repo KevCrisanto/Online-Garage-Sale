@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 
 
 import { Routes } from '@angular/router';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 export const approutes: Routes = [
@@ -19,6 +20,10 @@ export const approutes: Routes = [
     {
         path: 'item-list',
         component: ItemsListComponent
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent
     },
     {
         path: 'transactions',

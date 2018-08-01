@@ -52,7 +52,7 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		Session session = HibernateUtil.getSession();
 		List<maverick.ogs.beans.Transactions> transactions = null;
 		
-		try {
+		try {	
 			transactions = session.createQuery("FROM Transactions where buyer=\'" + accountId + "\' or " + "seller=\'" + accountId + "\'").list();
 		} catch (HibernateException e) {
 			

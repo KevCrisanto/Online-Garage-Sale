@@ -31,7 +31,7 @@
 		</property>
 		
 		<property name="hibernate.hbm2ddl.auto">
-			create
+			update
 		</property>
 		
 		<mapping class="maverick.ogs.beans.UserAccount"/>

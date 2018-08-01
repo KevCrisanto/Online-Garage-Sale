@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import * as $ from 'jquery';
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   // account = Account;
   // account2 = Account;
 
-  constructor(private http: HttpClient, private login: LoginService, private router: Router) {}
+  constructor(private http: HttpClient, private login: LoginService, private router: Router,
+              private cookieService: CookieService) {}
 
   account: Account;
 
@@ -57,14 +59,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  
+
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
 
   cLogin() {
     this.login.checkLogin(this.account).subscribe(
       data => {
-        this.login.changeAccount(data);
-        if(data.password != ''){
+        if(data != null){
+          this.login.changeAccount(data);
+          this.cookieService.set('userid',data.accountId);
           this.router.navigate(['item-list']);
         }
 
@@ -78,7 +83,12 @@ export class LoginComponent implements OnInit {
   register(a: Account) {
     this.login.registerService(this.regAcc).subscribe(
       data => {
-        this.login.changeAccount(data);
+        if(data != null){
+          this.login.changeAccount(data);
+          this.cookieService.set('userid',data.accountId);
+          this.router.navigate(['item-list']);
+        }
+        console.log(data);
       },
       error => {
         console.log('error');

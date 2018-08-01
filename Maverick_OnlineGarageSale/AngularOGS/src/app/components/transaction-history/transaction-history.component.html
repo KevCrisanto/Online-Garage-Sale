@@ -1,0 +1,26 @@
+<div stTable #table="stTable">
+  <div *ngIf="table.busy" class="loading-indicator">
+    Loading...
+  </div>
+  <table>
+    <thead>
+      <tr>
+	<th>Transaction Id</th>
+	<th>Buyer</th>
+	<th>Seller</th>
+	<th>Item</th>
+	<th>Transaction</th>
+	<th>Memo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of table.transactions">
+	<td>{{transaction.value.buyer}}</td>
+	<td>{{transaction.value.seller}}</td>
+	<td>{{transaction.value.item.}}</td>
+	<td>{{transaction.value.transactionAmount}}</td>
+	<td>{{tranasction.value.memo}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

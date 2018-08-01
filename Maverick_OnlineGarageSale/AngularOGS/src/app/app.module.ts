@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { CardModule } from 'ngx-card/ngx-card';
+import { SmartTableModule } 'smart-table-ng';
 import { AppComponent } from './app.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { CardService } from './services/card.service';
+import { TransactionHistoryComponent } from './components/transaction-history/transaction-history.component';
 
 library.add(faShoppingCart, faSearch);
 
@@ -30,7 +32,8 @@ library.add(faShoppingCart, faSearch);
     NavbarComponent,
     ItemsComponent,
     ItemsListComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,

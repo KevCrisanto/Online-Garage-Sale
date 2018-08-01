@@ -32,6 +32,7 @@
     "ngx-card": "^0.2.4",
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
+    "smart-table-ng": "0.0.10",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

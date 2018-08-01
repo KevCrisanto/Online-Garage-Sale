@@ -73,7 +73,7 @@ public class ItemTest {
 		String mockId = id.insertItem(mockItem);			
 		assertEquals(mockId, mockItem.getItemId());
 		
-		UserAccount mockua = new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", now, false, false, false, false);
+		UserAccount mockua = new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", false, false, false, false);
 		UserAccountDAO uad = new UserAccountDAOImpl();
 		uad.insertAccount(mockua);
 		
@@ -119,7 +119,7 @@ public class ItemTest {
 		ItemDAO id = new ItemDAOImpl();
 		Date now = new Date();
 		
-		UserAccount mockua = new UserAccount("admin", "password", "admin", "istrator", "admin@email.com", now, false, false, false, false);
+		UserAccount mockua = new UserAccount("admin", "password", "admin", "istrator", "admin@email.com", false, false, false, false);
 		UserAccountDAO uad = new UserAccountDAOImpl();
 		uad.insertAccount(mockua);
 		

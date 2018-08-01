@@ -64,7 +64,7 @@ public class CreditCardTest {
 		String id3 = null;
 		
 		if (mkay == null) {
-			id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", expiry, false, false, false, false));
+			id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", false, false, false, false));
 			mkay = userAccountDAO.getAccountByUsername("mkay");
 			users.add(mkay);
 		} else {

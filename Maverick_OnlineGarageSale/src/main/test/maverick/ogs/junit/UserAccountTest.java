@@ -28,16 +28,16 @@ public class UserAccountTest {
 		String timeNow = simpleDate.format(now);
 		
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		String id1 = userAccountDAO.insertAccount(new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com", now, false, false, false, false));
-		String id2 = userAccountDAO.insertAccount(new UserAccount("lkay", "password", "Leon", "Kay", "lkay@email.com", now, false, false, false, false));
-		String id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", now, false, false, false, false));
-		String id4 = userAccountDAO.insertAccount(new UserAccount("nkay", "password", "Nathan", "Kay", "nkay@email.com", now, false, false, false, false));
-		String id5 = userAccountDAO.insertAccount(new UserAccount("okay", "password", "Owen", "Kay", "okay@email.com", now, false, false, false, false));
-		String id6 = userAccountDAO.insertAccount(new UserAccount("pkay", "password", "Pam", "Kay", "pkay@email.com", now, false, false, false, false));
-		String id7 = userAccountDAO.insertAccount(new UserAccount("qkay", "password", "Quinoaycka", "Kay", "qkay@email.com", now, false, false, false, false));
-		String id8 = userAccountDAO.insertAccount(new UserAccount("rkay", "password", "Ryan", "Kay", "rkay@email.com", now, false, false, false, false));
-		String id9 = userAccountDAO.insertAccount(new UserAccount("skay", "password", "Shelby", "Kay", "skay@email.com", now, false, false, false, false));
-		String id10 = userAccountDAO.insertAccount(new UserAccount("tkay", "password", "Tonya", "Kay", "tkay@email.com", now, false, false, false, false));
+		String id1 = userAccountDAO.insertAccount(new UserAccount("kkay", "password", "Kristina", "Kay", "kkay@email.com",false, false, false, false));
+		String id2 = userAccountDAO.insertAccount(new UserAccount("lkay", "password", "Leon", "Kay", "lkay@email.com", false, false, false, false));
+		String id3 = userAccountDAO.insertAccount(new UserAccount("mkay", "password", "Mason", "Kay", "mkay@email.com", false, false, false, false));
+		String id4 = userAccountDAO.insertAccount(new UserAccount("nkay", "password", "Nathan", "Kay", "nkay@email.com", false, false, false, false));
+		String id5 = userAccountDAO.insertAccount(new UserAccount("okay", "password", "Owen", "Kay", "okay@email.com", false, false, false, false));
+		String id6 = userAccountDAO.insertAccount(new UserAccount("pkay", "password", "Pam", "Kay", "pkay@email.com", false, false, false, false));
+		String id7 = userAccountDAO.insertAccount(new UserAccount("qkay", "password", "Quinoaycka", "Kay", "qkay@email.com",  false, false, false, false));
+		String id8 = userAccountDAO.insertAccount(new UserAccount("rkay", "password", "Ryan", "Kay", "rkay@email.com", false, false, false, false));
+		String id9 = userAccountDAO.insertAccount(new UserAccount("skay", "password", "Shelby", "Kay", "skay@email.com", false, false, false, false));
+		String id10 = userAccountDAO.insertAccount(new UserAccount("tkay", "password", "Tonya", "Kay", "tkay@email.com", false, false, false, false));
 	}
 
 	@After
@@ -90,7 +90,7 @@ public class UserAccountTest {
 	public void getAccountByIdTest() {
 		Date now = new Date();
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		String id11 = (String) userAccountDAO.insertAccount(new UserAccount("ukay", "password", "Umow", "Kay", "ukay@email.com", now, false, false, false, false));
+		String id11 = (String) userAccountDAO.insertAccount(new UserAccount("ukay", "password", "Umow", "Kay", "ukay@email.com", false, false, false, false));
 		UserAccount userAccount11 = (UserAccount) userAccountDAO.getAccountById(id11);
 		assertEquals(id11, userAccount11.getAccountId());
 		
@@ -102,7 +102,7 @@ public class UserAccountTest {
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
 		String id12 = null;
 		if (userAccountDAO.getAccountByUsername("vkay") == null) {
-			id12 = (String) userAccountDAO.insertAccount(new UserAccount("vkay", "password", "Vanessa", "Kay", "vkay@email.com", now, false, false, false, false));
+			id12 = (String) userAccountDAO.insertAccount(new UserAccount("vkay", "password", "Vanessa", "Kay", "vkay@email.com", false, false, false, false));
 		} 
 		// UserAccount userAccount12 = (UserAccount) userAccountDAO.getAccountById(id12);
 		// System.out.println("UserAccount12 is reporting the username: " + userAccount12.getUsername());

@@ -32,14 +32,14 @@ public class TransactionsTest {
 		UserAccount seller = null;
 		
 		if (userAccountDAO.getAccountByUsername("buyer") == null) {
-			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", now, true, true, false, true);
+			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(buyer);
 		} else {
 			buyer = userAccountDAO.getAccountByUsername("buyer");
 		}
 		
 		if (userAccountDAO.getAccountByUsername("seller") == null) {
-			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", now, true, true, false, true);
+			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(seller);
 		} else {
 			seller = userAccountDAO.getAccountByUsername("seller");
@@ -68,14 +68,14 @@ public class TransactionsTest {
 		UserAccount seller = null;
 		
 		if (userAccountDAO.getAccountByUsername("buyer") == null) {
-			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", now, true, true, false, true);
+			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(buyer);
 		} else {
 			buyer = userAccountDAO.getAccountByUsername("buyer");
 		}
 		
 		if (userAccountDAO.getAccountByUsername("seller") == null) {
-			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", now, true, true, false, true);
+			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(seller);
 		} else {
 			seller = userAccountDAO.getAccountByUsername("seller");
@@ -104,14 +104,14 @@ public class TransactionsTest {
 		Date now = new Date();
 		
 		if (userAccountDAO.getAccountByUsername("buyer") == null) {
-			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", now, true, true, false, true);
+			buyer = new UserAccount("buyer","testPassword","Tom","Earl", "tearl@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(buyer);
 		} else {
 			buyer = userAccountDAO.getAccountByUsername("buyer");
 		}
 		
 		if (userAccountDAO.getAccountByUsername("seller") == null) {
-			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", now, true, true, false, true);
+			seller = new UserAccount("seller", "testPassword", "Jess", "Dancer", "jdancer@email.com", true, true, false, true);
 			userAccountDAO.insertAccount(seller);
 		} else {
 			seller = userAccountDAO.getAccountByUsername("seller");

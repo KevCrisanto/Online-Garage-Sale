@@ -1,15 +1,15 @@
 export class Account {
   constructor(
-    id: string,
-    username: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    Date: Date,
-    isVerified: boolean,
-    isPremium: boolean,
-    isAdmin: boolean,
-    isActive: boolean//,creditCards: CreditCard
+    public id: string,
+    public username: string,
+    public password: string,
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public Date: Date,
+    public isVerified: boolean,
+    public isPremium: boolean,
+    public isAdmin: boolean,
+    public isActive: boolean//,creditCards: CreditCard
   ) {}
 }

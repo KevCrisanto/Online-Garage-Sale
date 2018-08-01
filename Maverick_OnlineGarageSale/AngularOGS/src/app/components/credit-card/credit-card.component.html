@@ -1,4 +1,3 @@
-<main>
   <article class="slds-card">
     <div class="slds-card__body slds-card__body_inner">
       <div class="demo-container slds-border_top slds-border_bottom">
@@ -19,7 +18,7 @@
                 </div>
                 <div class="input-group mb-2">
                   <input type="text" name="expiry" placeholder="MM/YY" class="form-control" card-expiry
-                 />
+                  [(ngModel)]="creditCard.expiration" name="expiration"/>
                   <input type="text" name="cvc" placeholder="CVC" class="form-control" card-cvc
                   [(ngModel)]="creditCard.cvv" name="cvv" />
                 </div>
@@ -27,7 +26,6 @@
                   <button type="submit" value="Submit" class="btn btn-primary btn-block" [disabled]="invalid"> Submit </button>
                 </div>
               </div>
-            </div>
           </fieldset>
         </form>
       </div>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import maverick.ogs.beans.CreditCard;
 import maverick.ogs.service.CreditCardService;
@@ -41,6 +42,8 @@ public class CreditCardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Gson gson = new Gson();
 		BufferedReader reader = request.getReader();
+		System.out.println(reader.readLine());
+		
 		CreditCard card = (CreditCard)gson.fromJson(reader, CreditCard.class);
 		System.out.println(card.toString());
 		

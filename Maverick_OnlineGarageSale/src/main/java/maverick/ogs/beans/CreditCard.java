@@ -1,7 +1,6 @@
 package maverick.ogs.beans;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +36,7 @@ public class CreditCard {
 	private String cardName;
 
 	@Column(name = "expiration")
-	private Date expiration;
+	private String expiration;
 	
 	@Column(name = "cvv")
 	private String cvv;
@@ -45,7 +44,7 @@ public class CreditCard {
 	@ManyToOne(cascade=CascadeType.REMOVE)
 	private Address address;
 	
-	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, Date expiration, String cvv, Address address) {
+	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, String expiration, String cvv, Address address) {
 		this.cardNumber = cardNumber;
 		this.userAccounts = userAccounts;
 		this.cardName = cardName;
@@ -54,7 +53,7 @@ public class CreditCard {
 		this.address = address;
 	}
 	
-	public CreditCard(String cardNumber, String cardName, Date expiration, String cvv) {
+	public CreditCard(String cardNumber, String cardName, String expiration, String cvv) {
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
 		this.expiration = expiration;
@@ -96,11 +95,11 @@ public class CreditCard {
 		this.cardName = cardName;
 	}
 
-	public Date getExpiration() {
+	public String getExpiration() {
 		return expiration;
 	}
 
-	public void setExpiration(Date expiration) {
+	public void setExpiration(String expiration) {
 		this.expiration = expiration;
 	}
 

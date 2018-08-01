@@ -27,6 +27,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
 			if (transaction != null) {
 				transaction.rollback();
 			}
+			e.printStackTrace();
 		} finally {
 			session.close();
 		}

@@ -5,6 +5,7 @@ import { Account } from '../../objects/account';
 import { Card } from '../../objects/card';
 import { Address } from '../../objects/address';
 import { CardService } from '../../services/card.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -19,14 +20,17 @@ export class CreditCardComponent implements OnInit, DoCheck {
 
   @ViewChild('cardNumber') cardNumber: ElementRef;
 
-  constructor(private cardS: CardService) { }
+  constructor(private cardS: CardService, private login: LoginService) { }
+  accounts: Account[];
+  account = new Account('', '', '', '', '', '', null, false, false, false, false);
   invalid;
   ngOnInit() {
+    this.login.currentAccount.subscribe(account => this.account = account);
   }
 
-  account = new Account('', '', '', '', '', '', null, false, false, false, false);
-  // address = new Address('','','','','','','','','');
-  creditCard = new Card('',this.account, '', '','',null)
+  
+  address = new Address('','809 Bobbert Way','','','','Denver','USA','80234',null);
+  creditCard = new Card('',this.account, '', '','',this.address);
 
   ngDoCheck() {
     if (this.cardNumber.nativeElement.classList.contains('jp-card-invalid') || this.cardNumber.nativeElement.value === '') {
@@ -38,6 +42,9 @@ export class CreditCardComponent implements OnInit, DoCheck {
   }
 
   insert(c: Card){
+    console.log(this.creditCard);
+    console.log(this.account);
+    console.log(this.address)
     this.cardS.cardService(this.creditCard).subscribe();
   }
 

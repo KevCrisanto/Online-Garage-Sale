@@ -1,4 +1,3 @@
-import { TransactionComponent } from './components/transactions/transaction/transaction.component';
 import { TransactionsService } from './services/transactions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -29,6 +28,7 @@ import { CardService } from './services/card.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
+import { CookieService } from 'ngx-cookie-service';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
@@ -44,7 +44,6 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     ItemDetailComponent,
     ProfileComponent,
     TransactionsComponent,
-    TransactionComponent,
     ItemCheckoutComponent
   ],
   imports: [
@@ -59,6 +58,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     LoginService,
     CardService,
     TransactionsService,
+    CookieService,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

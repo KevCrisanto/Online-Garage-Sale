@@ -16,6 +16,7 @@ import com.google.gson.GsonBuilder;
 import maverick.ogs.beans.Transactions;
 import maverick.ogs.beans.UserAccount;
 import maverick.ogs.service.TransactionsService;
+import maverick.ogs.service.UserService;
 
 /**
  * Servlet implementation class GetTransactionsServlet

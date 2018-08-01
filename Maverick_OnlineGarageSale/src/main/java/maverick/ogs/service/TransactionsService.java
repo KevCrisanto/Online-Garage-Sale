@@ -10,6 +10,6 @@ import maverick.ogs.dao.TransactionsDAOImpl;
 public class TransactionsService {
 	public static List<Transactions> getUserTransactions(UserAccount userAccount){
 		TransactionsDAO transDAO = new TransactionsDAOImpl();
-		return transDAO.getAllTransactions();
+		return transDAO.getTransactionsAnAccountHasById(userAccount.getAccountId());
 	}
 }

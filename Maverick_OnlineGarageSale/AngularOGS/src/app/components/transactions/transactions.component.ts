@@ -20,13 +20,12 @@ export class TransactionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  tempBuyer: Account = new Account('8ac0830a-a424-47cc-8b01-3cb59663380c','',
+  tempBuyer: Account = new Account('5a48fc39-9ea5-436e-8295-4a3bc195fb66','',
    '', '', '', '', null, false, false, false, false,null);
   tempSeller: Account = new Account('2b1d9453-cdb3-4c02-9ac3-599448771577','',
    '', '', '', '', null, false, false, false, false,null);
 
   getTrans(){
-    
     this.trans.getTransactions(this.tempBuyer).subscribe(
       data => {
         this.transactions = data;

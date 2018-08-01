@@ -1,4 +1,3 @@
-import { TransactionComponent } from './components/transactions/transaction/transaction.component';
 import { TransactionsService } from './services/transactions.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

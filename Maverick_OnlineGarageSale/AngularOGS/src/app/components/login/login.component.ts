@@ -1,4 +1,4 @@
-import { Address } from './../../objects/address';
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   // account = Account;
   // account2 = Account;
 
-  constructor(private http: HttpClient, private login: LoginService) {}
+  constructor(private http: HttpClient, private login: LoginService, private router: Router) {}
 
   account: Account;
 
@@ -64,7 +64,10 @@ export class LoginComponent implements OnInit {
     this.login.checkLogin(this.account).subscribe(
       data => {
         this.login.changeAccount(data);
-        //if(this.account.email != null)
+        if(data.password != ''){
+          this.router.navigate(['item-list']);
+        }
+
       },
       error => {
         console.log('error');

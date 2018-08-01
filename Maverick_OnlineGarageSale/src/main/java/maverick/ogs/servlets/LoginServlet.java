@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 		if((validuser = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
 			out.println(gson.toJson(validuser));
 		}else {
+			user.setPassword("");
 			out.println(gson.toJson(user));
 		}
 

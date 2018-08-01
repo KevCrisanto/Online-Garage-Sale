@@ -3,7 +3,7 @@ export class Subscriptions {
     constructor(
         sub_id: number,
         userId: string,
-        tiers: Tier,
+        tiers: Tier[],
         subscriptionEndDate: Date
       ) {}
 }

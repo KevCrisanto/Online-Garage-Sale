@@ -1,3 +1,4 @@
+import { CreditCard } from './credit-card';
 export class Account {
   constructor(
     public id: string,

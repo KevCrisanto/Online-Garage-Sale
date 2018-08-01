@@ -11,7 +11,7 @@ import maverick.ogs.util.HibernateUtil;
 public class TransactionDAOImpl implements TransactionDAO {
 
 	@Override
-	public String insertTransaction(maverick.ogs.beans.Transaction transaction) {
+	public String insertTransaction(maverick.ogs.beans.Transactions transaction) {
 		Session session = HibernateUtil.getSession();
 		Transaction hqlTransaction = null;
 		String transactionId = null;
@@ -32,9 +32,9 @@ public class TransactionDAOImpl implements TransactionDAO {
 	}
 
 	@Override
-	public List<maverick.ogs.beans.Transaction> getAllTransactions() {
+	public List<maverick.ogs.beans.Transactions> getAllTransactions() {
 		Session session = HibernateUtil.getSession();
-		List<maverick.ogs.beans.Transaction> transactions = null;
+		List<maverick.ogs.beans.Transactions> transactions = null;
 		
 		try {
 			transactions = session.createQuery("FROM Transaction").list();
@@ -48,10 +48,10 @@ public class TransactionDAOImpl implements TransactionDAO {
 	}
 
 	@Override
-	public Boolean updateTransactionById(String transactionId, maverick.ogs.beans.Transaction transaction) {
+	public Boolean updateTransactionById(String transactionId, maverick.ogs.beans.Transactions transaction) {
 		Session session = HibernateUtil.getSession();
 		Transaction hqlTransaction = null;
-		maverick.ogs.beans.Transaction transactionToUpdate = (maverick.ogs.beans.Transaction) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'");
+		maverick.ogs.beans.Transactions transactionToUpdate = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'");
 		Boolean result = null;
 		try {
 			hqlTransaction = session.beginTransaction();
@@ -89,14 +89,14 @@ public class TransactionDAOImpl implements TransactionDAO {
 	}
 
 	@Override
-	public maverick.ogs.beans.Transaction getTransactionById(String transactionId) {
+	public maverick.ogs.beans.Transactions getTransactionById(String transactionId) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
-		maverick.ogs.beans.Transaction result = null;
+		maverick.ogs.beans.Transactions result = null;
 		
 		try {
 			transaction = session.beginTransaction();
-			result = (maverick.ogs.beans.Transaction) session.createQuery("FROM Transaction where=\'" + transactionId + "\'").uniqueResult();
+			result = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where=\'" + transactionId + "\'").uniqueResult();
 			
 		} catch (HibernateException e) {
 		} finally {
@@ -110,12 +110,12 @@ public class TransactionDAOImpl implements TransactionDAO {
 	public Boolean deleteTransactionById(String transactionId) {
 		Session session = HibernateUtil.getSession();
 		Transaction transaction = null;
-		maverick.ogs.beans.Transaction hqlQueryResult = null;
+		maverick.ogs.beans.Transactions hqlQueryResult = null;
 		Boolean success = false;
 		
 		try {
 			transaction = session.beginTransaction();
-			hqlQueryResult = (maverick.ogs.beans.Transaction) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'").uniqueResult();
+			hqlQueryResult = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transaction where transactionId=\'" + transactionId + "\'").uniqueResult();
 			session.remove(hqlQueryResult);
 			transaction.commit();
 			success = true;

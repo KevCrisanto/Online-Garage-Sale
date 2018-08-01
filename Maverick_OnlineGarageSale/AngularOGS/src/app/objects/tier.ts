@@ -3,6 +3,6 @@ export class Tier {
     constructor(
         tier_id: number,
         name: string,
-        subs: Subscriptions
+        subs: Subscriptions[]
       ) {}
 }

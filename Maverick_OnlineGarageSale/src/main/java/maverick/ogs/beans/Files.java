@@ -1,35 +1,33 @@
 package maverick.ogs.beans;
 
-import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 import javax.sql.rowset.serial.SerialException;
 
-public class File {
+@Entity
+public class Files {
 	@Id
 	@Column(name = "file_id")
 	private String fileId;
 	
-	@OneToOne
-	@JoinColumn(name = "item_id")
-	private String itemId;
-	
 	@Column(name = "filekey")
 	private String filekey;
 	
-	public File() {
+	public Files() {
 		super();
 		this.fileId = UUID.randomUUID().toString();
 	}
 	
-	public File(String itemId, String filekey) {
+	public Files(String filekey) {
 		this.fileId = UUID.randomUUID().toString();
-		this.itemId = itemId;
 		this.filekey = filekey;
 	}
 	
@@ -51,14 +49,6 @@ public class File {
 
 	public void setFileId(String fileId) {
 		this.fileId = fileId;
-	}
-
-	public String getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(String itemId) {
-		this.itemId = itemId;
 	}
 
 	/**

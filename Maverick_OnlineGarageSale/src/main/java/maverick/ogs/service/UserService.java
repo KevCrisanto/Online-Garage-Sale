@@ -8,10 +8,8 @@ public class UserService {
 	public static UserAccount userLogin(String username,String password) {
 		UserAccountDAOImpl userDao = new UserAccountDAOImpl();
 		UserAccount user = userDao.getAccountByUsername(username);
-		
-		if(!user.getPassword().equals(password)) {
-			return null;
-		}		
+		if(user == null) return null;
+		if(!user.getPassword().equals(password)) return null;		
 		return user;
 	}
 	

@@ -7,7 +7,7 @@ import java.util.Date;
 import org.junit.Test;
 
 import maverick.ogs.beans.Item;
-import maverick.ogs.beans.Transaction;
+import maverick.ogs.beans.Transactions;
 import maverick.ogs.beans.UserAccount;
 import maverick.ogs.dao.ItemDAO;
 import maverick.ogs.dao.ItemDAOImpl;
@@ -48,7 +48,7 @@ public class TransactionTest {
 		
 		String itemId = (String) itemDAO.insertItem(item);
 		
-		String transactionId = (String) transactionDAO.insertTransaction(new Transaction(buyer, seller, itemDAO.getItemById(itemId), price, "Credit card withdrawal delayed as item is not available."));
+		String transactionId = (String) transactionDAO.insertTransaction(new Transactions(buyer, seller, itemDAO.getItemById(itemId), price, "Credit card withdrawal delayed as item is not available."));
 	
 		assertNotNull(transactionId);
 	}

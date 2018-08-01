@@ -1,9 +1,9 @@
 import { Tier } from './tier';
 export class Subscriptions {
     constructor(
-        sub_id: number,
-        userId: string,
-        tiers: Tier[],
-        subscriptionEndDate: Date
+        public sub_id: number,
+        public userId: string,
+        public tiers: Tier[],
+        public subscriptionEndDate: Date
       ) {}
 }

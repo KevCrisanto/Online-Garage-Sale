@@ -3,12 +3,12 @@ import { Address } from "./address";
 
 export class Card{
     constructor(
-        cardNumber: string,
-        userAccount: Account,
-        cardName: string,
-        expiration: string,
-        cvv: string,
-        address: Address
+        public cardNumber: string,
+        public userAccount: Account,
+        public cardName: string,
+        public expiration: string,
+        public cvv: string,
+        public address: Address
     ){}
     
 }

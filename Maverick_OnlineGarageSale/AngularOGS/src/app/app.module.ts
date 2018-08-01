@@ -10,6 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login.service';
 import { FilesComponent } from './components/files/files.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { approutes } from './routing';
+import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -41,7 +43,8 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     CardModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    RouterModule.forRoot(approutes)
   ],
   providers: [
     LoginService,

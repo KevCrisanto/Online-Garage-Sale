@@ -57,6 +57,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  
+
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
   regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
 
@@ -76,6 +78,7 @@ export class LoginComponent implements OnInit {
     this.login.registerService(this.regAcc).subscribe(
       data => {
         this.login.changeAccount(data);
+        console.log(data);
       },
       error => {
         console.log('error');

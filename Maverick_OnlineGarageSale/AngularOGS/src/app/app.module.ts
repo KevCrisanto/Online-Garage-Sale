@@ -24,6 +24,7 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { CardService } from './services/card.service';
+import { ProfileComponent } from './components/profile/profile.component';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
@@ -36,7 +37,8 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     NavbarComponent,
     ItemsComponent,
     ItemsListComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

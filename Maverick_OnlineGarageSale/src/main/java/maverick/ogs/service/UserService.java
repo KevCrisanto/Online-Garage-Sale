@@ -18,4 +18,9 @@ public class UserService {
 		return uad.insertAccount(userAccount);		
 	}
 	
+	public static UserAccount getUserById(String Id) {
+		UserAccountDAOImpl uad = new UserAccountDAOImpl();
+		return uad.getAccountById(Id);
+	}
+	
 }

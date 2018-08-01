@@ -56,7 +56,7 @@ public class UserAccount {
 	
 
 	public UserAccount(String accountId, String username, String password, String firstName, String lastName, String email,
-			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
+			boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
 		super();
 		this.accountId = accountId;
 		this.username = username;
@@ -64,7 +64,7 @@ public class UserAccount {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.creationDate = creationDate;
+		this.creationDate = new Date();
 		this.isVerified = isVerified;
 		this.isPremium = isPremium;
 		this.isAdmin = isAdmin;
@@ -72,7 +72,7 @@ public class UserAccount {
 	}
 
 	public UserAccount(String username, String password, String firstName, String lastName, String email,
-			Date creationDate, boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
+			boolean isVerified, boolean isPremium, boolean isAdmin, boolean isActive) {
 		super();
 		this.accountId = UUID.randomUUID().toString();
 		this.username = username;
@@ -80,27 +80,11 @@ public class UserAccount {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.creationDate = creationDate;
+		this.creationDate = new Date();
 		this.isVerified = isVerified;
 		this.isPremium = isPremium;
 		this.isAdmin = isAdmin;
 		this.isActive = isActive;
-	}
-	
-	public UserAccount(String username, String password, String firstName, String lastName, String email,
-			Date creationDate) {
-		super();
-		this.accountId = UUID.randomUUID().toString();
-		this.username = username;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.creationDate = creationDate;
-		this.isVerified = false;
-		this.isPremium = false;
-		this.isAdmin = false;
-		this.isActive = false;
 	}
 	
 	public UserAccount(String username, String password, String firstName, String lastName, String email) {

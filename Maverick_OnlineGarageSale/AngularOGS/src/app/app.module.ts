@@ -30,8 +30,6 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 <<<<<<< HEAD
 =======
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
-import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
->>>>>>> f5d4344baec582530917e7dd64b78b5f58c8ad73
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 

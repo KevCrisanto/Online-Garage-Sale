@@ -14,12 +14,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { approutes } from './routing';
 import { RouterModule } from '@angular/router';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faSearch,
   faShoppingCart,
-  faMoneyBillAlt
+  faMoneyBillAlt,
+  faPencilAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
@@ -31,7 +35,7 @@ import { ItemCheckoutComponent } from './components/items/item-checkout/item-che
 import { CookieService } from 'ngx-cookie-service';
 import { ItemSubmitComponent } from './components/items/item-submit/item-submit.component';
 
-library.add(faShoppingCart, faSearch, faMoneyBillAlt);
+library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
 
 @NgModule({
   declarations: [
@@ -54,6 +58,9 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
+    MatCardModule,
+    MatIconModule,
+    MatProgressBarModule,
     RouterModule.forRoot(approutes)
   ],
   providers: [

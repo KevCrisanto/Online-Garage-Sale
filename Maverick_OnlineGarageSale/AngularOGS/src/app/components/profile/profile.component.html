@@ -1,37 +1,70 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-6">
-      <form>
-        <div class="form-group row">
-          <label for="staticusername" class="col-sm-2 col-form-label">username</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticusername" value={{account.username}}>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticPass" class="col-sm-2 col-form-label">password</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticPass" value="********">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticfname" class="col-sm-2 col-form-label">first name</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="staticfname" value={{account.firstName}}>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticlname" class="col-sm-2 col-form-label">lastname</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="staticlname" value={{account.lastName}}>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">email</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="staticlname" value={{account.email}}>
-          </div>
-        </div>
-      </form>
+<div class="d-flex justify-content-center my-3">
+  <div class="col-12">
+    <div class="card rounded bg-light">
+      <div class="card-body">
+        <h3 class="text-warning mb-3">My account</h3>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="d-flex my-3">
+  <div class="col-12">
+    <div class="card rounded bg-light">
+      <div class="card-body">
+
+        <div class="row">
+          <!-- First card -->
+          <div class="col-xs-12 col-6">
+            <div class="card bg-light mb-3">
+              <div class="card-header">
+                <div class="d-flex">
+                  <div class="p-2">
+                    <span>Account information</span>
+                  </div>
+                  <div class="ml-auto p-2">
+                    <fa-icon icon="pencil-alt" class="text-warning"></fa-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text text-left">
+                  Username: ahwang84392
+                  <br> First name: Andrew
+                  <br> Last name: Hwang
+                  <br> Email: hwang@email.com
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of first card -->
+
+          <!-- Second card -->
+          <div class="col-xs-12 col-6">
+            <div class="card bg-light mb-3">
+              <div class="card-header">
+                <div class="d-flex">
+                  <div class="p-2">
+                    <span>Address</span>
+                  </div>
+                  <div class="ml-auto p-2">
+                    <fa-icon icon="pencil-alt" class="text-warning"></fa-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p class="card-text text-left">
+                  6666 N Walmart St
+                  <br> Arlington, TX
+                  <br> 67895
+                  <br> United States
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of second card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

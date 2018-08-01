@@ -27,6 +27,7 @@ import { ItemsListComponent } from './components/items/items-list/items-list.com
 import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { CardService } from './services/card.service';
 import { TransactionsComponent } from './components/transactions/transactions.component';
+import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
@@ -42,6 +43,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     ItemDetailComponent,
     TransactionsComponent,
     TransactionComponent
+    ItemCheckoutComponent
   ],
   imports: [
     BrowserModule,

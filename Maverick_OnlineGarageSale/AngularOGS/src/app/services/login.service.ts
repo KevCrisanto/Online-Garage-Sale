@@ -18,6 +18,7 @@ const httpOptions = {
 export class LoginService {
   private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
   private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  private getAccountUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
   // private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
   // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
 
@@ -57,4 +58,7 @@ currentAccount = this.accountSource.asObservable();
     this.accountSource.next(account);
   }
 
+  getUserById(userId: string):Observable<Account>{
+    return this.http.post<Account>(this.getAccountUrl,userId,httpOptions);
+  }
 }

@@ -28,6 +28,7 @@ import { CardService } from './services/card.service';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ItemSubmitComponent } from './components/items/item-submit/item-submit.component';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 
@@ -42,7 +43,8 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt);
     ItemsListComponent,
     ItemDetailComponent,
     TransactionsComponent,
-    ItemCheckoutComponent
+    ItemCheckoutComponent,
+    ItemSubmitComponent
   ],
   imports: [
     BrowserModule,

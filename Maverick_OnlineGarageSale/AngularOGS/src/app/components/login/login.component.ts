@@ -1,3 +1,4 @@
+import { Address } from './../../objects/address';
 import { Component, OnInit, Input } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from '@angular/common/http';
@@ -57,14 +58,13 @@ export class LoginComponent implements OnInit {
   }
 
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('','', '', '', '', '', null, false, false, false, false);
+  regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
 
   cLogin() {
-    console.log(this.account)
     this.login.checkLogin(this.account).subscribe(
       data => {
         this.login.changeAccount(data);
-        console.log(data);
+        //if(this.account.email != null)
       },
       error => {
         console.log('error');

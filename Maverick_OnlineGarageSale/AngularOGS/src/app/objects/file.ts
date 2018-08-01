@@ -1,8 +1,8 @@
 import { Item } from './item';
 export class File {
     constructor(
-        fileId: string,
-        fileItem: Item,
-        filekey: string
+        public fileId: string,
+        public fileItem: Item,
+        public filekey: string
       ) {}
 }

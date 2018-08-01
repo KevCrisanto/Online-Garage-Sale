@@ -11,6 +11,7 @@ export class Account {
     public isVerified: boolean,
     public isPremium: boolean,
     public isAdmin: boolean,
-    public isActive: boolean//,creditCards: CreditCard
+    public isActive: boolean,
+    public creditCards: CreditCard[]
   ) {}
 }

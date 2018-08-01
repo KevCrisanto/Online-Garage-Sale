@@ -25,7 +25,7 @@ export class CreditCardComponent implements OnInit, DoCheck {
 
   constructor(private cardS: CardService, private login: LoginService) { }
   accounts: Account[];
-  account = new Account('', '', '', '', '', '', null, false, false, false, false);
+  account = new Account('', '', '', '', '', '', null, false, false, false, false,null);
   invalid;
   ngOnInit() {
     this.login.currentAccount.subscribe(account => this.account = account);

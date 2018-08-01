@@ -11,13 +11,9 @@ public class Login {
 	private WebDriverWait explicitWait;
 	private By username = By.xpath("//input[@name='username']");
 	private By password = By.xpath("//input[@name='password']");
-<<<<<<< HEAD
-	private By rememberMe = By.xpath("//input[@name='login']");
-	private By submit = By.cssSelector("input[type='text']");
-=======
 	private By rememberMe = By.cssSelector("input[type='checkbox']");
 	private By submit = By.cssSelector("button[type='submit']");
->>>>>>> 36b0d91... Changed input to button on submit in Login.
+
 	
 	public Login(WebDriver driver) {
 		this.driver = driver;

@@ -65,8 +65,8 @@ export class LoginComponent implements OnInit {
   cLogin() {
     this.login.checkLogin(this.account).subscribe(
       data => {
-        this.login.changeAccount(data);
-        if(data.password != ''){
+        if(data != null){
+          this.login.changeAccount(data);
           this.cookieService.set('userid',data.accountId);
           this.router.navigate(['item-list']);
         }

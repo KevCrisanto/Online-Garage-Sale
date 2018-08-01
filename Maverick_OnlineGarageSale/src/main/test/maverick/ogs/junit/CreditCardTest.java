@@ -52,6 +52,7 @@ public class CreditCardTest {
 		Date expiry = new Date();
 		expiry.setMonth(Calendar.MARCH);
 		expiry.setYear(2021);
+		String date = "09 / 2011";
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
 		
 		AddressDAO addressDAO = new AddressDAOImpl();
@@ -74,7 +75,7 @@ public class CreditCardTest {
 		Address address = addressDAO.getAddressById(address1);
 		CreditCardDAO creditCardDAO = new CreditCardDAOImpl();
 		
-		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("2111000022223833",users,"Bub Sagott", expiry, "987", address));
+		String creditCard1 = creditCardDAO.insertCreditCard(new CreditCard("2111000022223833",users,"Bub Sagott", date, "987", address));
 		
 
 		creditCardDAO.deleteCreditCardById(creditCard1);

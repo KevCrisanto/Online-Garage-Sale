@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('', '', '', '', '', '', null, false, false, false, false,null);
+  regAcc = new Account('','', '', '', '', '', null, false, false, false, false);
+
   cLogin() {
     this.login.checkLogin(this.account).subscribe(
       data => {

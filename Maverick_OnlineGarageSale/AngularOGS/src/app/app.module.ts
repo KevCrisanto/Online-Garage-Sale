@@ -28,6 +28,7 @@ import { ItemDetailComponent } from './components/items/item-detail/item-detail.
 import { CardService } from './services/card.service';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
+import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt);
 

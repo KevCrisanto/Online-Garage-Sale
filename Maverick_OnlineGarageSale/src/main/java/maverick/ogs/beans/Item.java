@@ -151,5 +151,15 @@ public class Item {
 	public void setItemFile(Files itemFile) {
 		this.itemFile = itemFile;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Item [itemId=" + itemId + ", itemName=" + itemName + ", accountId=" + accountId + ", description="
+				+ description + ", itemStatus=" + itemStatus + ", price=" + price + ", category=" + category
+				+ ", itemFile=" + itemFile + "]";
+	}
 	
 }

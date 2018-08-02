@@ -11,5 +11,6 @@ public interface ItemDAO {
 	public List<Item> getAllItemsByUserId(String accountId);
 	public Boolean updateItemById(String itemId, Item item);
 	public Boolean deleteItemById(String itemId);
+	public List<Item> getAllItemsForSale();
 
 }

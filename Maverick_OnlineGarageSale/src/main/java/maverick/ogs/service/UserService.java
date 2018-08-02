@@ -24,4 +24,9 @@ public class UserService {
 		return userDao.getAccountById(id);
 	}
 	
+	public static Boolean updateUserById(String id, UserAccount account) {
+		UserAccountDAO userDao = new UserAccountDAOImpl();
+		return userDao.updateAccountById(id, account);
+	}
+	
 }

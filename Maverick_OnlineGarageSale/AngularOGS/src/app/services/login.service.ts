@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Address } from '../objects/address';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,6 +21,8 @@ export class LoginService {
   private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
   private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
   private getAccountUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
+  private updateAccountUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/UpdateUser'
+  private addressUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/AddressServlet'
   // private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
   // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
 
@@ -54,6 +57,14 @@ currentAccount = this.accountSource.asObservable();
 
   registerService(account: Account): Observable<Account> {
     return this.http.post<Account>(this.registerUrl, account, httpOptions);
+  }
+
+  updateService(account: Account): Observable<Account>{
+    return this.http.post<Account>(this.updateAccountUrl, account, httpOptions);
+  }
+
+  addressService(address: Address): Observable<Address>{
+    return this.http.post<Address>(this.addressUrl, address, httpOptions);
   }
 
   //update account (shared across components)

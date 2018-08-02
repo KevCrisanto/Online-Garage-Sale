@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from './../../../objects/item';
 import { HttpClient } from '@angular/common/http';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-item-submit',
   templateUrl: './item-submit.component.html',
@@ -12,30 +14,42 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ItemSubmitComponent implements OnInit {
   subItem: Item;
-  private insertUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
-  constructor(private http: HttpClient, private login: LoginService, private itemService: ItemService) {}
+  private insertUrl =
+    'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
+  constructor(
+    private http: HttpClient,
+    private login: LoginService,
+    private itemService: ItemService
+  ) {}
 
   account: Account;
   selectedFile: File;
   ngOnInit() {
     this.login.currentAccount.subscribe(account => (this.account = account));
-    this.subItem = new Item('','','',this.account,'','sale',0,null);
+    this.subItem = new Item('', '', '', this.account, '', 'sale', 0, null);
+
+    $('#upload').on('change', function() {
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this)
+        .next('.custom-file-label')
+        .html(fileName);
+    });
   }
 
-  onFileSelected(event){
+  onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
   }
-  submitItem(){
+  submitItem() {
     const fd = new FormData();
     this.subItem.accountId.accountId = this.account.accountId;
-    fd.append('subItem',JSON.stringify(this.subItem));
-    fd.append('file_name',this.selectedFile.name);
-    fd.append('file',this.selectedFile);
-    this.http.post(this.insertUrl,fd)
-        .subscribe();
+    fd.append('subItem', JSON.stringify(this.subItem));
+    fd.append('file_name', this.selectedFile.name);
+    fd.append('file', this.selectedFile);
+    this.http.post(this.insertUrl, fd).subscribe();
     // this.subItem.accountId.accountId = this.account.accountId;
     // console.log(this.subItem);
     // this.itemService.insertItem(this.subItem).subscribe();
   }
-
 }

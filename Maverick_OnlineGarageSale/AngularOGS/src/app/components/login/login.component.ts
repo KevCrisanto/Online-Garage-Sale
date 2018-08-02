@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { LoginService } from './../../services/login.service';
 import { Account } from './../../objects/account';
 import { NgForm } from '@angular/forms';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,14 @@ export class LoginComponent implements OnInit {
   // account2 = Account;
 
   constructor(private http: HttpClient, private login: LoginService, private router: Router,
-              private cookieService: CookieService) {}
+              private cookieService: CookieService, private nav: NavbarService) {}
 
   account: Account;
+  
+  
 
   ngOnInit() {
+    this.nav.visible = false;
     this.login.currentAccount.subscribe(account => (this.account = account));
 
     $(document).ready(function() {
@@ -71,6 +75,7 @@ export class LoginComponent implements OnInit {
           this.login.changeAccount(data);
           this.cookieService.set('userid',data.accountId);
           this.router.navigate(['item-list']);
+          this.nav.visible = true;
         }
 
       },
@@ -87,6 +92,7 @@ export class LoginComponent implements OnInit {
           this.login.changeAccount(data);
           this.cookieService.set('userid',data.accountId);
           this.router.navigate(['item-list']);
+          this.nav.visible = true;
         }
         console.log(data);
       },

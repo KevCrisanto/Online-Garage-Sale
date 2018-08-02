@@ -82,6 +82,7 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 				}
 				
 				session.save(updatedAccount);
+				transaction.commit();
 				result = true;
 			}
 		} catch (HibernateException e) {

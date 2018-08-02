@@ -94,6 +94,27 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
+	public List<Item> getAllItemsForSale() {
+		List<Item> items = null;
+		Session session = HibernateUtil.getSession();
+		Transaction transaction = null;
+		
+		try {
+			transaction = session.beginTransaction();
+			items = session.createQuery("FROM Item WHERE itemStatus='sale'").list();
+		}
+		catch(HibernateException e) {
+			if(transaction != null) {
+				transaction.rollback();
+			}
+		}
+		finally {
+			session.close();
+		}		
+		return items;
+	}
+	
+	@Override
 	public Boolean updateItemById(String itemId, Item i) {
 		Item updateItem = null;
 		Session session = HibernateUtil.getSession();
@@ -115,6 +136,9 @@ public class ItemDAOImpl implements ItemDAO {
 				}
 				if(i.getPrice() != null) {
 					updateItem.setPrice(i.getPrice());
+				}
+				if(i.getItemFile() != null) {
+					updateItem.setItemFile(i.getItemFile());
 				}
 				session.save(updateItem);
 				transaction.commit();

@@ -148,4 +148,12 @@ public class Address {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
+
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2
+				+ ", aptNumber=" + aptNumber + ", postOfficeBox=" + postOfficeBox + ", city=" + city + ", state="
+				+ state + ", country=" + country + ", zipcode=" + zipcode + ", creditCards=" + creditCards + "]";
+	}
+	
 }

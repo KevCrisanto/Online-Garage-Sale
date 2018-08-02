@@ -13,9 +13,9 @@
     <div class="card rounded bg-light">
       <div class="card-body">
 
-<!-- 
+        <!-- 
         <form role="form" accept-charset="UTF-8" action="../InsertReimbursement" method="POST" class="text-muted" enctype="multipart/form-data"> -->
-          <form role="form" accept-charset="UTF-8" (ngSubmit)="submitItem()">
+        <form role="form" accept-charset="UTF-8" (ngSubmit)="submitItem()">
 
 
           <!-- Name field -->
@@ -46,17 +46,23 @@
 
 
 
-
+          <!-- File upload -->
           <div class="form-group">
             <label for="upload">Upload picture</label>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" name="upload" id="upload" (change)="onFileSelected($event)">
+              <input type="file" class="custom-file-input" name="upload" id="upload" (change)="fileChangeEvent($event)">
               <label class="custom-file-label" for="upload">Choose file</label>
+              <div class="mb-5">
+                <app-image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="290"
+                  format="jpeg" (imageCroppedFile)="imageCroppedFile($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="imageLoadFailed()"
+                  style="max-height: 33vh" [style.display]="cropperReady ? null : 'none'"></app-image-cropper>
+              </div>
             </div>
           </div>
+          <!-- End of file upload -->
 
 
-          <button class="btn btn-outline-warning btn-block" type="submit" >Sell it!</button>
+          <button style="margin-top: 120px" class="btn btn-outline-warning btn-block" type="submit">Sell it!</button>
         </form>
       </div>
     </div>

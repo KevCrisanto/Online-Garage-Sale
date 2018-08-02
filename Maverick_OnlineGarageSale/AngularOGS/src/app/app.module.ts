@@ -34,6 +34,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ItemSubmitComponent } from './components/items/item-submit/item-submit.component';
+import { ImageCropperModule } from './components/image-cropper/image-cropper.module';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
 
@@ -61,6 +62,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
+    ImageCropperModule,
     RouterModule.forRoot(approutes)
   ],
   providers: [

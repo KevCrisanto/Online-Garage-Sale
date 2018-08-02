@@ -1,3 +1,26 @@
-<p>
-  items works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <img class="rounded img-fluid" 
+            src="https://s3.us-east-2.amazonaws.com/ogs-bucket/{{item.itemFile.filekey}}"
+             alt="yellow car">
+    </div>
+    <div class="col-9">
+      <div>
+        <h2>
+          <a href="#">{{item.itemName}}</a>
+        </h2>
+      </div>
+      <div>
+        <p>{{item.description}}</p>
+      </div>
+      <div class="float-left justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center h-100">
+          <fa-icon icon="money-bill-alt" class="text-warning fa-2x col-3"></fa-icon>
+          <span class="col-9 price"> ${{item.price}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>

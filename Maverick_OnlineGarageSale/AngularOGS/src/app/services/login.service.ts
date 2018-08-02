@@ -1,9 +1,12 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Account } from './../objects/account';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+import { Address } from '../objects/address';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,12 +18,20 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoginService {
-  // private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
-  // private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
-  // private getUserUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
-  private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
-  private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
-  private getUserUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetUserServlet';
+  private loginUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet';
+  private registerUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/RegisterServlet';
+  private getAccountUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetUserServlet';
+  private updateAccountUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/UpdateUser'
+  private addressUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/AddressServlet'
+  // private loginUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/LoginServlet';
+  // private registerUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/RegisterServlet';
+
+private accountSource = new BehaviorSubject<Account>(
+                            new Account('', '', '', '', '', '',
+                             null, false, false, false, false, null));
+
+currentAccount = this.accountSource.asObservable();
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -35,8 +46,11 @@ export class LoginService {
     };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) {
+    this.getUserFromCookie();
+   }
   // input: Account
+  
   checkLogin(account: Account): Observable<Account> {
     return this.http.post<Account>(this.loginUrl, account, httpOptions);
   }
@@ -45,7 +59,33 @@ export class LoginService {
     return this.http.post<Account>(this.registerUrl, account, httpOptions);
   }
 
-  getAccount(){
-    return this.http.get<Account>(this.getUserUrl);
+  updateService(account: Account): Observable<Account>{
+    return this.http.post<Account>(this.updateAccountUrl, account, httpOptions);
+  }
+
+  addressService(address: Address): Observable<Address>{
+    return this.http.post<Address>(this.addressUrl, address, httpOptions);
+  }
+
+  //update account (shared across components)
+  changeAccount(account: Account){
+    this.accountSource.next(account);
+  }
+
+  getUserById(userId: string):Observable<Account>{
+    return this.http.post<Account>(this.getAccountUrl,userId,httpOptions);
+  }
+
+  getUserFromCookie(){
+    if(this.cookieService.check('userid')){
+      this.getUserById(this.cookieService.get('userid')).subscribe(
+        data => {
+          this.changeAccount(data);
+        },
+        error => {
+          console.log('error');
+        }
+      );
+    }
   }
 }

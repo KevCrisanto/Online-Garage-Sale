@@ -1,6 +1,17 @@
-import { Component, OnInit, ViewChild, ElementRef, DoCheck } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  DoCheck
+} from '@angular/core';
 import { CardModule } from 'ngx-card/ngx-card';
 import { NgForm } from '../../../../node_modules/@angular/forms';
+import { Account } from '../../objects/account';
+import { Card } from '../../objects/card';
+import { Address } from '../../objects/address';
+import { CardService } from '../../services/card.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-credit-card',
@@ -8,20 +19,27 @@ import { NgForm } from '../../../../node_modules/@angular/forms';
   styleUrls: ['./credit-card.component.css']
 })
 export class CreditCardComponent implements OnInit, DoCheck {
-
-  imports: [
-    CardModule
-  ];
+  imports: [CardModule];
 
   @ViewChild('cardNumber') cardNumber: ElementRef;
 
-  constructor() { }
+  constructor(private cardS: CardService, private login: LoginService) { }
+  accounts: Account[];
+  account = new Account('', '', '', '', '', '', null, false, false, false, false,null);
   invalid;
   ngOnInit() {
+    this.login.currentAccount.subscribe(account => this.account = account);
   }
 
+  
+  address = new Address('','809 Bobbert Way','','','','Denver','USA','80234',null);
+  creditCard = new Card('',this.account, '', '','',this.address);
+
   ngDoCheck() {
-    if (this.cardNumber.nativeElement.classList.contains('jp-card-invalid') || this.cardNumber.nativeElement.value === '') {
+    if (
+      this.cardNumber.nativeElement.classList.contains('jp-card-invalid') ||
+      this.cardNumber.nativeElement.value === ''
+    ) {
       console.log('Error');
       this.invalid = true;
     } else {
@@ -29,8 +47,10 @@ export class CreditCardComponent implements OnInit, DoCheck {
     }
   }
 
-  test(form: NgForm) {
-    console.log(form);
+  insert(c: Card){
+    console.log(this.creditCard);
+    console.log(this.account);
+    console.log(this.address);
+    this.cardS.cardService(this.creditCard).subscribe();
   }
-
 }

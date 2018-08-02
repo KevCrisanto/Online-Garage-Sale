@@ -100,7 +100,10 @@ public class UserAccountTest {
 	public void getAccountByUsernameTest() {
 		Date now = new Date();
 		UserAccountDAO userAccountDAO = new UserAccountDAOImpl();
-		String id12 = (String) userAccountDAO.insertAccount(new UserAccount("vkay", "password", "Vanessa", "Kay", "vkay@email.com", now, false, false, false, false));
+		String id12 = null;
+		if (userAccountDAO.getAccountByUsername("vkay") == null) {
+			id12 = (String) userAccountDAO.insertAccount(new UserAccount("vkay", "password", "Vanessa", "Kay", "vkay@email.com", now, false, false, false, false));
+		} 
 		// UserAccount userAccount12 = (UserAccount) userAccountDAO.getAccountById(id12);
 		// System.out.println("UserAccount12 is reporting the username: " + userAccount12.getUsername());
 		UserAccount queriedAccount = (UserAccount) userAccountDAO.getAccountByUsername("vkay");

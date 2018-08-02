@@ -74,7 +74,7 @@ public class UploadServlet extends HttpServlet {
 				if(itemid != null && item.getName() != "null" && item.getName() != null) {
 					
 //					RFormService.setFileKeyRForm(iid, itemid+item.getName());
-					FileService.createFile(itemid, "asdfg"+item.getName());
+					//FileService.createFile(itemid, "asdfg"+item.getName());
 					InputStream is = item.getInputStream();
 					s3client.putObject(new PutObjectRequest(bucketname, "asdfg"+item.getName(),is,new ObjectMetadata())
 											.withCannedAcl(CannedAccessControlList.PublicRead));

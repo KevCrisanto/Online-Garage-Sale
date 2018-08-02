@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-center my-3">
+  <div class="col-12">
+    <div class="card rounded bg-light">
+      <div class="card-body">
+        <h3 class="text-warning mb-3">My account</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex my-3">
+  <div class="col-12">
+    <div class="card rounded bg-light">
+      <div class="card-body">
+
+        <div class="row">
+          <!-- First card -->
+          <div class="col-xs-12 col-6">
+            <div class="card bg-light mb-3">
+              <div class="card-header">
+                <div class="d-flex">
+                  <div class="p-2">
+                    <span>Account information</span>
+                  </div>
+                  <div class="ml-auto p-2">
+                    <fa-icon icon="pencil-alt" class="text-warning" (click)="showForm()"></fa-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body text-left">
+                <form *ngIf="formVisible">
+                  <div class="form-body">
+                    <label for="username">username: </label>
+                    <input type="text" readonly class="form-control-plaintext" id="username" value={{account.username}}>
+                  </div>
+                  <div class="form-body">
+                    <label for="email">email: </label>
+                    <input type="text" readonly class="form-control-plaintext" id="email" value={{account.email}}>
+                  </div>
+                  <div class="form-body">
+                    <label for="fname">first name:</label>
+                    <input type="text" class="form-control" id="fname" placeholder={{account.firstName}} [(ngModel)]="account.firstName" name="lastName">
+                  </div>
+                  <div class="form-body">
+                    <label for="lname">last name:</label>
+                    <input type="text" class="form-control" id="lname" placeholder={{account.lastName}} [(ngModel)]="account.lastName" name="lastName">
+                  </div>
+                  <br>
+                  <button type="submit" (click)="update(account)" class="btn btn-primary">Update</button>
+                </form>
+                <p class="card-text text-left" *ngIf="detVisible">
+                  username: {{account.username}}
+                  <br> password: ****
+                  <br> email: {{account.email}}
+                  <br> first name: {{account.firstName}}
+                  <br> last name: {{account.lastName}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of first card -->
+
+          <!-- Second card -->
+          <div class="col-xs-12 col-6">
+            <div class="card bg-light mb-3">
+              <div class="card-header">
+                <div class="d-flex">
+                  <div class="p-2">
+                    <span>Address</span>
+                  </div>
+                  <div class="ml-auto p-2">
+                    <fa-icon icon="pencil-alt" class="text-warning" (click)="showAddForm()"></fa-icon>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body text-left">
+                <form *ngIf="addVisible">
+                  <div class="form-body">
+                    <label for="add1">Address Line 1:</label>
+                    <input type="text" class="form-control" id="add1" [(ngModel)]="address.addressLine1" name="add1">
+                  </div>
+                  <div class="form-body">
+                    <label for="add2">Address Line 2</label>
+                    <input type="text" class="form-control" id="add2" [(ngModel)]="address.addressLine2" name="add2">
+                  </div>
+                  <div class="form-body">
+                    <label for="apt">Apt #: </label>
+                    <input type="text" class="form-control" id="apt" [(ngModel)]="address.aptNumber" name="apt">
+                  </div>
+                  <div class="form-body">
+                    <label for="poBox">PO Box:</label>
+                    <input type="text" class="form-control" id="poBox" [(ngModel)]="address.postOfficeBox" name="poBox">
+                  </div>
+                  <div class="form-body">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" [(ngModel)]="address.city" name="city">
+                  </div>
+                  <div class="form-body">
+                      <label for="country">Country</label>
+                      <input type="text" class="form-control" id="country" [(ngModel)]="address.country" name="country">
+                    </div>
+                  <div class="form-body">
+                      <label for="zip">Zip Code:</label>
+                      <input type="text" class="form-control" id="apt" [(ngModel)]="address.zipcode" name="zip">
+                    </div>                    
+                  <br>
+                  <button type="submit" (click)="updateAddress(address)" class="btn btn-primary">Update</button>
+                </form>
+
+                <p class="card-text text-left" *ngIf="addDetVisible">
+                  {{address.addressLine1}}<br>
+                  {{address.addressLine2}}<br>
+                  {{address.aptNumber}}<br>
+                  {{address.postOfficeBox}}<br>
+                  {{address.city}}<br>
+                  {{address.country}}<br>
+                  {{address.zipcode}}<br>
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- End of second card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

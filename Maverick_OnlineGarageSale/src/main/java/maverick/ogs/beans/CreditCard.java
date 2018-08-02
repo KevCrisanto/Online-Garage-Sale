@@ -1,10 +1,10 @@
 package maverick.ogs.beans;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +24,7 @@ public class CreditCard {
 	@Column(name = "card_number")
 	private String cardNumber;
 	
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.REMOVE)
 	@JoinTable(
 		        name = "credit_card_user_accounts", 
 		        joinColumns = { @JoinColumn(name = "cardNumber") }, 
@@ -36,15 +36,15 @@ public class CreditCard {
 	private String cardName;
 
 	@Column(name = "expiration")
-	private Date expiration;
+	private String expiration;
 	
 	@Column(name = "cvv")
 	private String cvv;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade=CascadeType.REMOVE)
 	private Address address;
 	
-	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, Date expiration, String cvv, Address address) {
+	public CreditCard(String cardNumber, List<UserAccount> userAccounts, String cardName, String expiration, String cvv, Address address) {
 		this.cardNumber = cardNumber;
 		this.userAccounts = userAccounts;
 		this.cardName = cardName;
@@ -53,7 +53,7 @@ public class CreditCard {
 		this.address = address;
 	}
 	
-	public CreditCard(String cardNumber, String cardName, Date expiration, String cvv) {
+	public CreditCard(String cardNumber, String cardName, String expiration, String cvv) {
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
 		this.expiration = expiration;
@@ -95,11 +95,11 @@ public class CreditCard {
 		this.cardName = cardName;
 	}
 
-	public Date getExpiration() {
+	public String getExpiration() {
 		return expiration;
 	}
 
-	public void setExpiration(Date expiration) {
+	public void setExpiration(String expiration) {
 		this.expiration = expiration;
 	}
 
@@ -118,4 +118,11 @@ public class CreditCard {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+	@Override
+	public String toString() {
+		return "CreditCard [cardNumber=" + cardNumber + ", userAccounts=" + userAccounts + ", cardName=" + cardName
+				+ ", expiration=" + expiration + ", cvv=" + cvv + ", address=" + address + "]";
+	}
+	
 }

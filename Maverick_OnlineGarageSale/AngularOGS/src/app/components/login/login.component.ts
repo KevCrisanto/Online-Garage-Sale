@@ -1,9 +1,12 @@
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from './../../services/login.service';
 import { Account } from './../../objects/account';
 import { NgForm } from '@angular/forms';
+import { NavbarService } from '../../services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -14,64 +17,88 @@ export class LoginComponent implements OnInit {
   // account = Account;
   // account2 = Account;
 
-  constructor(private http: HttpClient, private login: LoginService) { }
+  constructor(private http: HttpClient, private login: LoginService, private router: Router,
+              private cookieService: CookieService, private nav: NavbarService) {}
+
+  account: Account;
+  
+  
 
   ngOnInit() {
-    $(document).ready(function () {
-      var panelOne = $('.form-panel.two').scrollHeight,
+    this.nav.visible = false;
+    this.login.currentAccount.subscribe(account => (this.account = account));
+
+    $(document).ready(function() {
+      const panelOne = $('.form-panel.two').scrollHeight,
         panelTwo = $('.form-panel.two')[0].scrollHeight;
 
-      $('.form-panel.two').not('.form-panel.two.active').on('click', function (e) {
-        e.preventDefault();
+      $('.form-panel.two')
+        .not('.form-panel.two.active')
+        .on('click', function(e) {
+          e.preventDefault();
 
-        $('.form-toggle').addClass('visible');
-        $('.form-panel.one').addClass('hidden');
-        $('.form-panel.two').addClass('active');
-        $('.form').animate({
-          'height': panelTwo
-        }, 200);
-      });
+          $('.form-toggle').addClass('visible');
+          $('.form-panel.one').addClass('hidden');
+          $('.form-panel.two').addClass('active');
+          $('.form').animate(
+            {
+              height: panelTwo
+            },
+            200
+          );
+        });
 
-      $('.form-toggle').on('click', function (e) {
+      $('.form-toggle').on('click', function(e) {
         e.preventDefault();
         $(this).removeClass('visible');
         $('.form-panel.one').removeClass('hidden');
         $('.form-panel.two').removeClass('active');
-        $('.form').animate({
-          'height': panelOne
-        }, 200);
+        $('.form').animate(
+          {
+            height: panelOne
+          },
+          200
+        );
       });
     });
   }
 
-  acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('', '', '', '', '', '', null, false, false, false, false);
+  
 
-  get diagnostic() {
-    return JSON.stringify(this.acc);
-  }
+  //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
+  regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
+
   cLogin() {
-    this.login.checkLogin(this.acc).subscribe();
-    this.login.getAccount().subscribe(
+    this.login.checkLogin(this.account).subscribe(
       data => {
+        if(data != null){
+          this.login.changeAccount(data);
+          this.cookieService.set('userid',data.accountId);
+          this.router.navigate(['item-list']);
+          this.nav.visible = true;
+        }
+
+      },
+      error => {
+        console.log('error');
+      }
+    );
+  }
+
+  register(a: Account) {
+    this.login.registerService(this.regAcc).subscribe(
+      data => {
+        if(data != null){
+          this.login.changeAccount(data);
+          this.cookieService.set('userid',data.accountId);
+          this.router.navigate(['item-list']);
+          this.nav.visible = true;
+        }
         console.log(data);
       },
       error => {
-        console.log;
+        console.log('error');
       }
     );
-    //const newAcc: Account = 
-  }
-  asdf() {
-    this.http.post("http://localhost:8085/Maverick_OnlineGarageSale/LoginServlet", {
-      key1: "value",
-      key2: "value",
-      etc: "value"
-    }).subscribe(
-      PASS => { },
-      FAIL => { })
-  }
-  register(a: Account) {
-    this.login.registerService(this.regAcc).subscribe();
   }
 }

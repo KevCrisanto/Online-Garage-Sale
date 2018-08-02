@@ -14,7 +14,7 @@
     <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
     <init-param>
       <param-name>cors.allowed.origins</param-name>
-      <param-value>*</param-value>
+      <param-value>http://localhost:4200</param-value>
     </init-param>
     <init-param>
       <param-name>cors.allowed.methods</param-name>
@@ -57,6 +57,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>CreditCardServlet</display-name>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.CreditCardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreditCardServlet</servlet-name>
+    <url-pattern>/CreditCardServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetTransactionsServlet</display-name>
+    <servlet-name>GetTransactionsServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.GetTransactionsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetTransactionsServlet</servlet-name>
+    <url-pattern>/GetTransactionsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>GetUserServlet</display-name>
     <servlet-name>GetUserServlet</servlet-name>
     <servlet-class>maverick.ogs.servlets.GetUserServlet</servlet-class>
@@ -64,5 +84,45 @@
   <servlet-mapping>
     <servlet-name>GetUserServlet</servlet-name>
     <url-pattern>/GetUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InsertItemServlet</display-name>
+    <servlet-name>InsertItemServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.InsertItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertItemServlet</servlet-name>
+    <url-pattern>/InsertItemServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetItemsServlet</display-name>
+    <servlet-name>GetItemsServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.GetItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetItemsServlet</servlet-name>
+    <url-pattern>/GetItemsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUser</display-name>
+    <servlet-name>UpdateUser</servlet-name>
+    <servlet-class>maverick.ogs.servlets.UpdateUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUser</servlet-name>
+    <url-pattern>/UpdateUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddressServlet</display-name>
+    <servlet-name>AddressServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.AddressServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddressServlet</servlet-name>
+    <url-pattern>/AddressServlet</url-pattern>
   </servlet-mapping>
 </web-app>

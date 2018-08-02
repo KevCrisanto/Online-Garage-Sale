@@ -1,15 +1,17 @@
+import { Card } from './card';
 export class Account {
   constructor(
-    id: string,
-    username: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    email: string,
-    Date: Date,
-    isVerified: boolean,
-    isPremium: boolean,
-    isAdmin: boolean,
-    isActive: boolean
+    public accountId: string,
+    public username: string,
+    public password: string,
+    public firstName: string,
+    public lastName: string,
+    public email: string,
+    public creationDate: Date,
+    public isVerified: boolean,
+    public isPremium: boolean,
+    public isAdmin: boolean,
+    public isActive: boolean,
+    public creditCards: Card[]
   ) {}
 }

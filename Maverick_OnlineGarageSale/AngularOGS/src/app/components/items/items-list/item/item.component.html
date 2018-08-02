@@ -1,12 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-      <img class="rounded img-fluid" src="{{item.images[0]}}" alt="yellow car">
+      <!-- <img class="rounded img-fluid" src="{{item.images[0]}}" alt="yellow car"> -->
+      <img class="rounded img-fluid" 
+            src="https://s3.us-east-2.amazonaws.com/ogs-bucket/{{item.itemFile.filekey}}" 
+            alt="yellow car">
     </div>
     <div class="col-9">
       <div>
         <h2>
-          <a href="#">{{item.name}}</a>
+          <a href="#">{{item.itemName}}</a>
         </h2>
       </div>
       <div>

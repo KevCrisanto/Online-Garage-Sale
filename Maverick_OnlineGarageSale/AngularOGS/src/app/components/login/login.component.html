@@ -5,15 +5,15 @@
       <h1>Account Login</h1>
     </div>
     <div class="form-content">
-      <form #loginForm="ngForm" (ngSubmit)="cLogin(acc)">
+      <form #loginForm="ngForm" (ngSubmit)="cLogin()">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required [(ngModel)]="acc.username" #username="ngModel" />
+          <input type="text" id="username" name="username" required [(ngModel)]="account.username" #username="ngModel" />
           <span class="text-danger" *ngIf="!username.valid && username.touched">Please enter a username!</span>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required [(ngModel)]="acc.password" #password="ngModel" />
+          <input type="password" id="password" name="password" required [(ngModel)]="account.password" #password="ngModel" />
           <span class="text-danger" *ngIf="!password.valid && password.touched">Please enter a password!</span>
         </div>
         <div class="form-group">

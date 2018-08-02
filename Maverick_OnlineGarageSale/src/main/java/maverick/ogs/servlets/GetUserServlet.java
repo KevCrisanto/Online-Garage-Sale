@@ -1,13 +1,18 @@
 package maverick.ogs.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import maverick.ogs.beans.UserAccount;
+import maverick.ogs.service.UserService;
 
 /**
  * Servlet implementation class GetUserServlet
@@ -27,23 +32,12 @@ public class GetUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Cookie[] cookies = request.getCookies();
-		boolean exists = false;
-		String userid = "";
-		System.out.println("4");
-		if (cookies != null) {
-			System.out.println("5");
-			for(Cookie c: cookies) {
-				System.out.println("6");
-				if(c.getName().equals("userjson")) {
-						exists = true;
-						userid = c.getValue();
-						System.out.println("7");
-					}
-				}
-		}
+		Gson gson = new Gson();
+		BufferedReader reader = request.getReader();
+		UserAccount user = UserService.getUserById(reader.readLine());
+		System.out.println(user.toString());
 		PrintWriter out = response.getWriter();
-		out.println(userid);
+		out.println(gson.toJson(user));
 	}
 
 	/**

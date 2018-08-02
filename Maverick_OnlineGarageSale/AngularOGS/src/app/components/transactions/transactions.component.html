@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item</th>
+        <th scope="col">Buyer</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let transaction of transactions">
+        <tr>
+            <th scope="row">1</th>
+            <td>{{transaction.item.description}}</td>
+            <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
+            <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
+            <td>{{transaction.transactionAmount}}</td>
+          </tr>
+    </tbody>
+  </table>

@@ -2,6 +2,8 @@ package maverick.ogs.servlets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -43,15 +45,17 @@ public class RegisterServlet extends HttpServlet {
 		Gson gson = new Gson();
 		BufferedReader reader = request.getReader();
 		UserAccount userAccount = (UserAccount)gson.fromJson(reader, UserAccount.class);
+		userAccount.setUserId(UUID.randomUUID().toString());
 		System.out.println(userAccount.toString());
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		UserAccount validUser = null;	
+		String id = null;
 		
-		UserAccount testAcc = new UserAccount("bob3", "bob3", null, null, "bob3@email.com", null, false, false, false, false);
-//
-		System.out.println(testAcc.toString());
-		
-		
-		
-		if(UserService.insertNewUserAccount(userAccount) != null) {
+		if((id = UserService.insertNewUserAccount(userAccount)) != null) {
+			validUser = UserService.getUserById(id);
+			out.println(gson.toJson(validUser));
 			System.out.println("New user with username: " + userAccount.getUsername() + " created");
 		}
 		else {

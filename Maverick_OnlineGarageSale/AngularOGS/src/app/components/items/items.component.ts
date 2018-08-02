@@ -15,7 +15,7 @@ export class ItemsComponent implements OnInit {
   public onTap() {
     let navigationExtras: NavigationExtras = {
         queryParams: {
-            "item": JSON.stringify(this.item)
+            "item": this.item.itemId
         }
     };
     this.router.navigate(["item-detail"], navigationExtras);

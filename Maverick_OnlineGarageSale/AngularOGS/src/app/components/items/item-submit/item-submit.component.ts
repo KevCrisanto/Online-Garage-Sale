@@ -27,11 +27,10 @@ export class ItemSubmitComponent implements OnInit {
   }
   submitItem(){
     const fd = new FormData();
-    fd.append('file_name',this.selectedFile.name);
-    fd.append('file',this.selectedFile);
-    console.log(this.selectedFile.name);
     this.subItem.accountId.accountId = this.account.accountId;
     fd.append('subItem',JSON.stringify(this.subItem));
+    fd.append('file_name',this.selectedFile.name);
+    fd.append('file',this.selectedFile);
     this.http.post(this.insertUrl,fd)
         .subscribe();
     // this.subItem.accountId.accountId = this.account.accountId;

@@ -18,6 +18,7 @@ public class Login {
 
 	// Register component
 	private By accessRegisterForm = By.xpath("/html/body/app-root/div/app-login/div/div[3]");
+	private By collapseRegisterForm = By.xpath("/html/body/app-root/div/app-login/div/div[1]");
 	private By registerUsername = By.xpath("//*[@id=\'usernameReg\']");
 	private By registerPassword = By.xpath("//*[@id=\'passwordReg\']");
 	private By registerEmail = By.xpath("//*[@id=\'emailReg\']");
@@ -48,6 +49,11 @@ public class Login {
 	}
 	public void clickRememberMe() {
 		driver.findElement(rememberMe).click();
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	public void submitLogic(){
 		driver.findElement(submit).click();
@@ -62,6 +68,15 @@ public class Login {
 		driver.findElement(accessRegisterForm).click();
 		try {
 		Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void collapseRegisterButton() {
+		driver.findElement(collapseRegisterForm).click();
+		try {
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -112,7 +127,8 @@ public class Login {
 		registerUsernameInput(newUsername);
 		registerPasswordInput(newPassword);
 		registerEmailInput(email);
-		registerAction();
+		collapseRegisterButton();
 		submitLogic();
+		
 	}
 }

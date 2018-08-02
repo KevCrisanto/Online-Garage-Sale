@@ -11,7 +11,7 @@ import maverick.ogs.selenium.pages.Profile;
 
 public class OnlineGarageSaleProfilePageTest {
 	private static WebDriver driver;
-	private final String url = "http://fluffy.services:8080/#/profile";
+	private final String url = "http://18.219.13.188:8085/Maverick_OnlineGarageSale/AngularOGS/#/profile";
 	Profile profile;
 	@Before
 	public void setup() {

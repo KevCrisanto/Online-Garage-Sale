@@ -1,8 +1,8 @@
+import { ItemDetailComponent } from './components/items/item-detail/item-detail.component';
 import { TransactionsComponent } from './components/transactions/transactions.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
 import { CreditCardComponent } from './components/credit-card/credit-card.component';
 import { LoginComponent } from './components/login/login.component';
-
 
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -29,6 +29,11 @@ export const approutes: Routes = [
         path: 'transactions',
         component: TransactionsComponent
 
+    },
+    {
+        path: 'item-detail',
+        // path: 'item-detail/:item',
+        component: ItemDetailComponent
     },
     {
         //The URL mapping

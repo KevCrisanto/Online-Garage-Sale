@@ -125,4 +125,14 @@
     <servlet-name>AddressServlet</servlet-name>
     <url-pattern>/AddressServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetItemByIdServlet</display-name>
+    <servlet-name>GetItemByIdServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.GetItemByIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetItemByIdServlet</servlet-name>
+    <url-pattern>/GetItemByIdServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

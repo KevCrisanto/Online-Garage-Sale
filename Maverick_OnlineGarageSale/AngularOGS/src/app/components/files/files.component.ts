@@ -33,10 +33,9 @@ export class FilesComponent implements OnInit {
     const fd = new FormData();
     fd.append('asdf',JSON.stringify(this.a));
     fd.append('qwer',JSON.stringify(this.b));
-    this.http.post("http://localhost:8085/Maverick_OnlineGarageSale/UploadServlet",
-    fd)
-        .subscribe(res =>{
-          console.log(res);
+    this.http.post("http://localhost:8085/Maverick_OnlineGarageSale/UploadServlet",fd)
+        .subscribe(data => {
+          
         })
   }
 

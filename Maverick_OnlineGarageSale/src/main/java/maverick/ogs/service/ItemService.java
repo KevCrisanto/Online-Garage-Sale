@@ -5,10 +5,13 @@ import java.util.UUID;
 
 import maverick.ogs.beans.Files;
 import maverick.ogs.beans.Item;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.dao.FileDAO;
 import maverick.ogs.dao.FileDAOImpl;
 import maverick.ogs.dao.ItemDAO;
 import maverick.ogs.dao.ItemDAOImpl;
+import maverick.ogs.dao.UserAccountDAO;
+import maverick.ogs.dao.UserAccountDAOImpl;
 
 public class ItemService {
 
@@ -28,5 +31,10 @@ public class ItemService {
 	public static List<Item> getItemsForSale(){
 		ItemDAO itemDao = new ItemDAOImpl();
 		return itemDao.getAllItemsForSale();
+	}
+	
+	public static Item getItemById(String id) {
+		ItemDAO itemDao = new ItemDAOImpl();
+		return itemDao.getItemById(id);
 	}
 }

@@ -18,6 +18,7 @@ const httpOptions = {
 export class ItemService {
   private insertUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
   private getItemsUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetItemsServlet';
+  private getItemByIdUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetItemByIdServlet';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -40,5 +41,9 @@ export class ItemService {
 
   getItemsForSale(){
     return this.http.get<Item[]>(this.getItemsUrl);
+  }
+
+  getItemById(itemId: string):Observable<Item>{
+    return this.http.post<Item>(this.getItemByIdUrl,itemId,httpOptions);
   }
 }

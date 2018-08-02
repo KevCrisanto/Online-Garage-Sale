@@ -48,11 +48,10 @@ public class AddressServlet extends HttpServlet {
 		Address address = (Address)gson.fromJson(reader, Address.class);
 		System.out.println(address.toString());
 				
-		if(address.getAddressId() == null) {
-			address.setAddressId(UUID.randomUUID().toString());
-			System.out.println("before insert" + address.toString());
-			AddressService.insertNewAddress(address);
-		}
+		address.setAddressId(UUID.randomUUID().toString());
+		System.out.println("before insert" + address.toString());
+		AddressService.insertNewAddress(address);
+		
 	
 	}
 

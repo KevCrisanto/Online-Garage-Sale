@@ -12,7 +12,7 @@ import maverick.ogs.selenium.pages.Login;
 
 public class OnlineGarageSaleLoginTest {
 	public static WebDriver driver;
-	public final String url = "http://fluffy.services:8080/#/login";
+	public final String url = "http://18.219.13.188:8085/Maverick_OnlineGarageSale/AngularOGS/";
 	public Login login;
 	
 	@Before
@@ -26,7 +26,7 @@ public class OnlineGarageSaleLoginTest {
 	@Test
 	public void loginTest() {
 		login = new Login(driver);
-		login.loginToOGS("username", "password");
+		login.loginToOGS("bobbert", "bobbert", "someNewUser", "password", "somePerson@email.com");
 		
 	}
 	

@@ -12,7 +12,7 @@ import maverick.ogs.selenium.pages.Navbar;
 
 public class NavbarTest {
 	private static WebDriver driver;
-	private final String url = "http://fluffy.services:8080/#/login";
+	private final String url = "http://18.219.13.188:8085/Maverick_OnlineGarageSale/AngularOGS/";
 	private Navbar navbar;
 	
 	@Before

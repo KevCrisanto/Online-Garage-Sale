@@ -87,6 +87,26 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>InsertItemServlet</display-name>
+    <servlet-name>InsertItemServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.InsertItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertItemServlet</servlet-name>
+    <url-pattern>/InsertItemServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetItemsServlet</display-name>
+    <servlet-name>GetItemsServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.GetItemsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetItemsServlet</servlet-name>
+    <url-pattern>/GetItemsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>UpdateUser</display-name>
     <servlet-name>UpdateUser</servlet-name>
     <servlet-class>maverick.ogs.servlets.UpdateUser</servlet-class>

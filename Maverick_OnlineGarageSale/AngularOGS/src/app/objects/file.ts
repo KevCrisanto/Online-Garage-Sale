@@ -1,8 +1,7 @@
 import { Item } from './item';
-export class File {
+export class FileInfo {
     constructor(
         public fileId: string,
-        public fileItem: Item,
         public filekey: string
       ) {}
 }

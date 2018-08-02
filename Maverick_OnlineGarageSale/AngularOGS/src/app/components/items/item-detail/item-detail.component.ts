@@ -1,4 +1,6 @@
+import { Item } from './../../../objects/item';
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-item-detail',
@@ -11,8 +13,15 @@ export class ItemDetailComponent implements OnInit {
     'http://www.robotshop.com/blog/en/files/alpha2_humanoid_robot.jpg',
     'https://usedcomputersforsale.files.wordpress.com/2014/02/used-desktop-computers.jpg'
   ];
+  public item: Item;
+  // public item: Item = new Item('','','',null,'','',0,null);
+  constructor(private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.item = JSON.parse(params["item"]);
+      console.log(this.item);
 
-  constructor() {}
+    });
+  }
 
   ngOnInit() {}
 }

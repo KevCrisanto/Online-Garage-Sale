@@ -50,6 +50,7 @@ export class ItemSubmitComponent implements OnInit {
   submitItem() {
     const fd = new FormData();
     this.subItem.accountId.accountId = this.account.accountId;
+    this.subItem.accountId.accountId
     fd.append('subItem', JSON.stringify(this.subItem));
     fd.append('file_name', this.selectedFile.name + '.png');
     fd.append('file', this.selectedFile);

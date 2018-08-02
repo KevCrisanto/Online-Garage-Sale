@@ -3,7 +3,7 @@
     <div class="card bg-light mb-4">
       <div class="card-body">
         <div class="row mb-3">
-          <div class="col-sm-12 col-md-6 m-md-b">
+          <div class="col-sm-12 col-md-6">
             <h2 class="text-capitalize font-2x mb-4">Billing Details</h2>
             <form class="billing-form" action="javascript:void(0)" method="post">
               <div class="form-group row">
@@ -60,18 +60,18 @@
                   <input type="text" class="form-control form-control-lg" placeholder="" required />
                 </div>
               </div>
-              <div class="form-group mb-5">
-                <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                  <input type="checkbox" class="custom-control-input">
-                  <span class="custom-control-indicator"></span>
-                  <span class="custom-control-description">Create an account?</span>
-                </label>
-              </div>
               <div class="form-group">
                 <label>Order Note</label>
                 <textarea class="form-control" rows="5"></textarea>
               </div>
             </form>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <h2 class="text-capitalize font-2x mb-4">Credit card details</h2>
+            <select name="selectCard" id="selectCard">
+              <option value="asd">asdad</option>
+            </select>
+            <app-credit-card></app-credit-card>
           </div>
         </div>
       </div>
@@ -133,7 +133,7 @@
             </div>
           </div>
         </div>
-        <!-- cheack Payment -->
+        <!-- check Payment -->
       </div>
     </div>
   </div>

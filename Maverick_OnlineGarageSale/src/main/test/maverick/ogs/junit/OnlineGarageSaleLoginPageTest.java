@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import maverick.ogs.selenium.pages.Login;
 
-public class OnlineGarageSaleLoginTest {
+public class OnlineGarageSaleLoginPageTest {
 	public static WebDriver driver;
 	public final String url = "http://fluffy.services:8080/#/login";
 	public Login login;
@@ -26,7 +26,7 @@ public class OnlineGarageSaleLoginTest {
 	@Test
 	public void loginTest() {
 		login = new Login(driver);
-		login.loginToOGS("username", "password");
+		login.loginToOGS("username", "password", "jo", "pass", "jo@email.com");
 		
 	}
 	

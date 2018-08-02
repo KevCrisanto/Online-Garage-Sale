@@ -24,6 +24,6 @@ public class OnlineGarageSaleProfilePageTest {
 	@Test
 	public void testProfilePage() {
 		profile = new Profile(driver);
-		profile.testProfile("Today is my birthday. Not!", "Jones");
+		profile.testProfile("Today is my birthday. Not!", "Jones", "Story Rd.", "", "", "2L", "Pallet Town", "United States", "76013");
 	}
 }

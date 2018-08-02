@@ -30,7 +30,7 @@ public class OnlineGarageSaleLoginTest {
 		login = new Login(driver);
 		login.loginToOGS("bobbert", "bobbert", "someNewUser", "password", "somePerson@email.com");
 		profile = new Profile(driver);
-		profile.testProfile("bobbert","bobbert");
+		profile.testProfile("Today is my birthday. Not!", "Jones", "Story Rd.", "", "", "2L", "Pallet Town", "United States", "76013");
 	}
 	
 	@After

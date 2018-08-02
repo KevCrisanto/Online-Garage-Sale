@@ -1,4 +1,5 @@
 import { ItemService } from './../../../services/item.service';
+import { Router } from '@angular/router';
 import { Account } from './../../../objects/account';
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class ItemSubmitComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private login: LoginService,
-    private itemService: ItemService
+    private itemService: ItemService,
+    private router: Router
   ) {}
 
   account: Account;
@@ -54,6 +56,7 @@ export class ItemSubmitComponent implements OnInit {
     fd.append('subItem', JSON.stringify(this.subItem));
     fd.append('file_name', this.selectedFile.name + '.png');
     fd.append('file', this.selectedFile);
+    this.router.navigate(['item-list']);
     this.http.post(this.insertUrl, fd).subscribe();
     // this.subItem.accountId.accountId = this.account.accountId;
     // console.log(this.subItem);

@@ -33,6 +33,7 @@
     "jquery": "^3.3.1",
     "ngx-card": "^0.2.4",
     "ngx-cookie-service": "^1.0.10",
+    "ngx-image-cropper": "^1.0.1",
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

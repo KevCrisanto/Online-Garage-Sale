@@ -24,14 +24,19 @@ export class ItemSubmitComponent implements OnInit {
 
   account: Account;
   selectedFile: File;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+  cropperReady = false;
+
   ngOnInit() {
     this.login.currentAccount.subscribe(account => (this.account = account));
     this.subItem = new Item('', '', '', this.account, '', 'sale', 0, null);
 
+    // Display fakepath
     $('#upload').on('change', function() {
-      //get the file name
-      var fileName = $(this).val();
-      //replace the "Choose a file" label
+      // get the file name
+      const fileName = $(this).val();
+      // replace the "Choose a file" label
       $(this)
         .next('.custom-file-label')
         .html(fileName);
@@ -41,15 +46,31 @@ export class ItemSubmitComponent implements OnInit {
   onFileSelected(event) {
     this.selectedFile = <File>event.target.files[0];
   }
+
   submitItem() {
     const fd = new FormData();
     this.subItem.accountId.accountId = this.account.accountId;
     fd.append('subItem', JSON.stringify(this.subItem));
-    fd.append('file_name', this.selectedFile.name);
+    fd.append('file_name', this.selectedFile.name + '.png');
     fd.append('file', this.selectedFile);
     this.http.post(this.insertUrl, fd).subscribe();
     // this.subItem.accountId.accountId = this.account.accountId;
     // console.log(this.subItem);
     // this.itemService.insertItem(this.subItem).subscribe();
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+
+  imageCroppedFile(image: File) {
+    this.selectedFile = image;
+  }
+
+  imageLoaded() {
+    this.cropperReady = true;
+  }
+  imageLoadFailed() {
+    console.log('Load failed');
   }
 }

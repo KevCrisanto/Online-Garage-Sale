@@ -6,7 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class Utils {
-	private static int millisecondsToWait = 800;
+	private static int millisecondsToWait = 300;
 	
 	public static void emulateUserKeyStroke(WebDriver driver, String input, By element) {
 		for (Character c : input.toCharArray()) {

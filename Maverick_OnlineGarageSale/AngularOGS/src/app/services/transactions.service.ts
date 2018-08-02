@@ -16,8 +16,8 @@ const httpOptions = {
 })
 export class TransactionsService {
 
-  private getUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetTransactionsServlet';
-  // private getUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetTransactionsServlet';
+  // private getUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetTransactionsServlet';
+  private getUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetTransactionsServlet';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ItemSubmitComponent implements OnInit {
   subItem: Item;
-  private insertUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
+  // private insertUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
+  private insertUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/InsertItemServlet';
   constructor(private http: HttpClient, private login: LoginService, private itemService: ItemService) {}
 
   account: Account;

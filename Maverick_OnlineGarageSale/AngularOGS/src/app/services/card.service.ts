@@ -13,7 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CardService {
-  private creditCardUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/CreditCardServlet';
+  // private creditCardUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/CreditCardServlet';
+  private creditCardUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/CreditCardServlet';
 
   constructor(private http: HttpClient) { }
 

@@ -66,7 +66,7 @@ public class InsertItemServlet extends HttpServlet {
 			        }
 				}
 				else if(item.getName() != "null" && item.getName() != null) {
-					fileKey = fileKey+item.getName();
+					fileKey = fileKey+item.getName()+".png";
 					System.out.println(fileKey);
 					InputStream is = item.getInputStream();
 					s3client.putObject(new PutObjectRequest(bucketname, fileKey,is,new ObjectMetadata())

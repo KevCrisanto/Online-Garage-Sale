@@ -3,7 +3,6 @@ package maverick.ogs.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,21 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import maverick.ogs.beans.Address;
-import maverick.ogs.beans.UserAccount;
-import maverick.ogs.service.AddressService;
-import maverick.ogs.service.UserService;
+import maverick.ogs.beans.Item;
+import maverick.ogs.service.ItemService;
 
 /**
- * Servlet implementation class AddressServlet
+ * Servlet implementation class GetItemByIdServlet
  */
-public class AddressServlet extends HttpServlet {
+public class GetItemByIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddressServlet() {
+    public GetItemByIdServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,24 +32,19 @@ public class AddressServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Gson gson = new Gson();
+		BufferedReader reader = request.getReader();
+		Item item = ItemService.getItemById(reader.readLine());
+		PrintWriter out = response.getWriter();
+		out.println(gson.toJson(item));
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Gson gson = new Gson();
-		BufferedReader reader = request.getReader();
-		Address address = (Address)gson.fromJson(reader, Address.class);
-		System.out.println(address.toString());
-				
-		address.setAddressId(UUID.randomUUID().toString());
-		System.out.println("before insert" + address.toString());
-		AddressService.insertNewAddress(address);
-		
-	
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

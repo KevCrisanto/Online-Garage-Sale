@@ -2,17 +2,21 @@ package maverick.ogs.junit;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import maverick.ogs.selenium.pages.Login;
 import maverick.ogs.selenium.pages.Profile;
 
-public class OnlineGarageSaleProfilePageTest {
-	private static WebDriver driver;
-	private final String url = "http://18.219.13.188:8085/Maverick_OnlineGarageSale/AngularOGS/#/profile";
-	Profile profile;
+public class OnlineGarageSaleLoginTest {
+	public static WebDriver driver;
+	public final String url = "http://18.219.13.188:8085/Maverick_OnlineGarageSale/AngularOGS/";
+	public Login login;
+	public static Profile profile;
+	
 	@Before
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
@@ -22,8 +26,15 @@ public class OnlineGarageSaleProfilePageTest {
 	}
 	
 	@Test
-	public void testProfilePage() {
+	public void loginTest() {
+		login = new Login(driver);
+		login.loginToOGS("bobbert", "bobbert", "someNewUser", "password", "somePerson@email.com");
 		profile = new Profile(driver);
-		profile.testProfile("Today is my birthday. Not!", "Jones");
+		profile.testProfile("bobbert","bobbert");
+	}
+	
+	@After
+	public void tearDown() {
+		driver.quit();
 	}
 }

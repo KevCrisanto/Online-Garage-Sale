@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center my-3">
-  <div class="col-sm-12 col-md-6">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-12">
     <div class="card rounded bg-light">
       <div class="card-body">
         <h3 class="text-warning text-center mb-3">Have an item you want to sell?</h3>
@@ -9,19 +9,26 @@
 </div>
 
 <div class="d-flex justify-content-center">
-  <div class="col-xs-12 col-xl-6">
+  <div class="col-xl-7 col-lg-8 col-md-10 col-12">
     <div class="card rounded bg-light">
       <div class="card-body">
 
-<!-- 
+        <!-- 
         <form role="form" accept-charset="UTF-8" action="../InsertReimbursement" method="POST" class="text-muted" enctype="multipart/form-data"> -->
-          <form role="form" accept-charset="UTF-8" (ngSubmit)="submitItem()">
+        <form role="form" accept-charset="UTF-8" (ngSubmit)="submitItem()">
 
 
           <!-- Name field -->
           <div class="form-group">
             <label for="nameItem">Name of the item you want to sell:</label>
             <input type="text" class="form-control" name="eventDate" id="eventDate" required [(ngModel)]="subItem.itemName">
+          </div>
+          <!-- End of name field -->
+
+          <!-- Name field -->
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" class="form-control" name="asdf" id="asdf" required [(ngModel)]="subItem.itemCategory">
           </div>
           <!-- End of name field -->
 
@@ -46,17 +53,23 @@
 
 
 
-
+          <!-- File upload -->
           <div class="form-group">
             <label for="upload">Upload picture</label>
             <div class="custom-file">
-              <input type="file" class="custom-file-input" name="upload" id="upload" (change)="onFileSelected($event)">
+              <input type="file" class="custom-file-input" name="upload" id="upload" (change)="fileChangeEvent($event)">
               <label class="custom-file-label" for="upload">Choose file</label>
+              <div class="mb-5">
+                <app-image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="400"
+                  format="jpeg" (imageCroppedFile)="imageCroppedFile($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="imageLoadFailed()"
+                  style="max-height: 33vh" [style.display]="cropperReady ? null : 'none'"></app-image-cropper>
+              </div>
             </div>
           </div>
+          <!-- End of file upload -->
 
 
-          <button class="btn btn-outline-warning btn-block" type="submit" >Sell it!</button>
+          <button style="margin-top: 120px" class="btn btn-outline-warning btn-block" type="submit">Sell it!</button>
         </form>
       </div>
     </div>

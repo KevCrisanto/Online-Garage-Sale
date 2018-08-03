@@ -9,16 +9,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse d-flex" id="nav">
+  <div class="collapse navbar-collapse justify-content-between" id="nav">
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-item" data-toggle="collapse" data-target="#nav">
         <a class="nav-link text-light text-uppercase font-weight-bold px-3" routerLink="/item-list">Home</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-toggle="collapse" data-target="#nav">
         <a class="nav-link text-light text-uppercase font-weight-bold px-3" routerLink="/item-submit">Sell Item</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" data-toggle="collapse" data-target="#nav">
         <a class="nav-link text-light text-uppercase font-weight-bold px-3" routerLink="/profile">Profile</a>
+      </li>
+      <li class="nav-item" data-toggle="collapse" data-target="#nav">
+        <a class="nav-link text-light text-uppercase font-weight-bold px-3" *ngIf="account.isAdmin" routerLink="/admin-accounts">Accounts</a>
       </li>
     </ul>
     <form class="ml-auto p-2">
@@ -32,8 +35,8 @@
       </div>
     </form>
     <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link text-light text-uppercase font-weight-bold px-3" [routerLink]="" (click)="logout()" >Logout</a>
+      <li class="nav-item" data-toggle="collapse" data-target="#nav">
+        <a class="nav-link text-light text-uppercase font-weight-bold px-3" [routerLink]="" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>

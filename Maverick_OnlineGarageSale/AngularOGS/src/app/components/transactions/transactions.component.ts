@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from './../../services/login.service';
 import { TransactionsService } from './../../services/transactions.service';
 import { Transaction } from './../../objects/transaction';
@@ -14,14 +15,14 @@ export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
 
   constructor(private http: HttpClient, private trans: TransactionsService,
-             private login: LoginService) { 
-    this.getTrans();
+             private login: LoginService,private cookieService: CookieService) { 
   }
 
   account: Account;
 
   ngOnInit() {
     this.login.currentAccount.subscribe(account => (this.account = account));
+    this.getTrans();
   }
 
   tempBuyer: Account = new Account('5a48fc39-9ea5-436e-8295-4a3bc195fb66','',
@@ -30,7 +31,7 @@ export class TransactionsComponent implements OnInit {
   //  '', '', '', '', null, false, false, false, false,null);
 
   getTrans(){
-    this.trans.getTransactions(this.account).subscribe(
+    this.trans.getTransactions(this.cookieService.get('userid')).subscribe(
       data => {
         this.transactions = data;
         console.log(data);

@@ -1,0 +1,24 @@
+.br-monkey .br-units {
+  align-items: center;
+}
+.br-monkey .br-unit {
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../custom/monkey.svg');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+  width: 28px;
+  height: 28px;
+  filter: grayscale(1);
+}
+.br-monkey .br-unit:first-child {
+  margin-left: 0;
+}
+.br-monkey .br-selected,
+.br-monkey .br-active {
+  filter: grayscale(0);
+}

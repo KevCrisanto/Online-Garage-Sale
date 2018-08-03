@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Item } from './../../../objects/item';
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Router, NavigationExtras} from "@angular/router";
 
 @Component({
   selector: 'app-item-detail',
@@ -16,7 +17,8 @@ export class ItemDetailComponent implements OnInit {
     'https://usedcomputersforsale.files.wordpress.com/2014/02/used-desktop-computers.jpg'
   ];
   public item: Item = new Item('','','',null,'','',0,null);
-  constructor(private route: ActivatedRoute,private http:HttpClient,private itemService: ItemService) {
+  constructor(private route: ActivatedRoute,private http:HttpClient,private itemService: ItemService,
+              private router: Router) {
     this.route.queryParams.subscribe(
       params => {
         console.log(params["item"]);
@@ -36,4 +38,12 @@ export class ItemDetailComponent implements OnInit {
   }
 
   ngOnInit() {}
+  public onTap() {
+    let navigationExtras: NavigationExtras = {
+        queryParams: {
+            "item": this.item.itemId
+        }
+    };
+    this.router.navigate(["item-checkout"], navigationExtras);
+  }
 }

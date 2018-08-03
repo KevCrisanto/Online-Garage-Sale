@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 
 import maverick.ogs.beans.UserAccount;
@@ -21,6 +24,7 @@ import maverick.ogs.service.UserService;
  */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(RegisterServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()

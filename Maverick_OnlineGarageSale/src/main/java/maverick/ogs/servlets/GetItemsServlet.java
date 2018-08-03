@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 
 import maverick.ogs.beans.Item;
@@ -19,6 +22,7 @@ import maverick.ogs.service.ItemService;
  */
 public class GetItemsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(GetItemsServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,6 +42,8 @@ public class GetItemsServlet extends HttpServlet {
 		List<Item> items = ItemService.getItemsForSale();
 		String json = gson.toJson(items);
 		out.println(json);
+		
+		logger.debug(GetItemsServlet.class.getName() + " is passing " + json.toString());
 	}
 
 	/**

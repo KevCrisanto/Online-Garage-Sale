@@ -17,12 +17,16 @@ import maverick.ogs.beans.UserAccount;
 import maverick.ogs.service.AddressService;
 import maverick.ogs.service.UserService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Servlet implementation class AddressServlet
  */
 public class AddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private Logger logger = LoggerFactory.getLogger(AddressServlet.class.getName());
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,6 +41,7 @@ public class AddressServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		logger.debug(AddressServlet.class.getName() + " served at: " + request.getContextPath());
 	}
 
 	/**

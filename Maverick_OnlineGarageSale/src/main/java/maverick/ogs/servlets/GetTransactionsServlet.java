@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,6 +26,7 @@ import maverick.ogs.service.UserService;
  */
 public class GetTransactionsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(GetTransactionsServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -43,6 +47,9 @@ public class GetTransactionsServlet extends HttpServlet {
 
 		List<Transactions> trans = TransactionsService.getUserTransactions(user);
 		String json = gson.toJson(trans);
+		
+		logger.debug(GetTransactionsServlet.class.getName() + " is passing " + json.toString());
+		
 		out.println(json);
 	}
 

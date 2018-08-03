@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 
 import maverick.ogs.beans.UserAccount;
@@ -19,6 +22,7 @@ import maverick.ogs.service.UserService;
  */
 public class GetUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(GetUserServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,6 +42,7 @@ public class GetUserServlet extends HttpServlet {
 		System.out.println(user.toString());
 		PrintWriter out = response.getWriter();
 		out.println(gson.toJson(user));
+		logger.debug(GetUserServlet.class.getName() + " is passing " + gson.toJson(user).toString());
 	}
 
 	/**

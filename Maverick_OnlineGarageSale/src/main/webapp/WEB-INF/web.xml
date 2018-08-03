@@ -135,4 +135,14 @@
     <servlet-name>GetItemByIdServlet</servlet-name>
     <url-pattern>/GetItemByIdServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetAllUsersServlets</display-name>
+    <servlet-name>GetAllUsersServlets</servlet-name>
+    <servlet-class>maverick.ogs.servlets.GetAllUsersServlets</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetAllUsersServlets</servlet-name>
+    <url-pattern>/GetAllUsersServlets</url-pattern>
+  </servlet-mapping>
 </web-app>

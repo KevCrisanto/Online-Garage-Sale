@@ -12,11 +12,17 @@ import { CookieService } from '../../../../node_modules/ngx-cookie-service';
 })
 export class NavbarComponent implements OnInit {
 
+  account: Account;
   ResetAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
 
-  constructor(private nav: NavbarService, private login: LoginService, private router: Router, private cookie: CookieService) { }
+  constructor(
+    private nav: NavbarService, 
+    private login: LoginService, 
+    private router: Router,
+    private cookie: CookieService) { }
 
   ngOnInit() {
+    this.login.currentAccount.subscribe(account => (this.account = account));
   }
 
   logout(){
@@ -24,7 +30,6 @@ export class NavbarComponent implements OnInit {
     // setTimeout(() => this.router.navigate(['login']), 5000);
     location.reload();
     this.router.navigate(['login'])
-    
     
   }
 

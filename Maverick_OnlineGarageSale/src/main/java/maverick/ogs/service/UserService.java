@@ -52,4 +52,9 @@ public class UserService {
 		return json;
 	}
 	
+	public static Boolean deleteUserById(String id) {
+		UserAccountDAO userDao = new UserAccountDAOImpl();
+		return userDao.deleteAccountById(id);
+	}
+	
 }

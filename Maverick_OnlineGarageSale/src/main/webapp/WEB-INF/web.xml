@@ -155,4 +155,14 @@
     <servlet-name>GetAllUsersServlets</servlet-name>
     <url-pattern>/GetAllUsersServlets</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteUserByIdServlet</display-name>
+    <servlet-name>DeleteUserByIdServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.DeleteUserByIdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteUserByIdServlet</servlet-name>
+    <url-pattern>/DeleteUserByIdServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

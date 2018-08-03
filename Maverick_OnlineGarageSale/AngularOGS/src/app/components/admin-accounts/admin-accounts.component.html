@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody *ngFor="let account of accounts">
-    <tr>
+    <tr id="{{account.accountId}}">
       <td>{{account.username}}</td>
       <td>{{account.firstName}}</td>
       <td>{{account.lastName}}</td>
-      <td>Buttons</td>
+      <td><button *ngIf=checkAdmin(account.accountId) class="btn btn-danger" (click)="deleteUser(account.accountId)">Delete</button></td>
     </tr>
   </tbody>
 </table>

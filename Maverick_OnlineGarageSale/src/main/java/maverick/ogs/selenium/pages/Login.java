@@ -23,6 +23,7 @@ public class Login {
 	private By registerPassword = By.xpath("//*[@id=\'passwordReg\']");
 	private By registerEmail = By.xpath("//*[@id=\'emailReg\']");
 	private By registerButton = By.xpath("/html/body/app-root/div/app-login/div/div[3]/div[2]/form/div[4]/button");
+	
 	public Login(WebDriver driver) {
 		this.driver = driver;
 		explicitWait = new WebDriverWait(driver, 5);

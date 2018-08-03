@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -46,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if((validuser = UserService.userLogin(user.getUsername(),user.getPassword())) != null) {
 			out.println(gson.toJson(validuser));
+			Logger logger = LoggerFactory.getLogger(LoginServlet.class.getName());
 		}else {
 //			user.setPassword("");
 //			out.println(gson.toJson(user));

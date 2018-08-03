@@ -12,6 +12,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
@@ -23,7 +25,8 @@ import maverick.ogs.beans.UserAccount;
  */
 public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private Logger logger = LoggerFactory.getLogger(UploadServlet.class.getName());
+	
     /**
      * @see HttpServlet#HttpServlet()
      */

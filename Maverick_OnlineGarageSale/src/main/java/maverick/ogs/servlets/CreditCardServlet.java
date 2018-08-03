@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -19,6 +22,7 @@ import maverick.ogs.service.CreditCardService;
  */
 public class CreditCardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(CreditCardServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()

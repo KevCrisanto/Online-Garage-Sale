@@ -1,4 +1,6 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~ngx-bar-rating/themes/br-default-theme.css';
+@import '/assets/css/br-monkey-theme.css';
 body {
   background-color: #17a2b8;
   padding-top: 85px;

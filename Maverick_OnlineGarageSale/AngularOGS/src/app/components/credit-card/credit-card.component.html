@@ -22,7 +22,7 @@
                 <input type="text" name="cvc" placeholder="CVC" class="form-control" card-cvc [(ngModel)]="creditCard.cvv" name="cvv" />
               </div>
               <div>
-                <button *ngIf="invalid" type="submit" value="Submit" class="btn btn-danger btn-block" [disabled]="invalid"> Invalid </button>
+                <button *ngIf="invalid" type="submit" value="Submit" class="btn btn-danger btn-block" [disabled]="true"> Invalid </button>
                 <button *ngIf="!invalid" type="submit" value="Submit" class="btn btn-success btn-block" [disabled]="true"> Valid </button>
               </div>
             </div>

@@ -39,8 +39,9 @@ export class CreditCardComponent implements OnInit, DoCheck {
     false,
     null
   );
-  invalid = false;
+  invalid;
   ngOnInit() {
+    this.invalid = true;
     this.login.currentAccount.subscribe(account => (this.account = account));
   }
 
@@ -60,9 +61,9 @@ export class CreditCardComponent implements OnInit, DoCheck {
   ngDoCheck() {
     if (
       this.cardNumber.nativeElement.classList.contains('jp-card-invalid') ||
-      this.cardNumber.nativeElement.value === ''
+      this.cardNumber.nativeElement.value === '' ||
+      this.cardNumber.nativeElement.value.length < 3
     ) {
-      console.log('Error');
       this.invalid = true;
     } else {
       this.invalid = false;

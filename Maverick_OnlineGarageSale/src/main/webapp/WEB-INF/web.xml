@@ -137,6 +137,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>SubmitTransactionServlet</display-name>
+    <servlet-name>SubmitTransactionServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.SubmitTransactionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SubmitTransactionServlet</servlet-name>
+    <url-pattern>/SubmitTransactionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>GetAllUsersServlets</display-name>
     <servlet-name>GetAllUsersServlets</servlet-name>
     <servlet-class>maverick.ogs.servlets.GetAllUsersServlets</servlet-class>

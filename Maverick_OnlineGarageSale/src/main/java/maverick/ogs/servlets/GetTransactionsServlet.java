@@ -43,8 +43,7 @@ public class GetTransactionsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		BufferedReader reader = request.getReader();
-		UserAccount user = gson.fromJson(reader,UserAccount.class);
-
+		UserAccount user = UserService.getUserById(reader.readLine());
 		List<Transactions> trans = TransactionsService.getUserTransactions(user);
 		String json = gson.toJson(trans);
 		

@@ -23,17 +23,39 @@ export class CreditCardComponent implements OnInit, DoCheck {
 
   @ViewChild('cardNumber') cardNumber: ElementRef;
 
-  constructor(private cardS: CardService, private login: LoginService) { }
+  constructor(private cardS: CardService, private login: LoginService) {}
   accounts: Account[];
-  account = new Account('', '', '', '', '', '', null, false, false, false, false,null);
-  invalid;
+  account = new Account(
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    null,
+    false,
+    false,
+    false,
+    false,
+    null
+  );
+  invalid = false;
   ngOnInit() {
-    this.login.currentAccount.subscribe(account => this.account = account);
+    this.login.currentAccount.subscribe(account => (this.account = account));
   }
 
-  
-  address = new Address('','809 Bobbert Way','','','','Denver','USA','80234',null);
-  creditCard = new Card('',this.account, '', '','',this.address);
+  address = new Address(
+    '',
+    '809 Bobbert Way',
+    '',
+    '',
+    '',
+    'Denver',
+    'USA',
+    '80234',
+    null
+  );
+  creditCard = new Card('', this.account, '', '', '', this.address);
 
   ngDoCheck() {
     if (
@@ -47,7 +69,7 @@ export class CreditCardComponent implements OnInit, DoCheck {
     }
   }
 
-  insert(c: Card){
+  insert(c: Card) {
     console.log(this.creditCard);
     console.log(this.account);
     console.log(this.address);

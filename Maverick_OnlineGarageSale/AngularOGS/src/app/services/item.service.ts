@@ -18,6 +18,7 @@ const httpOptions = {
 export class ItemService {
   // private insertUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/InsertItemServlet';
   // private getItemsUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetItemsServlet';
+  // private getItemByIdUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetItemsServlet';
   private insertUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/InsertItemServlet';
   private getItemsUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetItemsServlet';
   private getItemByIdUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetItemByIdServlet'

@@ -40,6 +40,14 @@ export class TransactionsComponent implements OnInit {
         console.log('error');
       }
     );
-
   }
+
+  isSeller(accid: string){
+    if(accid === this.account.accountId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
 }

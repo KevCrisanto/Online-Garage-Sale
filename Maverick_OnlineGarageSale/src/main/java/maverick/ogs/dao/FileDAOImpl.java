@@ -42,6 +42,8 @@ public class FileDAOImpl implements FileDAO {
 		}
 		catch(HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		return file;
 	}

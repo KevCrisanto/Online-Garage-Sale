@@ -111,6 +111,8 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return account;

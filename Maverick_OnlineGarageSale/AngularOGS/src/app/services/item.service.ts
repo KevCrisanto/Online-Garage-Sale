@@ -21,7 +21,7 @@ export class ItemService {
   // private getItemByIdUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/GetItemsServlet';
   private insertUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/InsertItemServlet';
   private getItemsUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetItemsServlet';
-  private getItemByIdUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetItemByIdServlet'
+  private getItemByIdUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/GetItemByIdServlet';
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

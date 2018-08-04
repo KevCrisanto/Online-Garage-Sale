@@ -75,6 +75,8 @@ public class TierDAOImpl implements TierDAO {
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return result;
@@ -92,6 +94,8 @@ public class TierDAOImpl implements TierDAO {
 											+ id + "\'").uniqueResult();
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return tier;

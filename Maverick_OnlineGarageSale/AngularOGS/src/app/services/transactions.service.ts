@@ -35,10 +35,9 @@ export class TransactionsService {
 
   constructor(private http: HttpClient) { }
   
-    getTransactions(currAcc: Account){
+    getTransactions(currAcc: string){
       return this.http.post<Transaction[]>(this.getUrl, currAcc, httpOptions);
     }
     
-
     
 }

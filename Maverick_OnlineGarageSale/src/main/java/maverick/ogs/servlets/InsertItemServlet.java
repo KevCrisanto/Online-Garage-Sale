@@ -14,6 +14,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
@@ -31,6 +33,7 @@ import maverick.ogs.service.ItemService;
  */
 public class InsertItemServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Logger logger = LoggerFactory.getLogger(InsertItemServlet.class.getName());
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -65,7 +68,7 @@ public class InsertItemServlet extends HttpServlet {
 			    		jsonItem = gson.fromJson(fieldvalue,Item.class);
 			        }
 				}
-				else if(item.getName() != "null" && item.getName() != null) {
+				else if(!item.getName().equals("null") && item.getName() != null) {
 					fileKey = fileKey+item.getName()+".png";
 					System.out.println(fileKey);
 					InputStream is = item.getInputStream();

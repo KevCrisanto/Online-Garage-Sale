@@ -1,20 +1,56 @@
-<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Item</th>
-        <th scope="col">Buyer</th>
-        <th scope="col">Seller</th>
-        <th scope="col">Amount</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let transaction of transactions">
+<div class="d-flex my-3">
+    <div class="col-12">
+        <div class="card rounded bg-light">
+            <div class="card-body">
+      
+              <div class="row">
+<div class="col-xs-12 col-6">
+  <table class="table table-bordered">
+      <thead>
         <tr>
-            <th scope="row">1</th>
-            <td>{{transaction.item.description}}</td>
-            <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
-            <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
-            <td>{{transaction.transactionAmount}}</td>
+          <th scope="col"></th>
+          <th scope="col">Item</th>
+          <th scope="col">Seller</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let transaction of transactions">
+          <ng-container *ngIf="isSeller(transaction.buyer.accountId)==true">
+          <tr>
+              <th scope="row"></th>
+              <td>{{transaction.item.description}}</td>
+              <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
+              <td>{{transaction.transactionAmount}}</td>
+            </tr>
+          </ng-container>
+      </tbody>
+    </table>
+</div>
+
+<div class="col-xs-12 col-6">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Item</th>
+            <th scope="col">Buyer</th>
+            <th scope="col">Amount</th>
           </tr>
-    </tbody>
-  </table>
+        </thead>
+        <tbody *ngFor="let transaction of transactions">
+          <ng-container *ngIf="isSeller(transaction.seller.accountId)==true">
+            <tr>
+                <th scope="row"></th>
+                <td>{{transaction.item.description}}</td>
+                <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
+                <td>{{transaction.transactionAmount}}</td>
+              </tr>
+            </ng-container>
+        </tbody>
+      </table>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>

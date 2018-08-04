@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { Routes } from '@angular/router';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ItemSubmitComponent } from './components/items/item-submit/item-submit.component';
+import { ItemCheckoutComponent } from './components/items/item-checkout/item-checkout.component';
+import { AdminAccountsComponent } from './components/admin-accounts/admin-accounts.component';
 
 
 export const approutes: Routes = [
@@ -39,6 +41,14 @@ export const approutes: Routes = [
     {
         path: 'item-submit',
         component: ItemSubmitComponent
+    },
+    {
+        path: 'item-checkout',
+        component: ItemCheckoutComponent
+    },
+    {
+        path: "admin-accounts",
+        component: AdminAccountsComponent
     },
     {
         //The URL mapping

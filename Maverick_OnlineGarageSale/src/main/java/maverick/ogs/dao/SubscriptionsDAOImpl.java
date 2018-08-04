@@ -76,6 +76,8 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 			result = true;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return result;
@@ -95,6 +97,8 @@ public class SubscriptionsDAOImpl implements SubscriptionsDAO {
 			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return sub;

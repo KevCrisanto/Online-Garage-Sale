@@ -23,31 +23,54 @@ export class CreditCardComponent implements OnInit, DoCheck {
 
   @ViewChild('cardNumber') cardNumber: ElementRef;
 
-  constructor(private cardS: CardService, private login: LoginService) { }
+  constructor(private cardS: CardService, private login: LoginService) {}
   accounts: Account[];
-  account = new Account('', '', '', '', '', '', null, false, false, false, false,null);
+  account = new Account(
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    null,
+    false,
+    false,
+    false,
+    false,
+    null
+  );
   invalid;
   ngOnInit() {
-    this.login.currentAccount.subscribe(account => this.account = account);
+    this.invalid = true;
+    this.login.currentAccount.subscribe(account => (this.account = account));
   }
 
-  
-  address = new Address('','809 Bobbert Way','','','','Denver','USA','80234',null);
-  creditCard = new Card('',this.account, '', '','',this.address);
+  address = new Address(
+    '',
+    '809 Bobbert Way',
+    '',
+    '',
+    '',
+    'Denver',
+    'USA',
+    '80234',
+    null
+  );
+  creditCard = new Card('', this.account, '', '', '', this.address);
 
   ngDoCheck() {
     if (
       this.cardNumber.nativeElement.classList.contains('jp-card-invalid') ||
-      this.cardNumber.nativeElement.value === ''
+      this.cardNumber.nativeElement.value === '' ||
+      this.cardNumber.nativeElement.value.length < 3
     ) {
-      console.log('Error');
       this.invalid = true;
     } else {
       this.invalid = false;
     }
   }
 
-  insert(c: Card){
+  insert(c: Card) {
     console.log(this.creditCard);
     console.log(this.account);
     console.log(this.address);

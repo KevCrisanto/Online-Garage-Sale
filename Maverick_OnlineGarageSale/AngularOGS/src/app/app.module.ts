@@ -35,6 +35,8 @@ import { ItemCheckoutComponent } from './components/items/item-checkout/item-che
 import { CookieService } from 'ngx-cookie-service';
 import { ItemSubmitComponent } from './components/items/item-submit/item-submit.component';
 import { ImageCropperModule } from './components/image-cropper/image-cropper.module';
+import { AdminAccountsComponent } from './components/admin-accounts/admin-accounts.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
 
@@ -51,7 +53,8 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
     ProfileComponent,
     TransactionsComponent,
     ItemCheckoutComponent,
-    ItemSubmitComponent
+    ItemSubmitComponent,
+    AdminAccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
     MatIconModule,
     MatProgressBarModule,
     ImageCropperModule,
+    BarRatingModule,
     RouterModule.forRoot(approutes)
   ],
   providers: [

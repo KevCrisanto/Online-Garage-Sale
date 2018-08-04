@@ -6,9 +6,16 @@
     </div>
     <div class="col-9">
       <div>
-        <h2>
-          <a routerLink='/item-detail'>{{item.itemName}}</a>
-        </h2>
+        <div class="row pr-3">
+          <div class="pl-4 mx-auto">
+            <h2>
+              <a routerLink='/item-detail'>{{item.itemName}}</a>
+            </h2>
+          </div>
+          <div>
+            <fa-icon icon="trash-alt" class="text-danger fa-lg"></fa-icon>
+          </div>
+        </div>
       </div>
       <div>
         <p>{{item.description}}</p>

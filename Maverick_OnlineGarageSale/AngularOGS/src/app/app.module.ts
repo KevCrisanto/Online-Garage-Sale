@@ -23,7 +23,8 @@ import {
   faSearch,
   faShoppingCart,
   faMoneyBillAlt,
-  faPencilAlt
+  faPencilAlt,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
@@ -39,7 +40,7 @@ import { AdminAccountsComponent } from './components/admin-accounts/admin-accoun
 import { BarRatingModule } from 'ngx-bar-rating';
 import { ItemComponent } from './components/items/items-list/item/item.component';
 
-library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
+library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt, faTrashAlt);
 
 @NgModule({
   declarations: [

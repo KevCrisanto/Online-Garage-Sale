@@ -35,6 +35,9 @@ public class Transactions {
 	@Column
 	private int rating;
 	
+	@Column
+	private int premrating;
+	
 	public Transactions() {
 		this.transactionId = UUID.randomUUID().toString();
 	}
@@ -69,6 +72,19 @@ public class Transactions {
 		this.memo = memo;
 		this.rating = rating;
 	}
+	
+	public Transactions(UserAccount buyer, UserAccount seller, Item item, Float transactionAmount, String memo,int rating,
+							int premrating) {
+		super();
+		this.transactionId = UUID.randomUUID().toString();
+		this.buyer = buyer;
+		this.seller = seller;
+		this.item = item;
+		this.transactionAmount = transactionAmount;
+		this.memo = memo;
+		this.rating = rating;
+		this.premrating = premrating;
+	}
 
 	public Transactions(UserAccount buyer, Item item, Float transactionAmount, String memo) {
 		super();
@@ -79,6 +95,20 @@ public class Transactions {
 		this.memo = memo;
 	}
 	
+	/**
+	 * @return the premrating
+	 */
+	public int getPremrating() {
+		return premrating;
+	}
+
+	/**
+	 * @param premrating the premrating to set
+	 */
+	public void setPremrating(int premrating) {
+		this.premrating = premrating;
+	}
+
 	/**
 	 * @return the rating
 	 */

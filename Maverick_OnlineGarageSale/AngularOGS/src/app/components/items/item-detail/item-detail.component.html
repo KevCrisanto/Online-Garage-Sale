@@ -62,6 +62,9 @@
         <li class="nav-item">
           <a class="nav-link" aria-expanded="false" data-toggle="tab" href="#tab-3">Reviews</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" aria-expanded="false" data-toggle="tab" href="#tab-4">Seller Ratings</a>
+          </li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane fade active show" id="tab-1" aria-expanded="true">
@@ -77,6 +80,14 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit exercitationem recusandae omnis dolorum illum.
             Officiis deleniti a illum maxime ut, odio expedita voluptatum, ab autem molestias id harum distinctio, quibusdam
             atque debitis nisi cumque incidunt!</p>
+        </div>
+        <div class="tab-pane fade" id="tab-4" aria-expanded="false">
+            <p class="text-left">Average Rating: </p><bar-rating [(rate)]="avgRating" [max]="5"
+              [theme]="'stars'" [readOnly]="true">
+             </bar-rating>
+             <p class="text-left">Average Premium Rating:</p> <bar-rating [(rate)]="avgPremRating" [max]="5"
+              [theme]="'monkey'" [readOnly]="true">
+             </bar-rating>
         </div>
       </div>
     </div>

@@ -20,13 +20,30 @@
               </ng-container>
                 <ng-template #israted>
                   <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                     [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                     [theme]="'stars'" [readOnly]="true"></bar-rating></th>
                 </ng-template>
                 <ng-template #isnotrated>
-                   <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                     [theme]="'monkey'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
-                    </bar-rating></th>
-                </ng-template>
+                    <ng-container *ngIf="transaction.premrating != -1; then ispremrated; else isnotpremrated">
+                    </ng-container>
+                    <ng-template #ispremrated>
+                        <th><bar-rating [(rate)]="transaction.premrating" [max]="5"
+                          [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                    </ng-template>
+                    <ng-template #isnotpremrated>
+                      <ng-container *ngIf="account.isPremium; then isprem; else isnotprem">
+                      </ng-container>
+                      <ng-template #isprem>
+                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                            [theme]="'monkey'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
+                           </bar-rating></th>
+                      </ng-template>
+                      <ng-template #isnotprem>
+                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                            [theme]="'stars'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
+                           </bar-rating></th>
+                      </ng-template>
+                    </ng-template>
+                  </ng-template>
             </tr>
           </ng-container>
       </tbody>
@@ -55,10 +72,18 @@
                 </ng-container>
                   <ng-template #rated>
                     <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                       [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                       [theme]="'stars'" [readOnly]="true"></bar-rating></th>
                   </ng-template>
                   <ng-template #unrated>
-                    <th>N/A</th>
+                    <ng-container *ngIf="transaction.premrating != -1; then premrated; else premunrated">
+                    </ng-container>
+                      <ng-template #premrated>
+                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                            [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                      </ng-template>
+                      <ng-template #premunrated>
+                          <th>N/A</th>
+                      </ng-template>
                   </ng-template>
               </tr>
             </ng-container>

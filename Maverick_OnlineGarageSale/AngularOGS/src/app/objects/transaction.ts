@@ -8,6 +8,7 @@ export class Transaction {
         public item: Item,
         public transactionAmount: number,
         public memo: string,
-        public rating: number
+        public rating: number,
+        public premrating: number
       ) {}
 }

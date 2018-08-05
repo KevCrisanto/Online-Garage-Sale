@@ -1,12 +1,13 @@
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from './../../services/login.service';
 import { Account } from './../../objects/account';
 import { NgForm } from '@angular/forms';
 import { NavbarService } from '../../services/navbar.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,19 @@ import { NavbarService } from '../../services/navbar.service';
 export class LoginComponent implements OnInit {
   // account = Account;
   // account2 = Account;
+  @ViewChild('content') content: ElementRef;
+  closeResult: string;
 
-  constructor(private http: HttpClient, private login: LoginService, private router: Router,
-              private cookieService: CookieService, private nav: NavbarService) {}
+  constructor(
+    private http: HttpClient,
+    private login: LoginService,
+    private router: Router,
+    private cookieService: CookieService,
+    private nav: NavbarService,
+    private modalService: NgbModal
+  ) {}
 
   account: Account;
-  
-  
 
   ngOnInit() {
     this.nav.visible = false;
@@ -63,21 +70,34 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
-
   //acc = new Account('', '', '', '', '', '', null, false, false, false, false);
-  regAcc = new Account('','', '', '', '', '', null, false, false, false, false,null);
+  regAcc = new Account(
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    null,
+    false,
+    false,
+    false,
+    false,
+    null
+  );
 
   cLogin() {
     this.login.checkLogin(this.account).subscribe(
       data => {
-        if(data != null){
+        if (data != null) {
           this.login.changeAccount(data);
-          this.cookieService.set('userid',data.accountId);
+          this.cookieService.set('userid', data.accountId);
           this.router.navigate(['item-list']);
           this.nav.visible = true;
+        } else {
+          console.log('No!');
+          this.open(this.content);
         }
-
       },
       error => {
         console.log('error');
@@ -88,9 +108,9 @@ export class LoginComponent implements OnInit {
   register(a: Account) {
     this.login.registerService(this.regAcc).subscribe(
       data => {
-        if(data != null){
+        if (data != null) {
           this.login.changeAccount(data);
-          this.cookieService.set('userid',data.accountId);
+          this.cookieService.set('userid', data.accountId);
           this.router.navigate(['item-list']);
           this.nav.visible = true;
         }
@@ -100,5 +120,28 @@ export class LoginComponent implements OnInit {
         console.log('error');
       }
     );
+  }
+
+  open(content) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        result => {
+          this.closeResult = `Closed with: ${result}`;
+        },
+        reason => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

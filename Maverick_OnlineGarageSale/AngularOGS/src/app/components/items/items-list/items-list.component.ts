@@ -12,7 +12,6 @@ import { Account } from '../../../objects/account';
 })
 export class ItemsListComponent implements OnInit {
   items: Item[];
-
   constructor(private http: HttpClient, private itemService: ItemService) {
     // this.items = [
     //   {
@@ -26,7 +25,7 @@ export class ItemsListComponent implements OnInit {
     //     accountId: new Account('1', '', '', '', '', '',
     //     null, false, false, false, false, null),
     //     itemFile: new FileInfo('','http://2.bp.blogspot.com/-7gFjnPs_j1w/TjlsJA3zjaI/AAAAAAAADEk/qhTVh8XrZuM/s1600/Saleen+S7+2002+02.jpg')
-    //     // images: [ 
+    //     // images: [
     //     //   'http://2.bp.blogspot.com/-7gFjnPs_j1w/TjlsJA3zjaI/AAAAAAAADEk/qhTVh8XrZuM/s1600/Saleen+S7+2002+02.jpg'
     //     // ]
     //   },
@@ -66,7 +65,7 @@ export class ItemsListComponent implements OnInit {
 
   ngOnInit() {}
 
-  getItems(){
+  getItems() {
     this.itemService.getItemsForSale().subscribe(
       data => {
         this.items = data;
@@ -74,7 +73,7 @@ export class ItemsListComponent implements OnInit {
       error => {
         console.log('error');
       }
-    )
+    );
   }
   // getItems(){
 

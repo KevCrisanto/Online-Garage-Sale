@@ -39,6 +39,7 @@ import { ImageCropperModule } from './components/image-cropper/image-cropper.mod
 import { AdminAccountsComponent } from './components/admin-accounts/admin-accounts.component';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { ItemComponent } from './components/items/items-list/item/item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt, faTrashAlt);
 
@@ -70,6 +71,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt, faTrashAlt);
     MatProgressBarModule,
     ImageCropperModule,
     BarRatingModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(approutes)
   ],
   providers: [

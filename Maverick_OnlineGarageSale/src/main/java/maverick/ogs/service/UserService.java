@@ -56,5 +56,4 @@ public class UserService {
 		UserAccountDAO userDao = new UserAccountDAOImpl();
 		return userDao.deleteAccountById(id);
 	}
-	
 }

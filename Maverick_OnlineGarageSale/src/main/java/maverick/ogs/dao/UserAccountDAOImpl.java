@@ -80,6 +80,9 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 				if (account.getPassword() != null) {
 					updatedAccount.setPassword(account.getPassword());
 				}
+				if(account.isVerified()) {
+					updatedAccount.setVerified(account.isVerified());
+				}
 				
 				session.save(updatedAccount);
 				transaction.commit();

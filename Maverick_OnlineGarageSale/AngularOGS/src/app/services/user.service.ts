@@ -9,6 +9,7 @@ export class UserService {
 
   getAllUsersUrl = "http://localhost:8085/Maverick_OnlineGarageSale/GetAllUsersServlets"
   deleteUserUrl = "http://localhost:8085/Maverick_OnlineGarageSale/DeleteUserByIdServlet"
+  verifyUserUrl = "http://localhost:8085/Maverick_OnlineGarageSale/VerifyUserServlet"
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +19,18 @@ export class UserService {
 
   deleteUser(id: String){
     return this.http.post<String>(this.deleteUserUrl, id);
+  }
+
+  verifyUser(id: String){
+    return this.http.post<String>(this.verifyUserUrl, id);
+  }
+
+  checkVerified(verified: boolean){
+    if(verified){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 }

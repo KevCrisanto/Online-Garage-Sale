@@ -47,6 +47,7 @@ export class ProfileComponent implements OnInit {
         console.log('error');
       }
     )
+    this.showForm();
   }
 
   updateAddress(a: Address){

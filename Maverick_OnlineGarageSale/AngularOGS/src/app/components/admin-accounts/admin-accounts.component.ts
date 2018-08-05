@@ -37,6 +37,11 @@ export class AdminAccountsComponent implements OnInit {
     location.reload();
   }
 
+  verifyUser(id: string){
+    this.user.verifyUser(id).subscribe();
+    location.reload();
+  }
+
   checkAdmin(accountId: string){
     if(accountId == this.acc.accountId){
       return false;
@@ -45,5 +50,4 @@ export class AdminAccountsComponent implements OnInit {
       return true;
     }
   }
-
 }

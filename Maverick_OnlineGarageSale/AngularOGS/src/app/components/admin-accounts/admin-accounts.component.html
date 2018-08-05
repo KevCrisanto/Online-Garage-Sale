@@ -12,7 +12,13 @@
       <td>{{account.username}}</td>
       <td>{{account.firstName}}</td>
       <td>{{account.lastName}}</td>
-      <td><button *ngIf=checkAdmin(account.accountId) class="btn btn-danger" (click)="deleteUser(account.accountId)">Delete</button></td>
+      <td>
+          <button 
+            *ngIf=user.checkVerified(account.verified)
+            class="btn btn-primary" (click)="verifyUser(account.accountId)">Verify User
+          </button>
+        <button *ngIf=checkAdmin(account.accountId) class="btn btn-danger" (click)="deleteUser(account.accountId)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>

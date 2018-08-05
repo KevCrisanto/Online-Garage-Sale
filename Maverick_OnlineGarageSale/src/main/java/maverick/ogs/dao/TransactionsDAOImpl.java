@@ -5,8 +5,11 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import maverick.ogs.beans.Transactions;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.util.HibernateUtil;
 
 public class TransactionsDAOImpl implements TransactionsDAO {
@@ -93,6 +96,7 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 					transactionToUpdate.setMemo(transactions.getMemo());
 				}
 				transactionToUpdate.setRating(transactions.getRating());
+				transactionToUpdate.setPremrating(transactions.getPremrating());
 				session.save(transactionToUpdate);
 				hqlTransaction.commit();
 				result = true;
@@ -152,5 +156,41 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		}
 		
 		return success;
+	}
+	
+	@Override
+	public Double getAvgRatingById(UserAccount seller) {
+		Session session = HibernateUtil.getSession();
+		Double avgRating = null;
+		try {
+			avgRating = (Double) session.createCriteria(Transactions.class)
+					.add(Restrictions.eq("seller",seller)).add(Restrictions.gt("rating", -1))
+					.setProjection(
+					Projections.avg("rating")
+					).uniqueResult();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return avgRating;
+	}
+	
+	@Override
+	public Double getAvgPremRatingById(UserAccount seller) {
+		Session session = HibernateUtil.getSession();
+		Double avgRating = null;
+		try {
+			avgRating = (Double) session.createCriteria(Transactions.class)
+					.add(Restrictions.eq("seller",seller)).add(Restrictions.gt("premrating", -1))
+					.setProjection(
+					Projections.avg("premrating")
+					).uniqueResult();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return avgRating;
 	}
 }

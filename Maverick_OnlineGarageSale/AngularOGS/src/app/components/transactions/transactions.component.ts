@@ -49,6 +49,7 @@ export class TransactionsComponent implements OnInit {
     fd.append('transid', id);
     fd.append('rating', r);
     this.http.post(this.updateRatingUrl, fd).subscribe();
+    location.reload();
   }
 
   isSeller(accid: string){

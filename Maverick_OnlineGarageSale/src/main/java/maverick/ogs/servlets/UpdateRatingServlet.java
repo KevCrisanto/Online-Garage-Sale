@@ -47,6 +47,10 @@ public class UpdateRatingServlet extends HttpServlet {
 			        if(fieldname.equals("rating")) {
 			    		rating = Integer.parseInt(fieldvalue);
 			        }
+			        if(fieldname.equals("isPrem")) {
+			        	System.out.println("fieldname" + fieldname);
+			        	System.out.println("filedvalue" + fieldvalue);
+			        }
 
 				}
 			}

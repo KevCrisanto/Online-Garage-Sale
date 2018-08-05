@@ -205,4 +205,24 @@
     <servlet-name>DeleteItemServlet</servlet-name>
     <url-pattern>/DeleteItemServlet</url-pattern>
   </servlet-mapping>
+  </servlet-mapping>
+    <url-pattern>/GetAvgPremRatingServlet</url-pattern>
+    <servlet-name>GetAvgPremRatingServlet</servlet-name>
+  </servlet>
+  <servlet-mapping>
+    <servlet-class>maverick.ogs.servlets.GetAvgPremRatingServlet</servlet-class>
+    <servlet-name>GetAvgPremRatingServlet</servlet-name>
+    <display-name>GetAvgPremRatingServlet</display-name>
+    <description></description>
+  <servlet>
+  </servlet-mapping>
+    <url-pattern>/GetAvgRatingServlet</url-pattern>
+    <servlet-name>GetAvgRatingServlet</servlet-name>
+  <servlet-mapping>
+  </servlet>
+    <servlet-class>maverick.ogs.servlets.GetAvgRatingServlet</servlet-class>
+    <servlet-name>GetAvgRatingServlet</servlet-name>
+    <display-name>GetAvgRatingServlet</display-name>
+    <description></description>
+  <servlet>
 </web-app>

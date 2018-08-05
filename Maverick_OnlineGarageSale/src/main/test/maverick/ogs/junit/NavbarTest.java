@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import maverick.ogs.selenium.pages.Login;
 import maverick.ogs.selenium.pages.Navbar;
 
-public class OnlineGarageSaleNavbarTest {
+public class NavbarTest {
 	private static WebDriver driver;
 	private final String localhostURL = "http://localhost:8085";
 	private final String ec2URL = "http://18.219.13.188:8085";

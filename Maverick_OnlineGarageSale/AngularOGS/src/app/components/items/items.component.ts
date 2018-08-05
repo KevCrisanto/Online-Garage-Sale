@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from './../../objects/item'
-import {Router, NavigationExtras} from "@angular/router";
+import { Item } from './../../objects/item';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
-  selector: 'app-item',
+  selector: 'app-items',
   templateUrl: './items.component.html',
   styleUrls: ['./items.component.css']
 })
@@ -14,10 +14,10 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {}
   public onTap() {
     let navigationExtras: NavigationExtras = {
-        queryParams: {
-            "item": this.item.itemId
-        }
+      queryParams: {
+        item: this.item.itemId
+      }
     };
-    this.router.navigate(["item-detail"], navigationExtras);
+    this.router.navigate(['item-detail'], navigationExtras);
   }
 }

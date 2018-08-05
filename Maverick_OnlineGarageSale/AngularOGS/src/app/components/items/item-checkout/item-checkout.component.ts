@@ -16,8 +16,8 @@ export class ItemCheckoutComponent implements OnInit {
 
   public item: Item = new Item('','','',null,'','',0,null);
   account: Account;
-  //private submitUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/SubmitTransactionServlet';
-  private submitUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/SubmitTransactionServlet';
+  private submitUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/SubmitTransactionServlet';
+  // private submitUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/SubmitTransactionServlet';
 
   constructor(private route: ActivatedRoute,private itemService: ItemService, private login: LoginService,
               private router: Router, private http: HttpClient) {

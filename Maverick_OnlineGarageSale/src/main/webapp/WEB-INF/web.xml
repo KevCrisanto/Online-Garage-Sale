@@ -165,4 +165,65 @@
     <servlet-name>DeleteUserByIdServlet</servlet-name>
     <url-pattern>/DeleteUserByIdServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>VerifyUserServlet</display-name>
+    <servlet-name>VerifyUserServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.VerifyUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerifyUserServlet</servlet-name>
+    <url-pattern>/VerifyUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateRatingServlet</display-name>
+    <servlet-name>UpdateRatingServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.UpdateRatingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateRatingServlet</servlet-name>
+    <url-pattern>/UpdateRatingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PremiumUpgradeServlet</display-name>
+    <servlet-name>PremiumUpgradeServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.PremiumUpgradeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PremiumUpgradeServlet</servlet-name>
+    <url-pattern>/PremiumUpgradeServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteItemServlet</display-name>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.DeleteItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <url-pattern>/DeleteItemServlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+      <description></description>
+      <display-name>GetAvgRatingServlet</display-name>
+      <servlet-name>GetAvgRatingServlet</servlet-name>
+      <servlet-class>maverick.ogs.servlets.GetAvgRatingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+      <servlet-name>GetAvgRatingServlet</servlet-name>
+      <url-pattern>/GetAvgRatingServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+      <description></description>
+      <display-name>GetAvgPremRatingServlet</display-name>
+      <servlet-name>GetAvgPremRatingServlet</servlet-name>
+      <servlet-class>maverick.ogs.servlets.GetAvgPremRatingServlet</servlet-class>
+      </servlet>
+    <servlet-mapping>
+      <servlet-name>GetAvgPremRatingServlet</servlet-name>
+      <url-pattern>/GetAvgPremRatingServlet</url-pattern>
+    </servlet-mapping>
+  
 </web-app>

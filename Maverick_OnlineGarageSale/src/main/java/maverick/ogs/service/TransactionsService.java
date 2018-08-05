@@ -31,6 +31,40 @@ public class TransactionsService {
 		itemDao.updateItemById(itemObj.getItemId(), itemObj);
 		
 		transDao.insertTransaction(new Transactions(buyerAccount, sellerAccount, itemObj,itemObj.getPrice(),
-				"kevinture"));
+				"kevinture",-1,-1));
+	}
+	
+	public static void updateTransactionRating(String transid,int rating) {
+		TransactionsDAO transDao = new TransactionsDAOImpl();
+		
+		Transactions trans = transDao.getTransactionById(transid);
+		if(trans.getBuyer().isPremium()) {
+			trans.setPremrating(rating);
+		}else {
+			trans.setRating(rating);
+		}
+		transDao.updateTransactionById(transid, trans);
+	}
+	
+	public static Double getAvgRating(String seller) {
+		TransactionsDAO transDao = new TransactionsDAOImpl();
+		UserAccountDAO uad = new UserAccountDAOImpl();
+		Double avg = transDao.getAvgRatingById(uad.getAccountById(seller));
+		if(avg != null) {
+			return avg;
+		}else {
+			return -1.0;
+		}
+	}
+	
+	public static Double getAvgPremRating(String seller) {
+		TransactionsDAO transDao = new TransactionsDAOImpl();
+		UserAccountDAO uad = new UserAccountDAOImpl();
+		Double avg = transDao.getAvgPremRatingById(uad.getAccountById(seller));
+		if(avg != null) {
+			return avg;
+		}else {
+			return -1.0;
+		}
 	}
 }

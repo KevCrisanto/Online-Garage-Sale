@@ -23,6 +23,7 @@
                     <span>Account information</span>
                   </div>
                   <div class="ml-auto p-2">
+                    <button class="mr-3 btn btn-success" *ngIf="user.checkPremium(account.isVerified, account.isPremium)" (click)="upgrade(account.accountId)">Upgrade To Premium</button>
                     <fa-icon icon="pencil-alt" class="text-warning" (click)="showForm()"></fa-icon>
                   </div>
                 </div>
@@ -39,14 +40,14 @@
                   </div>
                   <div class="form-body">
                     <label for="fname">first name:</label>
-                    <input type="text" class="form-control" id="fname" placeholder={{account.firstName}} [(ngModel)]="account.firstName" name="lastName">
+                    <input type="text" class="form-control" id="fname" placeholder={{account.firstName}} [(ngModel)]="account.firstName" name="firstName">
                   </div>
                   <div class="form-body">
                     <label for="lname">last name:</label>
                     <input type="text" class="form-control" id="lname" placeholder={{account.lastName}} [(ngModel)]="account.lastName" name="lastName">
                   </div>
                   <br>
-                  <button type="submit" (click)="update(account)" class="btn btn-primary">Update</button>
+                  <button type="button" (click)="update(account)" class="btn btn-primary">Update</button>
                 </form>
                 <p class="card-text text-left" *ngIf="detVisible">
                   username: {{account.username}}

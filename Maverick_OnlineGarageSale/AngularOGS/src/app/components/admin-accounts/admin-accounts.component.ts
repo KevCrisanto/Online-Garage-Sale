@@ -37,13 +37,17 @@ export class AdminAccountsComponent implements OnInit {
     location.reload();
   }
 
-  checkAdmin(accountId: string){
-    if(accountId == this.acc.accountId){
-      return false;
-    }
-    else{
-      return true;
-    }
+  verifyUser(id: string){
+    this.user.verifyUser(id).subscribe();
+    location.reload();
   }
 
+  checkAdmin(accountId: string){
+    if(accountId == this.acc.accountId){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

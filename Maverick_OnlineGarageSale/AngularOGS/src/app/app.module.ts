@@ -23,7 +23,8 @@ import {
   faSearch,
   faShoppingCart,
   faMoneyBillAlt,
-  faPencilAlt
+  faPencilAlt,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 import { ItemsComponent } from './components/items/items.component';
 import { ItemsListComponent } from './components/items/items-list/items-list.component';
@@ -37,8 +38,10 @@ import { ItemSubmitComponent } from './components/items/item-submit/item-submit.
 import { ImageCropperModule } from './components/image-cropper/image-cropper.module';
 import { AdminAccountsComponent } from './components/admin-accounts/admin-accounts.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { ItemComponent } from './components/items/items-list/item/item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
+library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt, faTrashAlt);
 
 @NgModule({
   declarations: [
@@ -54,7 +57,8 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
     TransactionsComponent,
     ItemCheckoutComponent,
     ItemSubmitComponent,
-    AdminAccountsComponent
+    AdminAccountsComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,7 @@ library.add(faShoppingCart, faSearch, faMoneyBillAlt, faPencilAlt);
     MatProgressBarModule,
     ImageCropperModule,
     BarRatingModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(approutes)
   ],
   providers: [

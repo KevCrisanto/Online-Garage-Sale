@@ -13,10 +13,11 @@ public class Navbar {
 	private WebDriverWait explicitWait;
 	private By shoppingCartHome = By.cssSelector("a[href=\'#\']");
 	private By home = By.cssSelector("a[href=\'#/item-list\']");
-	private By project = By.cssSelector("a[class=\'nav-link text-light text-uppercase font-weight-bold px-3 dropdown-toggle\']");
+	private By project = By.cssSelector("a[href=\'#/item-submit\']");
 	private By profile = By.cssSelector("a[href=\'#/profile\'");
 	private By search = By.cssSelector("input[placeholder=\'Search\']");
-	
+	private By adminAccounts = By.cssSelector("input[placeholder=\'admin-accounts\']");
+
 	public Navbar(WebDriver driver) {
 		this.driver = driver;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -59,6 +60,15 @@ public class Navbar {
 		}
 	}
 	
+	public void selectAccounts() {
+		driver.findElement(adminAccounts).click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void sendKeysToSearch(String input) {
 		Utils.emulateUserKeyStroke(driver, input, search);
 		try {
@@ -71,10 +81,9 @@ public class Navbar {
 	public void testNavBar() {
 		selectShoppingCart();
 		selectHome();
-		for (int i = 0; i < 8; i++) {
-			projectDropDown();
-		}
 		selectProfile();
+		selectAccounts();
+		selectHome();
 		sendKeysToSearch("Online Garage Sale <3");
 		
 

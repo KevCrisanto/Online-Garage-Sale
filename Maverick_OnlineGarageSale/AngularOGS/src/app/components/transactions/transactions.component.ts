@@ -13,7 +13,8 @@ import { Account } from './../../objects/account';
 })
 export class TransactionsComponent implements OnInit {
   transactions: Transaction[];
-
+  // private updateRatingUrl = 'http://localhost:8085/Maverick_OnlineGarageSale/UpdateRatingServlet';
+  private updateRatingUrl = 'http://18.219.13.188:8085/Maverick_OnlineGarageSale/UpdateRatingServlet';
   constructor(private http: HttpClient, private trans: TransactionsService,
              private login: LoginService,private cookieService: CookieService) { 
   }
@@ -40,6 +41,15 @@ export class TransactionsComponent implements OnInit {
         console.log('error');
       }
     );
+  }
+
+  updateTrans(r: string, id: string){
+    var fd = new FormData();
+
+    fd.append('transid', id);
+    fd.append('rating', r);
+    this.http.post(this.updateRatingUrl, fd).subscribe();
+    location.reload();
   }
 
   isSeller(accid: string){

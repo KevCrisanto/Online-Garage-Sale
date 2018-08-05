@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({OnlineGarageSaleLoginPageTest.class, OnlineGarageSaleProfilePageTest.class, NavbarTest.class})
+@SuiteClasses({OnlineGarageSaleLoginPageTest.class, OnlineGarageSaleProfilePageTest.class, NavbarTest.class, OnlineGarageSaleItemsTest.class})
 public class SeleniumTests {
 
 }

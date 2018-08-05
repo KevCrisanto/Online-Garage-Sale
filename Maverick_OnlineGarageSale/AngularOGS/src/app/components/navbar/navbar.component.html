@@ -14,7 +14,7 @@
       <li class="nav-item" data-toggle="collapse" data-target="#nav">
         <a class="nav-link text-light text-uppercase font-weight-bold px-3" routerLink="/item-list">Home</a>
       </li>
-      <li class="nav-item" data-toggle="collapse" data-target="#nav">
+      <li *ngIf="account.isVerified" class="nav-item" data-toggle="collapse" data-target="#nav">
         <a class="nav-link text-light text-uppercase font-weight-bold px-3" routerLink="/item-submit">Sell Item</a>
       </li>
       <li class="nav-item" data-toggle="collapse" data-target="#nav">

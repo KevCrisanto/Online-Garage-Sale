@@ -5,7 +5,11 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
+import maverick.ogs.beans.Transactions;
+import maverick.ogs.beans.UserAccount;
 import maverick.ogs.util.HibernateUtil;
 
 public class TransactionsDAOImpl implements TransactionsDAO {
@@ -64,14 +68,14 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 	}
 
 	@Override
-	public Boolean updateTransactionById(String transactionId, maverick.ogs.beans.Transactions transactions) {
+	public Boolean updateTransactionById(String transactionId, Transactions transactions) {
 		Session session = HibernateUtil.getSession();
 		Transaction hqlTransaction = null;
-		maverick.ogs.beans.Transactions transactionToUpdate = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where transactionId=\'" + transactionId + "\'");
+		Transactions transactionToUpdate = null;
 		Boolean result = null;
 		try {
 			hqlTransaction = session.beginTransaction();
-			
+			transactionToUpdate = (Transactions)session.get(Transactions.class, transactionId);
 			if (transactions != null) {
 				if (transactions.getTransactionId() != null) {
 					transactionToUpdate.setTransactionId(transactions.getTransactionId());
@@ -89,8 +93,10 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 					transactionToUpdate.setTransactionAmount(transactions.getTransactionAmount());
 				}
 				if (transactions.getMemo() != null) {
-					transactionToUpdate.setMemo(transactionToUpdate.getMemo());
+					transactionToUpdate.setMemo(transactions.getMemo());
 				}
+				transactionToUpdate.setRating(transactions.getRating());
+				transactionToUpdate.setPremrating(transactions.getPremrating());
 				session.save(transactionToUpdate);
 				hqlTransaction.commit();
 				result = true;
@@ -98,7 +104,11 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 			
 	
 		} catch (HibernateException e) {
-			
+			if(hqlTransaction != null) {
+				hqlTransaction.rollback();
+			}
+		}finally {
+			session.close();
 		}
 		
 		return result;
@@ -112,7 +122,7 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		
 		try {
 			transaction = session.beginTransaction();
-			result = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where=\'" + transactionId + "\'").uniqueResult();
+			result = (maverick.ogs.beans.Transactions) session.createQuery("FROM Transactions where transactionId=\'" + transactionId + "\'").uniqueResult();
 			
 		} catch (HibernateException e) {
 		} finally {
@@ -146,5 +156,41 @@ public class TransactionsDAOImpl implements TransactionsDAO {
 		}
 		
 		return success;
+	}
+	
+	@Override
+	public Double getAvgRatingById(UserAccount seller) {
+		Session session = HibernateUtil.getSession();
+		Double avgRating = null;
+		try {
+			avgRating = (Double) session.createCriteria(Transactions.class)
+					.add(Restrictions.eq("seller",seller)).add(Restrictions.gt("rating", -1))
+					.setProjection(
+					Projections.avg("rating")
+					).uniqueResult();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return avgRating;
+	}
+	
+	@Override
+	public Double getAvgPremRatingById(UserAccount seller) {
+		Session session = HibernateUtil.getSession();
+		Double avgRating = null;
+		try {
+			avgRating = (Double) session.createCriteria(Transactions.class)
+					.add(Restrictions.eq("seller",seller)).add(Restrictions.gt("premrating", -1))
+					.setProjection(
+					Projections.avg("premrating")
+					).uniqueResult();
+		}catch(HibernateException e){
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return avgRating;
 	}
 }

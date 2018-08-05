@@ -37,4 +37,9 @@ public class ItemService {
 		ItemDAO itemDao = new ItemDAOImpl();
 		return itemDao.getItemById(id);
 	}
+	
+	public static Boolean deleteItemById(String id) {
+		ItemDAO itemDao = new ItemDAOImpl();
+		return itemDao.deleteItemById(id);
+	}
 }

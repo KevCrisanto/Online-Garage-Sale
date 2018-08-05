@@ -44,7 +44,6 @@ public class SubmitTransactionServlet extends HttpServlet {
 		String buyer = "";
 		String seller = "";
 		String item = "";
-		System.out.println("======================");
 		try {
 			List<FileItem> files = sf.parseRequest(request);
 			for(FileItem field: files) {
@@ -67,9 +66,6 @@ public class SubmitTransactionServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(item);
-		System.out.println(buyer);
-		System.out.println(seller);
 
 		TransactionsService.submitTransaction(buyer, seller, item);
 	}

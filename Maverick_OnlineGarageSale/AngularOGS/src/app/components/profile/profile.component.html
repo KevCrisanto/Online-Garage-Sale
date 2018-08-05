@@ -23,6 +23,7 @@
                     <span>Account information</span>
                   </div>
                   <div class="ml-auto p-2">
+                    <button class="mr-3 btn btn-success" *ngIf="user.checkPremium(account.isVerified, account.isPremium)" (click)="upgrade(account.accountId)">Upgrade To Premium</button>
                     <fa-icon icon="pencil-alt" class="text-warning" (click)="showForm()"></fa-icon>
                   </div>
                 </div>

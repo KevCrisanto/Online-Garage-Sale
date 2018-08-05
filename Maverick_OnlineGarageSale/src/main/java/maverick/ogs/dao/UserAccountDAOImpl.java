@@ -83,6 +83,9 @@ public class UserAccountDAOImpl implements UserAccountDAO {
 				if(account.isVerified()) {
 					updatedAccount.setVerified(account.isVerified());
 				}
+				if(account.isPremium()) {
+					updatedAccount.setPremium(account.isPremium());
+				}
 				
 				session.save(updatedAccount);
 				transaction.commit();

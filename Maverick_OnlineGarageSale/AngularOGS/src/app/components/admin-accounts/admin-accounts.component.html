@@ -17,9 +17,9 @@
               <td>{{account.firstName}}</td>
               <td>{{account.lastName}}</td>
               <td>
-                <button [disabled]=!user.checkVerified(account.verified) class="btn btn-outline-primary" (click)="verifyUser(account.accountId)">Verify User
+                <button class="btn btn-outline-primary mr-3" [disabled]=user.checkVerified(account.verified) (click)="verifyUser(account.accountId)">Verify User
                 </button>
-                <button [disabled]=!checkAdmin(account.accountId) class="btn btn-outline-danger" (click)="deleteUser(account.accountId)">Delete</button>
+                <button [disabled]=checkAdmin(account.accountId) class="btn btn-outline-danger" (click)="deleteUser(account.accountId)">Delete</button>
               </td>
             </tr>
           </tbody>

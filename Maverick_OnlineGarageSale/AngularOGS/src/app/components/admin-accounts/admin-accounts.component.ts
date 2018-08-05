@@ -44,10 +44,10 @@ export class AdminAccountsComponent implements OnInit {
 
   checkAdmin(accountId: string){
     if(accountId == this.acc.accountId){
-      return false;
+      return true;
     }
     else{
-      return true;
+      return false;
     }
   }
 }

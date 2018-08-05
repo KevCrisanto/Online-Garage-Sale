@@ -1,24 +1,30 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Username</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let account of accounts">
-    <tr id="{{account.accountId}}">
-      <td>{{account.username}}</td>
-      <td>{{account.firstName}}</td>
-      <td>{{account.lastName}}</td>
-      <td>
-          <button 
-            *ngIf=user.checkVerified(account.verified)
-            class="btn btn-primary" (click)="verifyUser(account.accountId)">Verify User
-          </button>
-        <button *ngIf=checkAdmin(account.accountId) class="btn btn-danger" (click)="deleteUser(account.accountId)">Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="d-flex justify-content-center my-3">
+  <div class="col-12">
+    <div class="card rounded bg-light">
+      <div class="card-body">
+        <table class="table table-bordered table-hover table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let account of accounts">
+            <tr id="{{account.accountId}}">
+              <td>{{account.username}}</td>
+              <td>{{account.firstName}}</td>
+              <td>{{account.lastName}}</td>
+              <td>
+                <button [disabled]=!user.checkVerified(account.verified) class="btn btn-outline-primary" (click)="verifyUser(account.accountId)">Verify User
+                </button>
+                <button [disabled]=!checkAdmin(account.accountId) class="btn btn-outline-danger" (click)="deleteUser(account.accountId)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

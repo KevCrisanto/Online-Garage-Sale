@@ -1,7 +1,6 @@
 package maverick.ogs.servlets;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,28 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.amazonaws.services.s3.model.CannedAccessControlList;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.google.gson.Gson;
-
-import maverick.ogs.beans.Item;
 import maverick.ogs.service.TransactionsService;
 
 /**
- * Servlet implementation class SubmitTransactionServlet
+ * Servlet implementation class UpdateRatingServlet
  */
-public class SubmitTransactionServlet extends HttpServlet {
+public class UpdateRatingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SubmitTransactionServlet() {
+    public UpdateRatingServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,23 +33,19 @@ public class SubmitTransactionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-		String buyer = "";
-		String seller = "";
-		String item = "";
+		String transid = "";
+		int rating = 0;
 		try {
 			List<FileItem> files = sf.parseRequest(request);
 			for(FileItem field: files) {
 				if (field.isFormField()) {
 					String fieldname = field.getFieldName();
 			        String fieldvalue = field.getString();
-			        if(fieldname.equals("buyer")) {
-			    		buyer = fieldvalue;
+			        if(fieldname.equals("transid")) {
+			    		transid = fieldvalue;
 			        }
-			        if(fieldname.equals("seller")) {
-			    		seller = fieldvalue;
-			        }
-			        if(fieldname.equals("item")) {
-			    		item = fieldvalue;
+			        if(fieldname.equals("rating")) {
+			    		rating = Integer.parseInt(fieldvalue);
 			        }
 
 				}
@@ -67,7 +55,7 @@ public class SubmitTransactionServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		TransactionsService.submitTransaction(buyer, seller, item);
+		TransactionsService.updateTransactionRating(transid, rating);
 	}
 
 	/**

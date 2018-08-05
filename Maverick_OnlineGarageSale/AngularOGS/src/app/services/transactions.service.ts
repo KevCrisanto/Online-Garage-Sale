@@ -39,5 +39,4 @@ export class TransactionsService {
       return this.http.post<Transaction[]>(this.getUrl, currAcc, httpOptions);
     }
     
-    
 }

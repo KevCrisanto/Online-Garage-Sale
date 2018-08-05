@@ -1,9 +1,3 @@
-<div class="d-flex my-3">
-    <div class="col-12">
-        <div class="card rounded bg-light">
-            <div class="card-body">
-      
-              <div class="row">
 <div class="col-xs-12 col-6">
   <table class="table table-bordered">
       <thead>
@@ -12,6 +6,7 @@
           <th scope="col">Item</th>
           <th scope="col">Seller</th>
           <th scope="col">Amount</th>
+          <th scope="col">Rating</th>
         </tr>
       </thead>
       <tbody *ngFor="let transaction of transactions">
@@ -21,6 +16,17 @@
               <td>{{transaction.item.description}}</td>
               <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
               <td>{{transaction.transactionAmount}}</td>
+              <ng-container *ngIf="transaction.rating != -1; then israted;else isnotrated">
+              </ng-container>
+                <ng-template #israted>
+                  <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                     [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                </ng-template>
+                <ng-template #isnotrated>
+                   <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                     [theme]="'monkey'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
+                    </bar-rating></th>
+                </ng-template>
             </tr>
           </ng-container>
       </tbody>
@@ -35,6 +41,7 @@
             <th scope="col">Item</th>
             <th scope="col">Buyer</th>
             <th scope="col">Amount</th>
+            <th scope="col">Rating</th>
           </tr>
         </thead>
         <tbody *ngFor="let transaction of transactions">
@@ -44,13 +51,17 @@
                 <td>{{transaction.item.description}}</td>
                 <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
                 <td>{{transaction.transactionAmount}}</td>
+                <ng-container *ngIf="transaction.rating != -1; then rated; else unrated">
+                </ng-container>
+                  <ng-template #rated>
+                    <th><bar-rating [(rate)]="transaction.rating" [max]="5"
+                       [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
+                  </ng-template>
+                  <ng-template #unrated>
+                    <th>N/A</th>
+                  </ng-template>
               </tr>
             </ng-container>
         </tbody>
       </table>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
   </div>

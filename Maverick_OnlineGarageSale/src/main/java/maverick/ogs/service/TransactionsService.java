@@ -31,6 +31,15 @@ public class TransactionsService {
 		itemDao.updateItemById(itemObj.getItemId(), itemObj);
 		
 		transDao.insertTransaction(new Transactions(buyerAccount, sellerAccount, itemObj,itemObj.getPrice(),
-				"kevinture"));
+				"kevinture",-1));
+	}
+	
+	public static void updateTransactionRating(String transid,int rating) {
+		TransactionsDAO transDao = new TransactionsDAOImpl();
+		
+		Transactions trans = transDao.getTransactionById(transid);
+		trans.setRating(rating);
+		System.out.println("=================");
+		transDao.updateTransactionById(transid, trans);
 	}
 }

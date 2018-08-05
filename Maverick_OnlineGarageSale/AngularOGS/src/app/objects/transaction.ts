@@ -7,6 +7,7 @@ export class Transaction {
         public seller: Account,
         public item: Item,
         public transactionAmount: number,
-        public memo: string
+        public memo: string,
+        public rating: number
       ) {}
 }

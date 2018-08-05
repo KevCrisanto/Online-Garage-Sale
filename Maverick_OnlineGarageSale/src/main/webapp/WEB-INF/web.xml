@@ -165,4 +165,14 @@
     <servlet-name>DeleteUserByIdServlet</servlet-name>
     <url-pattern>/DeleteUserByIdServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateRatingServlet</display-name>
+    <servlet-name>UpdateRatingServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.UpdateRatingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateRatingServlet</servlet-name>
+    <url-pattern>/UpdateRatingServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

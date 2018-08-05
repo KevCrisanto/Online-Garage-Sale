@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Account } from '../../objects/account';
 import { Address } from '../../objects/address';
+import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -29,7 +30,7 @@ export class ProfileComponent implements OnInit {
     this.addVisible = !this.addVisible;
   }
 
-  constructor(private login: LoginService, private cookieService: CookieService) {
+  constructor(private login: LoginService, private cookieService: CookieService, private user: UserService) {
    }
 
   ngOnInit() {
@@ -54,4 +55,9 @@ export class ProfileComponent implements OnInit {
     this.login.addressService(this.address).subscribe();
   }
 
+  upgrade(id: String){
+    this.user.upgradeUser(id).subscribe();
+    location.reload();
+  }
+  
 }

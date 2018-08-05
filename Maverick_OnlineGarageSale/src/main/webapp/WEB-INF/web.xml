@@ -195,4 +195,14 @@
     <servlet-name>PremiumUpgradeServlet</servlet-name>
     <url-pattern>/PremiumUpgradeServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteItemServlet</display-name>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <servlet-class>maverick.ogs.servlets.DeleteItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteItemServlet</servlet-name>
+    <url-pattern>/DeleteItemServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

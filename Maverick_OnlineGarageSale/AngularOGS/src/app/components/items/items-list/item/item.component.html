@@ -13,7 +13,7 @@
             </h2>
           </div>
           <div>
-            <fa-icon icon="trash-alt" class="text-danger fa-lg"></fa-icon>
+            <fa-icon icon="trash-alt" class="text-danger fa-lg" *ngIf="displayDelete()" (click)="deleteItem(item.itemId)"></fa-icon>
           </div>
         </div>
       </div>

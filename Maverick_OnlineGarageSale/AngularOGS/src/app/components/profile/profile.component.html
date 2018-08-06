@@ -1,3 +1,25 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Upgrade to premium</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label class="radio-inline px-3">
+      <input type="radio" name="optradio" checked> 1 month/$20</label>
+    <label class="radio-inline px-3">
+      <input type="radio" name="optradio"> 3 months/$35</label>
+    <label class="radio-inline px-3">
+      <input type="radio" name="optradio"> 6 months/$60</label>
+    <app-credit-card></app-credit-card>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="upgrade(account.accountId)">Upgrade</button>
+    <button type="button" class="btn btn-danger" (click)="c('Save click')">Cancel</button>
+  </div>
+</ng-template>
+
 <div class="d-flex justify-content-center my-3">
   <div class="col-12">
     <div class="card rounded bg-light">
@@ -23,7 +45,7 @@
                     <span>Account information</span>
                   </div>
                   <div class="ml-auto p-2">
-                    <button class="mr-3 btn btn-success" *ngIf="user.checkPremium(account.isVerified, account.isPremium)" (click)="upgrade(account.accountId)">Upgrade To Premium</button>
+                    <button class="mr-3 btn btn-success" *ngIf="user.checkPremium(account.isVerified, account.isPremium)" (click)="open(content)">Upgrade To Premium</button>
                     <fa-icon icon="pencil-alt" class="text-warning" (click)="showForm()"></fa-icon>
                   </div>
                 </div>
@@ -101,25 +123,26 @@
                     <input type="text" class="form-control" id="state" [(ngModel)]="address.state" name="state">
                   </div>
                   <div class="form-body">
-                      <label for="country">Country</label>
-                      <input type="text" class="form-control" id="country" [(ngModel)]="address.country" name="country">
-                    </div>
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" id="country" [(ngModel)]="address.country" name="country">
+                  </div>
                   <div class="form-body">
-                      <label for="zip">Zip Code:</label>
-                      <input type="text" class="form-control" id="apt" [(ngModel)]="address.zipcode" name="zip">
-                    </div>                    
+                    <label for="zip">Zip Code:</label>
+                    <input type="text" class="form-control" id="apt" [(ngModel)]="address.zipcode" name="zip">
+                  </div>
                   <br>
                   <button type="submit" (click)="updateAddress(address)" class="btn btn-primary">Update</button>
                 </form>
 
                 <p class="card-text text-left" *ngIf="addDetVisible">
-                  {{address.addressLine1}}<br>
-                  {{address.addressLine2}}<br>
-                  {{address.aptNumber}}<br>
-                  {{address.postOfficeBox}}<br>
-                  {{address.city}}<br>
-                  {{address.country}}<br>
-                  {{address.zipcode}}<br>
+                  {{address.addressLine1}}
+                  <br> {{address.addressLine2}}
+                  <br> {{address.aptNumber}}
+                  <br> {{address.postOfficeBox}}
+                  <br> {{address.city}}
+                  <br> {{address.country}}
+                  <br> {{address.zipcode}}
+                  <br>
                 </p>
               </div>
             </div>

@@ -1,92 +1,96 @@
-<div class="col-xs-12 col-6">
+<h3 class="text-warning mt-3">Transactions as a buyer</h3>
+<div class="table-responsive">
   <table class="table table-bordered">
-      <thead>
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Seller</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let transaction of transactions">
+      <ng-container *ngIf="isSeller(transaction.buyer.accountId)==true">
         <tr>
-          <th scope="col"></th>
-          <th scope="col">Item</th>
-          <th scope="col">Seller</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Rating</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let transaction of transactions">
-          <ng-container *ngIf="isSeller(transaction.buyer.accountId)==true">
-          <tr>
-              <th scope="row"></th>
-              <td>{{transaction.item.itemName}}</td>
-              <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
-              <td>{{transaction.transactionAmount}}</td>
-              <ng-container *ngIf="transaction.rating != -1; then israted;else isnotrated">
-              </ng-container>
-                <ng-template #israted>
-                  <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                     [theme]="'stars'" [readOnly]="true"></bar-rating></th>
-                </ng-template>
-                <ng-template #isnotrated>
-                    <ng-container *ngIf="transaction.premrating != -1; then ispremrated; else isnotpremrated">
-                    </ng-container>
-                    <ng-template #ispremrated>
-                        <th><bar-rating [(rate)]="transaction.premrating" [max]="5"
-                          [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
-                    </ng-template>
-                    <ng-template #isnotpremrated>
-                      <ng-container *ngIf="account.isPremium; then isprem; else isnotprem">
-                      </ng-container>
-                      <ng-template #isprem>
-                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                            [theme]="'monkey'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
-                           </bar-rating></th>
-                      </ng-template>
-                      <ng-template #isnotprem>
-                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                            [theme]="'stars'"(rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
-                           </bar-rating></th>
-                      </ng-template>
-                    </ng-template>
-                  </ng-template>
-            </tr>
+          <td>{{transaction.item.itemName}}</td>
+          <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
+          <td>{{transaction.transactionAmount}}</td>
+          <ng-container *ngIf="transaction.rating != -1; then israted;else isnotrated">
           </ng-container>
-      </tbody>
-    </table>
+          <ng-template #israted>
+            <th>
+              <bar-rating [(rate)]="transaction.rating" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </th>
+          </ng-template>
+          <ng-template #isnotrated>
+            <ng-container *ngIf="transaction.premrating != -1; then ispremrated; else isnotpremrated">
+            </ng-container>
+            <ng-template #ispremrated>
+              <th>
+                <bar-rating [(rate)]="transaction.premrating" [max]="5" [theme]="'monkey'" [readOnly]="true"></bar-rating>
+              </th>
+            </ng-template>
+            <ng-template #isnotpremrated>
+              <ng-container *ngIf="account.isPremium; then isprem; else isnotprem">
+              </ng-container>
+              <ng-template #isprem>
+                <th>
+                  <bar-rating [(rate)]="transaction.rating" [max]="5" [theme]="'monkey'" (rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
+                  </bar-rating>
+                </th>
+              </ng-template>
+              <ng-template #isnotprem>
+                <th>
+                  <bar-rating [(rate)]="transaction.rating" [max]="5" [theme]="'stars'" (rateChange)="updateTrans(transaction.rating,transaction.transactionId)">
+                  </bar-rating>
+                </th>
+              </ng-template>
+            </ng-template>
+          </ng-template>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
 </div>
 
-<div class="col-xs-12 col-6">
-    <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Item</th>
-            <th scope="col">Buyer</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Rating</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let transaction of transactions">
-          <ng-container *ngIf="isSeller(transaction.seller.accountId)==true">
-            <tr>
-                <th scope="row"></th>
-                <td>{{transaction.item.itemName}}</td>
-                <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
-                <td>{{transaction.transactionAmount}}</td>
-                <ng-container *ngIf="transaction.rating != -1; then rated; else unrated">
-                </ng-container>
-                  <ng-template #rated>
-                    <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                       [theme]="'stars'" [readOnly]="true"></bar-rating></th>
-                  </ng-template>
-                  <ng-template #unrated>
-                    <ng-container *ngIf="transaction.premrating != -1; then premrated; else premunrated">
-                    </ng-container>
-                      <ng-template #premrated>
-                          <th><bar-rating [(rate)]="transaction.rating" [max]="5"
-                            [theme]="'monkey'" [readOnly]="true"></bar-rating></th>
-                      </ng-template>
-                      <ng-template #premunrated>
-                          <th>N/A</th>
-                      </ng-template>
-                  </ng-template>
-              </tr>
+<h3 class="text-warning mt-3">Transactions as a seller</h3>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Buyer</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let transaction of transactions">
+      <ng-container *ngIf="isSeller(transaction.seller.accountId)==true">
+        <tr>
+          <td>{{transaction.item.itemName}}</td>
+          <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
+          <td>{{transaction.transactionAmount}}</td>
+          <ng-container *ngIf="transaction.rating != -1; then rated; else unrated">
+          </ng-container>
+          <ng-template #rated>
+            <th>
+              <bar-rating [(rate)]="transaction.rating" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </th>
+          </ng-template>
+          <ng-template #unrated>
+            <ng-container *ngIf="transaction.premrating != -1; then premrated; else premunrated">
             </ng-container>
-        </tbody>
-      </table>
-  </div>
+            <ng-template #premrated>
+              <th>
+                <bar-rating [(rate)]="transaction.rating" [max]="5" [theme]="'monkey'" [readOnly]="true"></bar-rating>
+              </th>
+            </ng-template>
+            <ng-template #premunrated>
+              <th>N/A</th>
+            </ng-template>
+          </ng-template>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -13,10 +13,11 @@ public class Navbar {
 	private WebDriverWait explicitWait;
 	private By shoppingCartHome = By.cssSelector("a[href=\'#\']");
 	private By home = By.cssSelector("a[href=\'#/item-list\']");
-	private By project = By.cssSelector("a[href=\'#/item-submit\']");
+	private By sellItem = By.cssSelector("a[href=\'#/item-submit\']");
 	private By profile = By.cssSelector("a[href=\'#/profile\'");
 	private By search = By.cssSelector("input[placeholder=\'Search\']");
-	private By adminAccounts = By.cssSelector("input[placeholder=\'admin-accounts\']");
+	private By adminAccounts = By.cssSelector("a[href=\'#/admin-accounts\']");
+	private By logout = By.xpath("//*[@id=\"nav\"]/ul[2]/li/a");
 
 	public Navbar(WebDriver driver) {
 		this.driver = driver;
@@ -43,7 +44,7 @@ public class Navbar {
 	}
 	
 	public void projectDropDown() {
-		driver.findElement(project).click();
+		driver.findElement(sellItem).click();
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
@@ -78,13 +79,23 @@ public class Navbar {
 		}
 	}
 	
+	public void logout() {
+		driver.findElement(logout).click();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void testNavBar() {
-		selectShoppingCart();
+		// selectShoppingCart();
 		selectHome();
 		selectProfile();
 		selectAccounts();
 		selectHome();
 		sendKeysToSearch("Online Garage Sale <3");
+		logout();
 		
 
 	}

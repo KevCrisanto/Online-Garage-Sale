@@ -13,7 +13,7 @@
           <ng-container *ngIf="isSeller(transaction.buyer.accountId)==true">
           <tr>
               <th scope="row"></th>
-              <td>{{transaction.item.description}}</td>
+              <td>{{transaction.item.itemName}}</td>
               <td>{{transaction.seller.firstName}} {{transaction.seller.lastName}}</td>
               <td>{{transaction.transactionAmount}}</td>
               <ng-container *ngIf="transaction.rating != -1; then israted;else isnotrated">
@@ -65,7 +65,7 @@
           <ng-container *ngIf="isSeller(transaction.seller.accountId)==true">
             <tr>
                 <th scope="row"></th>
-                <td>{{transaction.item.description}}</td>
+                <td>{{transaction.item.itemName}}</td>
                 <td>{{transaction.buyer.firstName}} {{transaction.buyer.lastName}}</td>
                 <td>{{transaction.transactionAmount}}</td>
                 <ng-container *ngIf="transaction.rating != -1; then rated; else unrated">

@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 // /html/body/app-root/div/app-items-list/div[2]/app-item/div/div/div[2]/div[1]/h2/a
 // /html/body/app-root/div/app-items-list/div[3]/app-item/div/div/div[2]/div[1]/h2/a
 // /html/body/app-root/div/app-items-list/div[1]/app-item/div/div/div[2]/div[1]/h2/a
+// /html/body/app-root/div/app-items-list/div[1]/app-item/div/div/div[2]/div[1]/div/div[1]/h2/a
 public class SaleItems {
 	private WebDriver driver;
 	private By items = By.xpath("//html/body/app-root/div/app-items-list/div");
@@ -34,7 +35,7 @@ public class SaleItems {
 			System.out.println(element.getText());
 		}
 		for (int i = 1; i < itemLinks.size() + 1; i++ ) {
-			driver.findElement(By.xpath("//app-items-list/div[" + i + "]/app-item/div/div/div[2]/div[1]/h2/a")).click();
+			driver.findElement(By.xpath("/html/body/app-root/div/app-items-list/div["+i+"]/app-item/div/div/div[2]/div[1]/div/div[1]/h2/a")).click();
 			try {
 			Thread.sleep(2000);
 			} catch (InterruptedException e) {
